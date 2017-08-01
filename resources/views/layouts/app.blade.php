@@ -38,10 +38,17 @@
     <!-- File CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.css') }}">
-    <!--Plugin Foggy-->
 
+    <!-- Inicio jquery iu -->
+    <link rel="stylesheet" href="{{ asset('js/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('js/jquery-ui.theme.css') }}">
+    <script src="{{ asset('js/jquery-ui.js') }}"></script>
+    <!-- fin jquery iu -->
+
+    <!--Plugin Foggy-->
     <script type="text/javascript" src="{{ asset('js/jquery.foggy.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
 
 </head>
 <body>
@@ -120,5 +127,7 @@
     <div id="news" class="panel_foggy"></div>
     <iframe width="80%" height="90%" id="launcher" src="" frameborder=0 ALLOWTRANSPARENCY="true"></iframe>
     <div id="close_config" class="panel_foggy" onclick="blurStuff(0)">Cerrar</div>
+
+
 </body>
 </html>
