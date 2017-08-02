@@ -208,9 +208,7 @@
             </div>
         </div>
 
-
         <div class="row" style="margin-top: 20px;">
-
             <div class="col-xs-3 col-sm-3 col-md-3">
                 <div class="row">
                     Selecciona un tipo de viático:

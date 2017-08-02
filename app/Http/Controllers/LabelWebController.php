@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Label;
 use Illuminate\Http\Request;
-use Session;
 
-class PruebaController extends Controller
+class LabelWebController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,11 @@ class PruebaController extends Controller
      */
     public function index()
     {
-
+        if(checkPermission('click_me_etiquetas')){
+            dd('aborte');
+        }
+        $dataLabel = Label::all();
+        return view('labels.index',compact('dataLabel'));
     }
 
     /**
@@ -41,10 +45,10 @@ class PruebaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Label  $label
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Label $label)
     {
         //
     }
@@ -52,10 +56,10 @@ class PruebaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Label  $label
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Label $label)
     {
         //
     }
@@ -64,10 +68,10 @@ class PruebaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Label  $label
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Label $label)
     {
         //
     }
@@ -75,17 +79,11 @@ class PruebaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Label  $label
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Label $label)
     {
         //
-    }
-
-    public function prueba(Request $request){
-        dd(Session::get('rol')->permisos);
-        dd('entra a funcion prueba');
-
     }
 }

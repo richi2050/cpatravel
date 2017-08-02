@@ -21,6 +21,7 @@ Route::group(['middleware' => ['auth.session']], function () {
     Route::get('business/process','RoutingController@businessProcess')->name('business_process');
     Route::get('travel/authorization','RoutingController@travelAuthorization')->name('travel_autho');
     Route::get('solicitud/travel','RoutingController@solicitudTravel')->name('solicitud_travel');
+    Route::get('policies','RoutingController@policies')->name('policies');
 
 
     /* Fin de rutas  de menus*/
@@ -28,6 +29,7 @@ Route::group(['middleware' => ['auth.session']], function () {
     Route::get('list/project','ProjectExtendController@list_project')->name('list_project');
     Route::resource('subproject','SubProjectWebController');
     Route::resource('travel','TravelWebController');
+    Route::resource('label','LabelWebController');
 
     Route::get('prueba','PruebaController@prueba');
 

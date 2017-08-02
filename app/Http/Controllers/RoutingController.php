@@ -28,5 +28,12 @@ class RoutingController extends Controller
         return view('solicitud.solicitud_travel');
     }
 
+    public function policies(){
+        if(checkPermission('click_me_politicas')){
+            dd('aborte');
+        }
+        return view('menus.policies');
+    }
+
 
 }
