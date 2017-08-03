@@ -53,6 +53,10 @@
         .in-line{
             display: inline-block;
         }
+        .element-div{
+            padding: 10px;
+            cursor: pointer;
+        }
     </style>
     <div class="container">
         <div class="row">
@@ -209,64 +213,51 @@
         </div>
 
         <div class="row" style="margin-top: 20px;">
-            <div class="col-xs-3 col-sm-3 col-md-3">
+
+            <div class="col-sm-3 col-md-3">
                 <div class="row">
                     Selecciona un tipo de viático:
                 </div>
-                <div class="row">
-                    <div class="col-xs-2 col-sm-2 col-md-2 element-div">
-                        <span class="icon-hospedaje element-viatico">
-                            <span class="path1"></span><span class="path2"></span>
-                        </span>
+                @foreach($dataLabel as $dat)
+                    <div class="col-md-5 col-sm-5 element-div">
+                        @if($dat->name == 'Hospedaje')
+                            <span class="icon-hospedaje element-viatico">
+                                <span class="path1"></span><span class="path2"></span>
+                            </span>
+                        @elseif($dat->name == 'Alimentación')
+                            <span class="icon-comida element-viatico">
+                                <span class="path1"></span><span class="path2"></span>
+                            </span>
+                        @elseif($dat->name == 'Transporte')
+                            <span class="icon-transporte_publico element-viatico">
+                                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span>
+                            </span>
+                        @elseif($dat->name == 'Pago por kilometraje')
+                            <span class="icon-kilometraje element-viatico">
+                                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
+                            </span>
+                        @elseif($dat->name == 'Renta de Transporte terrestre')
+                            <span class="icon-transporte_terrestre element-viatico">
+                                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span>
+                            </span>
+                        @elseif($dat->name == 'Renta de Autos')
+                            <span class="icon-renta_autos element-viatico">
+                                <span class="path1"></span><span class="path2"></span>
+                            </span>
+                        @elseif($dat->name == 'Seminarios o Convenciones')
+                            <span class="icon-seminarios element-viatico">
+                                <span class="path1"></span><span class="path2"></span>
+                            </span>
+                        @elseif($dat->name == 'Renta de Transporte aéreo')
+                            <span class="icon-transporte_aereo element-viatico">
+                                <span class="path1"></span><span class="path2"></span>
+                            </span>
+                        @endif
                     </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2 element-div-left">
-                        <span class="icon-comida element-viatico">
-                            <span class="path1"></span><span class="path2"></span>
-                        </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-2 col-sm-2 col-md-2 element-div">
-                        <span class="icon-transporte_publico element-viatico">
-                            <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span>
-                        </span>
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2 element-div-left">
-                        <span class="icon-kilometraje element-viatico">
-                            <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-2 col-sm-2 col-md-2 element-div">
-                        <span class="icon-transporte_terrestre element-viatico">
-                            <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span>
-                        </span>
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2 element-div-left">
-                        <span class="icon-renta_autos element-viatico">
-                            <span class="path1"></span><span class="path2"></span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-2 col-sm-2 col-md-2 element-div">
-                        <span class="icon-transporte_aereo element-viatico">
-                            <span class="path1"></span><span class="path2"></span>
-                        </span>
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2 element-div-left">
-                        <span class="icon-seminarios element-viatico">
-                            <span class="path1"></span><span class="path2"></span>
-                        </span>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
 
-            <div class="col-xs-3 col-sm-3 col-md-3">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                     <div class="panel panel-default" style="background: transparent; border-color: #099C7F;">
 
                         <div class="panel-body">
@@ -306,7 +297,7 @@
                     </div>
             </div>
 
-            <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
                 <div class="row">
                     <div class="col-xs-3 col-sm-3 col-md-3" style="background-color: #999999; border-radius: 10px;">
                         <div class="col-1 in-line">
@@ -327,6 +318,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
+
         </div>
     </div>
     <script>

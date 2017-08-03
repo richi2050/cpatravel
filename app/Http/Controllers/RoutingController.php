@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Label;
 
 class RoutingController extends Controller
 {
@@ -25,7 +26,9 @@ class RoutingController extends Controller
         if(checkPermission('click_me_sol_gas_viaje')){
             dd('aborte');
         }
-        return view('solicitud.solicitud_travel');
+        $dataLabel = Label::all();
+
+        return view('solicitud.solicitud_travel',compact('dataLabel'));
     }
 
     public function policies(){

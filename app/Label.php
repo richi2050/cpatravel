@@ -21,6 +21,6 @@ class Label extends Model
                 'foreign_company_policies',
                 'active',
                 'user_id',
-                'business_id'
+                'business_id',
     ];
 }

@@ -41,19 +41,26 @@ class TravelWebController extends Controller
         $data += $request->all();
         $data['business_id'] = Session::get('business_id');
         $data['user_id'] = Session::get('user_id');
-        $val =Validator::make($data,
-            [
-                'nombre'        =>  'required|min:2|max:150|alpha_num_spaces|string_exist:travels,name',
-                'descripcion'   =>  'required|min:2|max:150|alpha_num_spaces',
-                'project_id'    =>  'required|integer',
-                'subproject_id' =>  'required|integer',
-                'business_id'   =>  'required',
-                'user_id'       =>  'required',
-                'activo'        =>  'required'
-            ]);
+        $rules = [
+            'nombre'        =>  'required|min:2|max:150|alpha_num_spaces|string_exist:travels,name',
+            'descripcion'   =>  'required|min:2|max:150|alpha_num_spaces',
+            'project_id'    =>  'required|integer',
+            'subproject_id' =>  'required|integer',
+            'business_id'   =>  'required',
+            'user_id'       =>  'required',
+            'activo'        =>  'required',
+        ];
+        $shortName = $data['nombre_corto'];
+        if(trim($shortName) == ''){
+            $shortName =$data['nombre'];
+        }else{
+            $rules += ['nombre_corto'  =>  'min:2|max:150'];
+        }
+        $val =Validator::make($data,$rules);
         if($val->fails()){
             return  response()->json($val->errors());
         }
+
         $data = Travel::create([
             'name'          =>  $data['nombre'],
             'description'   =>  $data['descripcion'],
@@ -61,7 +68,8 @@ class TravelWebController extends Controller
             'sub_project_id'=>  $data['subproject_id'],
             'short_name'    =>  '123456',
             'business_id'   =>  $data['business_id'],
-            'user_id'       =>  $data['user_id']
+            'user_id'       =>  $data['user_id'],
+            'short_name'    =>  $shortName
         ]);
         return response()->json(['success' => true ]);
     }

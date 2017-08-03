@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Label;
+use App\Travel;
 use Illuminate\Http\Request;
 use Session;
 
@@ -86,6 +88,18 @@ class PruebaController extends Controller
     public function prueba(Request $request){
         dd(Session::get('rol')->permisos);
         dd('entra a funcion prueba');
+
+    }
+
+    public function search(){
+        return view('pruebas.search');
+    }
+
+    public function autocomplete(Request $request){
+        //dd($request->all());
+        $data = Travel::where("name","LIKE","%{$request->input('query')}%")
+            ->orWhere("name","LIKE","%{$request->input('query')}%")->get();
+        return response()->json($data);
 
     }
 }

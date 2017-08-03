@@ -32,6 +32,8 @@ Route::group(['middleware' => ['auth.session']], function () {
     Route::resource('label','LabelWebController');
 
     Route::get('prueba','PruebaController@prueba');
+    Route::get('search','PruebaController@search')->name('search');
+    Route::get('autocomplete','PruebaController@autocomplete')->name('autocomplete');
 
 });
 

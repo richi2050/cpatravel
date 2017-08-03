@@ -535,6 +535,12 @@
                                     {{ Form::select('activo', array('1' => 'Activo', '0' => 'Inactivo'), 1,['class' => 'form-control','id'=>'txt_travel_activo']) }}
                                 </div>
                             </div>
+                            <div class='form-group'>
+                                <label class='control-label label-form col-md-3'>Nombre corto</label>
+                                <div class="col-md-9">
+                                    {{ Form::text('nombre_corto','',['class' => 'form-control','id'=>'txt_travel_short_name']) }}
+                                </div>
+                            </div>
                             <div class='form-group info_user_travel hidden'>
                                 <label class='control-label label-user-travel label-form col-xs-6'>Autor: {{ "Ricardo Lugo" }}</label>
                                 <div class="col-xs-6">
@@ -748,6 +754,7 @@
         $('.panel_sub_project').addClass('hidden');
         $('.panel_viaje').removeClass('hidden');
         $('.panel_project').addClass('hidden');
+        $('#txt_travel_short_name').val(data.travel.short_name);
     }
 
     
