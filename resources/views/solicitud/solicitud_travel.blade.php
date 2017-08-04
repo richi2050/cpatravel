@@ -38,6 +38,7 @@
         }
         .element-viatico{
             font-size: 60px;
+            cursor: pointer;
         }
         .element-div{
             padding-left: 5px;
@@ -171,7 +172,6 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 " >
                 <div class="pull-left">
-
                     <label class="label-fechas">
                         <i class="icon-proyectos"></i>
                         Proyecto
@@ -180,7 +180,6 @@
                     <span class="icon-mas">
                         <span class="path1"></span><span class="path2"></span>
                     </span>
-
                     <label class="label-fechas">
                         <i class="icon-subproyectos"></i>
                         Sub Proyecto
@@ -189,8 +188,6 @@
                     <span class="icon-mas">
                         <span class="path1"></span><span class="path2"></span>
                     </span>
-
-
                     <label class="label-fechas">
                         <i class="icon-viaje"></i>
                         Viaje
@@ -199,7 +196,6 @@
                     <span class="icon-mas">
                         <span class="path1"></span><span class="path2"></span>
                     </span>
-
                     <label class="label-fechas">
                         <i class="icon-acompanantes"></i>
                         Acompañantes
@@ -211,45 +207,46 @@
                 </div>
             </div>
         </div>
-
         <div class="row" style="margin-top: 20px;">
-
             <div class="col-sm-3 col-md-3">
                 <div class="row">
                     Selecciona un tipo de viático:
                 </div>
                 @foreach($dataLabel as $dat)
+                    <pre>
+                        <?php var_dump($dat->iden) ?>
+                    </pre>
                     <div class="col-md-5 col-sm-5 element-div">
                         @if($dat->name == 'Hospedaje')
-                            <span class="icon-hospedaje element-viatico">
+                            <span data-id="{{ $dat->iden }}" class="icon-hospedaje element-viatico">
                                 <span class="path1"></span><span class="path2"></span>
                             </span>
                         @elseif($dat->name == 'Alimentación')
-                            <span class="icon-comida element-viatico">
+                            <span data-id="{{ $dat->iden }}" class="icon-comida element-viatico">
                                 <span class="path1"></span><span class="path2"></span>
                             </span>
                         @elseif($dat->name == 'Transporte')
-                            <span class="icon-transporte_publico element-viatico">
+                            <span data-id="{{ $dat->iden }}" class="icon-transporte_publico element-viatico">
                                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span>
                             </span>
                         @elseif($dat->name == 'Pago por kilometraje')
-                            <span class="icon-kilometraje element-viatico">
+                            <span data-id="{{ $dat->iden }}" class="icon-kilometraje element-viatico">
                                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
                             </span>
                         @elseif($dat->name == 'Renta de Transporte terrestre')
-                            <span class="icon-transporte_terrestre element-viatico">
+                            <span data-id="{{ $dat->iden }}" class="icon-transporte_terrestre element-viatico">
                                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span>
                             </span>
                         @elseif($dat->name == 'Renta de Autos')
-                            <span class="icon-renta_autos element-viatico">
+                            <span data-id="{{ $dat->iden }}" class="icon-renta_autos element-viatico">
                                 <span class="path1"></span><span class="path2"></span>
                             </span>
                         @elseif($dat->name == 'Seminarios o Convenciones')
-                            <span class="icon-seminarios element-viatico">
+                            <span data-id="{{ $dat->iden }}" class="icon-seminarios element-viatico">
                                 <span class="path1"></span><span class="path2"></span>
                             </span>
                         @elseif($dat->name == 'Renta de Transporte aéreo')
-                            <span class="icon-transporte_aereo element-viatico">
+                            <span data-id="{{ $dat->iden }}" class="icon-transporte_aereo element-viatico">
                                 <span class="path1"></span><span class="path2"></span>
                             </span>
                         @endif
@@ -325,6 +322,13 @@
     </div>
     <script>
         $(document).ready( function(){
+            $('.element-viatico').unbind().bind('click',function(e){
+                $dataId = $(this).attr('data-id');
+                console.log($dataId);
+                //alert('Este es el ID = '. $dataId);
+
+            });
+
             $("#datepicker_inicio").datepicker();
             $("#datepicker_fin").datepicker();
         });

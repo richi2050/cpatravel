@@ -27,7 +27,6 @@ class RoutingController extends Controller
             dd('aborte');
         }
         $dataLabel = Label::all();
-
         return view('solicitud.solicitud_travel',compact('dataLabel'));
     }
 

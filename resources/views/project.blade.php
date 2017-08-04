@@ -443,8 +443,8 @@
                             {{ Form::open(['id'=>'form_subproject_id','class' => 'form-horizontal']) }}
                                 <div class='form-group'>
                                     <label class='control-label label-form col-md-2'>Proyecto</label>
-                                    <input type="" id="txt_subproject_id" name="id">
-                                    <input type="" id="txt_project_id_subproject" name="project_id">
+                                    <input type="hidden" id="txt_subproject_id" name="id">
+                                    <input type="hidden" id="txt_project_id_subproject" name="project_id">
                                     <div class="col-md-10">
                                         <label class='control-label label-name-project label-form' id="label_name_project">Proyecto</label>
                                     </div>
@@ -501,9 +501,9 @@
                         <div class="panel-body">
                             {{ Form::open(['id'=>'form_travel_id','class' => 'form-horizontal']) }}
                             <div class='form-group'>
-                                <input type="" id="txt_travel_id" name="id">
-                                <input type="" id="txt_travel_id_project" name="project_id">
-                                <input type="" id="txt_travel_id_subproject" name="subproject_id">
+                                <input type="hidden" id="txt_travel_id" name="id">
+                                <input type="hidden" id="txt_travel_id_project" name="project_id">
+                                <input type="hidden" id="txt_travel_id_subproject" name="subproject_id">
 
                                 <label class='control-label label-form col-md-3'>Proyecto</label>
                                 <div class="col-md-9">
