@@ -37,5 +37,12 @@ class RoutingController extends Controller
         return view('menus.policies');
     }
 
+    public function registrationConciliation(){
+        if(checkPermission('click_me_reg_conciliacion')){
+            dd('aborte');
+        }
+        return view('menus.registration_conciliation');
+    }
+
 
 }

@@ -11,8 +11,9 @@
                             <div {{ checkPermission('click_me_est_cuenta') ? '' : ' id = sensor_edo_cta onmouseover = destaca("home_boton_edo_cta"); onmouseleave=restaura();'  }} ></div>
                             <img id="maincircle" src="images/circulo.png" class="circulo img-responsive center-block">
                             <div {{ checkPermission('click_me_pro_negocios') ? '' : 'data-href= '. route("business_process") .' class =click_href id = sensor_proceso onmouseover = destaca("home_boton_proceso"); onmouseleave=restaura();'   }}  ></div>
-                            <div {{ checkPermission('click_me_politicas') ? '' : 'data-href= '. route("policies") .' class =click_href id = sensor_politicas onmouseover = destaca("home_boton_politicas"); onmouseleave="restaura();'  }}></div>
-                            <div {{ checkPermission('click_me_reg_conciliacion') ? '' : ' id = sensor_registros" onmouseover = destaca("home_boton_registros"); onmouseleave="restaura();' }}></div>
+                            <div {{ checkPermission('click_me_politicas') ? '' : 'data-href= '. route("policies") .' class =click_href id = sensor_politicas onmouseover = destaca("home_boton_politicas"); onmouseleave=restaura();'  }}></div>
+                            <div {{ checkPermission('click_me_reg_conciliacion') ? '' : ' data-href='.route("registration_conciliation") .' class =click_href id=sensor_registros onmouseover=destaca("home_boton_registros"); onmouseleave=restaura(); ' }}  ></div>
+
                         </div>
                     </div>
                 </div>

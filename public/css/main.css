@@ -90,8 +90,9 @@
     text-align: center;
     color:#2E3082;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 20px;
     float: left;
+    padding-bottom: 10px;
 }
 .table-head{
     text-align: center;

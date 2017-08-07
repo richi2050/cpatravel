@@ -213,9 +213,6 @@
                     Selecciona un tipo de viático:
                 </div>
                 @foreach($dataLabel as $dat)
-                    <pre>
-                        <?php var_dump($dat->iden) ?>
-                    </pre>
                     <div class="col-md-5 col-sm-5 element-div">
                         @if($dat->name == 'Hospedaje')
                             <span data-id="{{ $dat->iden }}" class="icon-hospedaje element-viatico">

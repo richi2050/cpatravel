@@ -23,4 +23,9 @@ class Label extends Model
                 'user_id',
                 'business_id',
     ];
+
+
+    protected $casts = [
+        'iden' => 'string',
+    ];
 }

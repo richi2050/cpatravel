@@ -18,11 +18,11 @@ Route::group(['middleware' => ['auth.session']], function () {
 
     /* Inicio de rutas  de menus*/
 
-    Route::get('business/process','RoutingController@businessProcess')->name('business_process');
-    Route::get('travel/authorization','RoutingController@travelAuthorization')->name('travel_autho');
-    Route::get('solicitud/travel','RoutingController@solicitudTravel')->name('solicitud_travel');
-    Route::get('policies','RoutingController@policies')->name('policies');
-
+        Route::get('business/process','RoutingController@businessProcess')->name('business_process');
+        Route::get('travel/authorization','RoutingController@travelAuthorization')->name('travel_autho');
+        Route::get('solicitud/travel','RoutingController@solicitudTravel')->name('solicitud_travel');
+        Route::get('policies','RoutingController@policies')->name('policies');
+        Route::get('registration/conciliation','RoutingController@registrationConciliation')->name('registration_conciliation');
 
     /* Fin de rutas  de menus*/
     Route::resource('project','ProjectWebController');

@@ -1,6 +1,11 @@
 @extends('layouts.app_clear')
 
 @section('content')
+    <style>
+        .icon-tam {
+            font-size: 25px;
+        }
+    </style>
     <div class="row" style="margin-top: 5%">
         <div class="col-md-12 col-sm-12 col-xs-6">
             <div class="about-item scrollpoint sp-effect2">
@@ -31,9 +36,11 @@
             <div class="col-md-6">
                 <div class="row ">
                     <div class="title-row">
-                        <i></i>
-                        Predefinidas
-                        <i></i>
+                        <span class="icon-icon_prederminadoagregar icon-tam"></span>
+                        Predeterminadas
+                        <span class="icon-mas icon-tam">
+                            <span class="path1"></span><span class="path2"></span>
+                        </span>
                     </div>
                 </div>
                 <div class="row">
@@ -48,13 +55,13 @@
                                 <tr>
                                     @if($dat->name == 'Alimentación')
                                         <td class="icon-30">
-                                            <span class="icon-comida">
+                                            <span class="icon-comida" data-id="{{ $dat->iden }}">
                                                 <span class="path1"></span><span class="path2"></span>
                                             </span>
                                         </td>
                                     @elseif($dat->name == 'Transporte')
                                         <td class="icon-30">
-                                            <span class="icon-comida">
+                                            <span class="icon-comida" data-id="{{ $dat->iden }}">
                                                 <span class="path1"></span><span class="path2"></span>
                                             </span>
                                         </td>
@@ -99,7 +106,12 @@
                                             {{ $dat->name }}
                                     </td>
                                     <td>
-
+                                        <span class="icon-icon_nota click_label" data-type="1" data-id="{{ $dat->iden }}" style="cursor: pointer; font-size: 20px;" data></span>
+                                    </td>
+                                    <td>
+                                        <span class="icon-icon_cancelar click_label" data-type="1" data-id="{{ $dat->iden }}" style="cursor: pointer; font-size: 20px;">
+                                            <span class="path1"></span><span class="path2"></span><span class="path3"></span>
+                                        </span>
                                     </td>
                                 </tr>
                             @endforeach
@@ -109,6 +121,15 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function(){
+            $('.click_label').unbind().bind('click',function (e) {
+                $id = $(this).attr('data-id');
+                console.log($id);
+            });
+        });
+    </script>
 
 
 
