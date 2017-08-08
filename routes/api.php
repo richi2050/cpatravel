@@ -22,6 +22,7 @@ Route::group(['middleware' => ['token']], function () {
     Route::resource('travel','Api\TravelController');
     Route::resource('project','Api\ProjectController');
     Route::resource('subproject','Api\SubProjectController');
+    Route::get('projects','Api\ProjectExtendController@projects');
 
 });
 

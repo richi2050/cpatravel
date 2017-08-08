@@ -66,7 +66,6 @@ class TravelWebController extends Controller
             'description'   =>  $data['descripcion'],
             'project_id'    =>  $data['project_id'],
             'sub_project_id'=>  $data['subproject_id'],
-            'short_name'    =>  '123456',
             'business_id'   =>  $data['business_id'],
             'user_id'       =>  $data['user_id'],
             'short_name'    =>  $shortName

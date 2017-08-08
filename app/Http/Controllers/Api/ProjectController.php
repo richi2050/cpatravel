@@ -44,16 +44,18 @@ class ProjectController extends Controller
                 [
                     'name'          => 'required|min:2|max:150|alpha_num_spaces|string_exist:projects,name',
                     'description'   => 'required|min:2|max:150|alpha_num_spaces',
-                    'business_id'   => 'required|integer'
+                    'business_id'   => 'required',
+                    'user_id'       => 'required'
                 ]);
         if($val->fails()){
-           return  response()->json($val->errors());
+           return  response()->json(['error' => false,'errors' => $val->errors()]);
         }
 
          $data= Project::create([
                     'name'          => $request->name,
                     'description'   => $request->description,
-                    'business_id'   => $request->business_id
+                    'business_id'   => $request->business_id,
+                    'user_id'       => $request->user_id
                 ]);
         return response()->json(['success' => true]);
     }

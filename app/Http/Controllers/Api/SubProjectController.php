@@ -42,17 +42,19 @@ class SubProjectController extends Controller
                 'name'          => 'required|min:2|max:150|alpha_num_spaces|string_exist:sub_projects,name',
                 'description'   => 'required|min:2|max:150|alpha_num_spaces',
                 'project_id'    => 'required|integer',
-                'business_id'   => 'required|integer',
+                'business_id'   => 'required',
+                'user_id'       => 'required'
             ]);
         if($val->fails()){
-            return  response()->json($val->errors());
+            return  response()->json(['error' => false,'errors' => $val->errors()]);
         }
 
         SubProject::create([
             'name'          =>  $request->name,
             'description'   =>  $request->description,
             'project_id'    =>  $request->project_id,
-            'business_id'   =>  $request->business_id
+            'business_id'   =>  $request->business_id,
+            'user_id'       =>  $request->user_id
         ]);
 
         return response()->json(['success' => true]);

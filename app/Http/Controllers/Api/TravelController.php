@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Travel;
+use Validator;
 
 class TravelController extends Controller
 {
@@ -37,23 +38,32 @@ class TravelController extends Controller
      */
     public function store(Request $request)
     {
-        $val =Validator::make($request->all(),
-            [
-                'name'          => 'required|min:2|max:150|alpha_num_spaces|string_exist:travels,name',
-                'description'   => 'required|min:2|max:150|alpha_num_spaces',
-                'project_id'    => 'required|integer',
-                'business_id'   => 'required|integer',
-            ]);
+        $rules = [
+            'name'          => 'required|min:2|max:150|alpha_num_spaces|string_exist:travels,name',
+            'description'   => 'required|min:2|max:150|alpha_num_spaces',
+            'project_id'    => 'required|integer',
+            'business_id'   => 'required|integer',
+        ];
+
+        $shortName = $request->short_name;
+        if(trim($shortName) == ''){
+            $shortName = $request->name;
+        }else{
+            $rules += ['short_name'  =>  'min:2|max:150'];
+        }
+
+        $val =Validator::make($request->all(),$rules);
         if($val->fails()){
-            return  response()->json($val->errors());
+            return  response()->json(['error' => false,'errors' => $val->errors()]);
         }
         $data = Travel::create([
             'name'          =>  $request->name,
             'description'   =>  $request->description,
             'project_id'    =>  $request->project_id,
             'sub_project_id'=>  $request->sub_project_id,
-            'amount'        =>  $request->amount,
-            'business_id'   =>  $request->business_id
+            'business_id'   =>  $request->business_id,
+            'user_id'       =>  $request->user_id,
+            'short_name'    =>  $shortName
         ]);
 
         return response()->json(['success' => true ]);

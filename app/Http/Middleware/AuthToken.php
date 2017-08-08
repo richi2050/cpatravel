@@ -37,7 +37,7 @@ class AuthToken
                 dd(json_encode(['error' => false,'message' =>'token_expired']));
                 //return response()->json(['error' => false,'message' =>'token_expired']);
             }else{
-                dd(json_encode(['error' => false,'message' =>'algo_paso']));
+                dd(json_encode(['error' => false,'message' =>'algo_paso_verifica el token']));
                 //return response()-jason(['error' => false,'message' =>'algo_paso']);
             }
         }
