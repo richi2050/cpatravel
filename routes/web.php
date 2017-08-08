@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth.session']], function () {
     Route::get('prueba','PruebaController@prueba');
     Route::get('search','PruebaController@search')->name('search');
     Route::get('autocomplete','PruebaController@autocomplete')->name('autocomplete');
+    Route::get('search','ProjectExtendController@search')->name('search_project');
 
 });
 

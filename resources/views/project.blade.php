@@ -328,7 +328,7 @@
                     <div class="col-md-12">
                         <div class="col-md-10">
                             <div class="input-group" id="adv-search">
-                                <input type="text" class="form-control" placeholder="Search for snippets" />
+                                <input type="text" class="form-control" placeholder="Buscar viaje" id="search_travel" />
                                 <div class="input-group-btn">
                                     <div class="btn-group" role="group">
                                         <button type="button" class="btn">
@@ -566,6 +566,27 @@
 
 <script>
     $(document).ready(function(){
+
+        $("#search_travel").keypress(function() {
+
+           if($(this).val().length >= 3){
+
+               $.ajax({
+                   url:"{{ route('search_project') }}",
+                   type:'GET',
+                   data : {
+                       search : $(this).val()
+                   },
+                   dataType: 'json',
+                   success:function(data){
+
+                   },error:function(){
+                       alert('Upps lo sentimos mucho, intente mas tarde');
+                   }
+               });
+           }
+        });
+
         clearFormProject();
         $('#register_project').unbind().bind('click',function(){
             $datForm = $('#form_project_id').serialize();

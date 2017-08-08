@@ -52,7 +52,7 @@ class AuthController extends Controller
             $zonerResponse = json_decode($response->getBody());
             if($zonerResponse->success){
                 $request->session()->put('user_id', $zonerResponse->request->user_id );
-                $request->session()->put('token',$zonerResponse->request->token );
+                $request->session()->put('token',trim($zonerResponse->request->token));
                 $request->session()->put('name',$zonerResponse->request->name);
                 $request->session()->put('img',$zonerResponse->request->img);
                 $request->session()->put('lastName',$zonerResponse->request->lastName);

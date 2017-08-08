@@ -86,7 +86,6 @@ class PruebaController extends Controller
     }
 
     public function prueba(Request $request){
-        dd(Session::all());
         dd(Session::get('rol')->permisos);
         dd('entra a funcion prueba');
 
@@ -99,7 +98,7 @@ class PruebaController extends Controller
     public function autocomplete(Request $request){
         //dd($request->all());
         $data = Travel::where("name","LIKE","%{$request->input('query')}%")
-            ->orWhere("name","LIKE","%{$request->input('query')}%")->get();
+            ->orWhere("short_name","LIKE","%{$request->input('query')}%")->get();
         return response()->json($data);
 
     }
