@@ -39,10 +39,48 @@ class ProjectExtendController extends Controller
     }
 
     public function search(Request $request){
-        //dd($request->search);
         $data = Travel::where("name","LIKE","%$request->search%")
             ->orWhere("short_name","LIKE","%$request->search%")->get();
-        //Log::error($data);
-        return response()->json($data);
+        $i=0;
+        $array =[];
+        foreach ($data as $dat) {
+
+
+            $dataProject= Project::find($dat['project_id']);
+            $array[$i]['project']['id'] = $dataProject->id;
+            $array[$i]['project']['name'] = $dataProject->name;
+
+            $dataSub = SubProject::find($dat['sub_project_id']);
+            Log::error('son registros'. count($dataSub));
+
+            $array[$i]['subproject']['id'] = $dataSub->id;
+            $array[$i]['subproject']['name'] = $dataSub->name;
+            $array[$i]['travel']['name'] = $dat['name'];
+            $array[$i]['travel']['id'] = $dat['id'];
+
+            /*
+            $dataSub = SubProject::find($dat['sub_project_id']);
+            Log::error($dataSub);
+            $i2=0;
+            $array[$i]['subproject'] = [];
+            $array[$i]['travel'] = [];
+            foreach ($dataSub as $dats){
+                Log::error($dats);
+                $array[$i]['subproject'][$i2]['id'] = $dats['id'];
+                $array[$i]['subproject'][$i2]['name'] = $dats['name'];
+
+                $travel = Travel::where('sub_project_id',$dats['id'])->get();
+                $i3=0;
+                foreach($travel as $datr){
+                    $array[$i]['travel'][$i3]['id'] = $dat['id'];
+                    $array[$i]['travel'][$i3]['name'] = $dat['name'];
+                    $i3++;
+                }
+                $i2++;
+            }
+            */
+            $i++;
+        }
+        return view('list_project_travel',['data' => $array]);
     }
 }

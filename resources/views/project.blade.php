@@ -577,9 +577,9 @@
                    data : {
                        search : $(this).val()
                    },
-                   dataType: 'json',
                    success:function(data){
-
+                       console.log(data);
+                       $('#list_project').html(data);
                    },error:function(){
                        alert('Upps lo sentimos mucho, intente mas tarde');
                    }
