@@ -27,12 +27,17 @@ Route::group(['middleware' => ['auth.session']], function () {
     /* Fin de rutas  de menus*/
     Route::resource('project','ProjectWebController');
     Route::get('list/project','ProjectExtendController@list_project')->name('list_project');
+
+    Route::get('autocomplete/project','ProjectExtendController@searchProject')->name('autocomplete_project');
+    Route::get('autocomplete/subproject','SubProjectExtendController@searchSubProject')->name('autocomplete_subproject');
+    Route::get('autocomplete/travel','TravelExtendController@searchTravel')->name('autocomplete_travel');
+
     Route::resource('subproject','SubProjectWebController');
     Route::resource('travel','TravelWebController');
     Route::resource('label','LabelWebController');
 
     Route::get('prueba','PruebaController@prueba');
-    Route::get('search','PruebaController@search')->name('search');
+    Route::get('prueba/search','PruebaController@search')->name('search');
     Route::get('autocomplete','PruebaController@autocomplete')->name('autocomplete');
     Route::get('search','ProjectExtendController@search')->name('search_project');
 

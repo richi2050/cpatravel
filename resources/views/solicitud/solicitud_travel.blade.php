@@ -176,7 +176,8 @@
                         <i class="icon-proyectos"></i>
                         Proyecto
                     </label>
-                    <input type="text" class="form-search" >
+                    <input type="text" class="form-search search_project" >
+                    <input type="text" id="project_id">
                     <span class="icon-mas">
                         <span class="path1"></span><span class="path2"></span>
                     </span>
@@ -184,7 +185,8 @@
                         <i class="icon-subproyectos"></i>
                         Sub Proyecto
                     </label>
-                    <input type="text" class="form-search">
+                    <input type="text" class="form-search search_subproject">
+                    <input type="text" id="subproject_id">
                     <span class="icon-mas">
                         <span class="path1"></span><span class="path2"></span>
                     </span>
@@ -192,7 +194,8 @@
                         <i class="icon-viaje"></i>
                         Viaje
                     </label>
-                    <input type="text" class="form-search">
+                    <input type="text" class="form-search search_travel">
+                    <input type="text" id="travel_id">
                     <span class="icon-mas">
                         <span class="path1"></span><span class="path2"></span>
                     </span>
@@ -328,6 +331,47 @@
 
             $("#datepicker_inicio").datepicker();
             $("#datepicker_fin").datepicker();
+            var pathProject = "{{ route('autocomplete_project') }}";
+            $('.search_project').typeahead({
+                source:  function (query, process) {
+                    return $.get(pathProject, { query: query }, function (data) {
+                        //console.log(data);
+                        return process(data);
+                    });
+                },updater:function (selection) {
+                    $('#project_id').val(selection.id);
+                    return selection.name;
+                }
+            });
+
+            var pathSubproject ="{{ route('autocomplete_subproject') }}";
+            $('.search_subproject').typeahead({
+                source:  function (query, process) {
+                    return $.get(pathSubproject, { query: query,project_id :  $('#project_id').val() }, function (data) {
+                        return process(data);
+                    });
+                },updater:function (selection) {
+                    $('#subproject_id').val(selection.id);
+                    return selection.name;
+                }
+            });
+            var pathTravel ="{{ route('autocomplete_travel') }}";
+            $('.search_travel').typeahead({
+                source:  function (query, process) {
+                    return $.get(pathTravel,
+                        {
+                            query: query,
+                            project_id :  $('#project_id').val(),
+                            subproject_id : $('#subproject_id').val()
+                        }, function (data) {
+                        return process(data);
+                    });
+                },updater:function (selection) {
+                    $('#travel_id').val(selection.id);
+                    return selection.name;
+                }
+            });
+
         });
     </script>
 @endsection

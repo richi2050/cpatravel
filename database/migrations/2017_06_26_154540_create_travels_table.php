@@ -21,7 +21,7 @@ class CreateTravelsTable extends Migration
             $table->integer('sub_project_id');
             $table->string('business_id');
             $table->string('user_id');
-            $table->string('short_name');
+            $table->string('label');
             $table->boolean('active')->default(1);
             $table->timestamps();
 

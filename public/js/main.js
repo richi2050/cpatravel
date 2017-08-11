@@ -47,18 +47,14 @@ $(document).ready(function(){
             $("#peor_es_nada").css('display',"block");
             $("#peor_es_nada").css('position',"absolute");
             $("#peor_es_nada").css('z-index',"21474");
-
         }
         $("#launcher").attr('src',url);
         $("#launcher").show(250);
         $("#close_config").show(50);
-
-
     });
 });
 function blurStuff(action,panel)
 {
-
     var isChrome = !!window.chrome && !!window.chrome.webstore;
     if(action==1)
     {
@@ -82,9 +78,7 @@ function blurStuff(action,panel)
             $("#peor_es_nada").css('display',"block");
             $("#peor_es_nada").css('position',"absolute");
             $("#peor_es_nada").css('z-index',"21474");
-
         }
-
         $("#"+panel).fadeIn(100);
         $("#close_config").show(50);
     }

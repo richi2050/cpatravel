@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Project;
 use App\SubProject;
 use App\Travel;
+use Illuminate\Support\Facades\Session;
 use Log;
 
 class ProjectExtendController extends Controller
@@ -82,5 +83,12 @@ class ProjectExtendController extends Controller
             $i++;
         }
         return view('list_project_travel',['data' => $array]);
+    }
+
+    public function searchProject(Request $request){
+        $data = Project::where("name","LIKE","%{$request->input('query')}%")
+            ->where('business_id',Session::get('business_id'))
+            ->take(ENV('NUM_LIMIT'))->get();
+        return response()->json($data);
     }
 }

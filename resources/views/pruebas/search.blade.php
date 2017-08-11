@@ -15,7 +15,8 @@
 <div class="container">
 
     <h1>Laravel 5 Autocomplete using Bootstrap Typeahead JS</h1>
-    <input class="typeahead form-control" style="margin:0px auto;width:300px;" type="text">
+    <input class="typeahead form-control" style="margin:0px auto;width:300px;" type="text" id="name">
+    <input class=" form-control" style="margin:0px auto;width:300px;" type="text" id="id">
 
 </div>
 
@@ -24,8 +25,12 @@
     $('input.typeahead').typeahead({
         source:  function (query, process) {
             return $.get(path, { query: query }, function (data) {
+                //console.log(data);
                 return process(data);
             });
+        },updater:function (selection) {
+            $('#id').val(selection.id);
+            return selection.name;
         }
     });
 </script>

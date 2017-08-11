@@ -17,9 +17,13 @@ class Travel extends Model
         'sub_project_id',
         'active',
         'business_id',
-        'short_name',
+        'label',
         'user_id',
         'business_id'];
+    protected $casts = [
+        'business_id'   => 'string',
+        'user_id'       => 'string'
+    ];
 
     public function project()
     {

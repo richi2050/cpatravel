@@ -63,7 +63,7 @@ class TravelController extends Controller
             'sub_project_id'=>  $request->sub_project_id,
             'business_id'   =>  $request->business_id,
             'user_id'       =>  $request->user_id,
-            'short_name'    =>  $shortName
+            'label'    =>  $shortName
         ]);
 
         return response()->json(['success' => true ]);

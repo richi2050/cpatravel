@@ -68,7 +68,7 @@ class TravelWebController extends Controller
             'sub_project_id'=>  $data['subproject_id'],
             'business_id'   =>  $data['business_id'],
             'user_id'       =>  $data['user_id'],
-            'short_name'    =>  $shortName
+            'label'    =>  $shortName
         ]);
         return response()->json(['success' => true ]);
     }
