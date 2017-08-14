@@ -216,41 +216,55 @@
                     Selecciona un tipo de viático:
                 </div>
                 @foreach($dataLabel as $dat)
-                    <div class="col-md-5 col-sm-5 element-div">
                         @if($dat->name == 'Hospedaje')
-                            <span data-id="{{ $dat->iden }}" class="icon-hospedaje element-viatico">
+                        <div class="col-md-5 col-sm-5 element-div click_href" data-href={{ route('label_hospedaje') }}>
+                            <span  data-id="{{ $dat->iden }}" class="icon-hospedaje element-viatico">
                                 <span class="path1"></span><span class="path2"></span>
                             </span>
+                        </div>
                         @elseif($dat->name == 'Alimentación')
+                        <div class="col-md-5 col-sm-5 element-div click_href" data-href="{{ route('label_foot') }}">
                             <span data-id="{{ $dat->iden }}" class="icon-comida element-viatico">
                                 <span class="path1"></span><span class="path2"></span>
                             </span>
+                        </div>
                         @elseif($dat->name == 'Transporte')
+                        <div class="col-md-5 col-sm-5 element-div click_href" data-href="{{ route('label_taxi') }}">
                             <span data-id="{{ $dat->iden }}" class="icon-transporte_publico element-viatico">
                                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span>
                             </span>
+                        </div>
                         @elseif($dat->name == 'Pago por kilometraje')
+                        <div class="col-md-5 col-sm-5 element-div click_href" data-href="{{ route('label_mileage') }}">
                             <span data-id="{{ $dat->iden }}" class="icon-kilometraje element-viatico">
                                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
                             </span>
+                        </div>
                         @elseif($dat->name == 'Renta de Transporte terrestre')
+                        <div class="col-md-5 col-sm-5 element-div click_href" data-href="{{ route('label_transporte_terrestre') }}">
                             <span data-id="{{ $dat->iden }}" class="icon-transporte_terrestre element-viatico">
                                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span>
                             </span>
+                        </div>
                         @elseif($dat->name == 'Renta de Autos')
+                        <div class="col-md-5 col-sm-5 element-div click_href" data-href="{{ route('label_rent_car') }}">
                             <span data-id="{{ $dat->iden }}" class="icon-renta_autos element-viatico">
                                 <span class="path1"></span><span class="path2"></span>
                             </span>
+                        </div>
                         @elseif($dat->name == 'Seminarios o Convenciones')
+                        <div class="col-md-5 col-sm-5 element-div click_href" data-href="{{ route('label_conference') }}">
                             <span data-id="{{ $dat->iden }}" class="icon-seminarios element-viatico">
                                 <span class="path1"></span><span class="path2"></span>
                             </span>
+                        </div>
                         @elseif($dat->name == 'Renta de Transporte aéreo')
+                        <div class="col-md-5 col-sm-5 element-div click_href" data-href="{{ route('label_airplane') }}">
                             <span data-id="{{ $dat->iden }}" class="icon-transporte_aereo element-viatico">
                                 <span class="path1"></span><span class="path2"></span>
                             </span>
+                        </div>
                         @endif
-                    </div>
                 @endforeach
             </div>
 

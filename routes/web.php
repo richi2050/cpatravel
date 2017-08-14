@@ -20,7 +20,7 @@ Route::group(['middleware' => ['auth.session']], function () {
 
         Route::get('business/process','RoutingController@businessProcess')->name('business_process');
         Route::get('travel/authorization','RoutingController@travelAuthorization')->name('travel_autho');
-        Route::get('solicitud/travel','RoutingController@solicitudTravel')->name('solicitud_travel');
+        Route::get('solicitude/travel','RoutingController@solicitudTravel')->name('solicitud_travel');
         Route::get('policies','RoutingController@policies')->name('policies');
         Route::get('registration/conciliation','RoutingController@registrationConciliation')->name('registration_conciliation');
 
@@ -40,6 +40,20 @@ Route::group(['middleware' => ['auth.session']], function () {
     Route::get('prueba/search','PruebaController@search')->name('search');
     Route::get('autocomplete','PruebaController@autocomplete')->name('autocomplete');
     Route::get('search','ProjectExtendController@search')->name('search_project');
+
+    /* Inicio de solicitud de viaje */
+    Route::get('solicitude/lodging','SolicitudeController@lodging')->name('label_hospedaje');
+    Route::get('solicitude/foot','SolicitudeController@foot')->name('label_foot');
+    Route::get('solicitude/taxi','SolicitudeController@taxi')->name('label_taxi');
+    Route::get('solicitude/mileage','SolicitudeController@mileage')->name('label_mileage');
+    Route::get('solicitude/rent/car','SolicitudeController@rentCar')->name('label_rent_car');
+    Route::get('solicitude/ground/transportation','SolicitudeController@groundTransportation')->name('label_transporte_terrestre');
+    Route::get('solicitude/conference','SolicitudeController@conference')->name('label_conference');
+    Route::get('solicitude/airplane','SolicitudeController@airplane')->name('label_airplane');
+
+
+
+    /* fin de solicitud de viaje*/
 
 });
 

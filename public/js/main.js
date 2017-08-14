@@ -1,5 +1,5 @@
 var isChrome = !!window.chrome && !!window.chrome.webstore;
-
+//alert('cargaaaaaaaaa');
 function destaca (id)
 {
 	if (id == 'home_boton_proceso') { $("#maincircle").attr( 'src', 'images/proceso_circulo.png'); }
@@ -55,6 +55,7 @@ $(document).ready(function(){
 });
 function blurStuff(action,panel)
 {
+    //alert('entra a '+action);
     var isChrome = !!window.chrome && !!window.chrome.webstore;
     if(action==1)
     {
@@ -84,9 +85,15 @@ function blurStuff(action,panel)
     }
     else
     {
-        if(isChrome){$("#blur").foggy(false);}
+        if(isChrome){
+            //alert('this ischrome');
+            $("#blur").foggy(false);
+            //$("#launcher").hide();
+
+        }
         else
         {
+            //alert('el this ischrome');
             $("#peor_es_nada").remove();
         }
         closeIframe();
