@@ -50,7 +50,7 @@ class LabelWebController extends Controller
      */
     public function show(Label $label)
     {
-        //
+        return view('labels.detail',compact('label'));
     }
 
     /**

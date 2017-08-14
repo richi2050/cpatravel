@@ -63,7 +63,7 @@
     </style>
     <div class="row titulo-pantalla">
         <div class="col-md-12 col-sm-12 col-xs-6 center">
-            <div class="about-item scrollpoint sp-effect2">
+            <div class="about-item scrollpoint sp-effect2" style="text-align: center;padding-top: 44px;">
 			<span class="icon-icon_etiquetas icon-tam2"></span>
                 ETIQUETAS
             </div><! --/about-item -->
@@ -108,7 +108,7 @@
                                 <tr>
                                     @if($dat->name == 'Alimentación')
                                         <td class="icon-30">
-                                            <span class="icon-comida" data-id="{{ $dat->iden }}">
+                                            <span class="icon-comida" data-id="{{ $dat->iden }}" >
                                                 <span class="path1"></span><span class="path2"></span>
                                             </span>
                                         </td>
@@ -157,8 +157,8 @@
                                     <td class="text-tr">
                                             {{ $dat->name }}
                                     </td>
-                                    <td>
-                                        <span class="icon-icon_nota click_label" data-type="1" data-id="{{ $dat->iden }}" style="cursor: pointer; font-size: 20px;" data></span>
+                                    <td class="click_href" data-href="{{ route('label.show',['label' => $dat->iden]) }}">
+                                        <span class="icon-icon_nota" data-type="1" data-id="{{ $dat->iden }}" style="cursor: pointer; font-size: 20px;" ></span>
                                     </td>
                                     <td>
                                         <span class="icon-icon_cancelar click_label" data-type="1" data-id="{{ $dat->iden }}" style="cursor: pointer; font-size: 20px;">
@@ -238,10 +238,7 @@
 
     <script>
         $(document).ready(function(){
-            $('.click_label').unbind().bind('click',function (e) {
-                $id = $(this).attr('data-id');
-                console.log($id);
-            });
+
         });
     </script>
 

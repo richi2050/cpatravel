@@ -58,10 +58,19 @@
 
 </head>
 <body>
+<div id="blur">
+
     <div class="container">
         <div class="row">
             @yield('content')
         </div>
     </div>
+
+</div>
+
+    <div id="news" class="panel_foggy"></div>
+    <iframe width="80%" height="90%" id="launcher" src="" frameborder=0 ALLOWTRANSPARENCY="true"></iframe>
+    <div id="close_config" class="panel_foggy" onclick="blurStuff(0)">Cerrar</div>
+
 </body>
 </html>
