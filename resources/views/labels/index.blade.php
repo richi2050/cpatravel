@@ -4,15 +4,68 @@
     <style>
         .icon-tam {
             font-size: 25px;
+			padding-left: 10px;
         }
+		
+		.icon-tam2 {
+            font-size: 40px;
+			padding-left: 10px;
+			text-align: center;
+        }
+		
+		.nombre-etiquetas{
+			
+			background: #e2e2e1;
+			border-top-left-radius:10px;
+			border-bottom-left-radius: 10px;
+			padding: 1.5%;
+			color:#303082;
+			font-size: 14px;
+			text-align: center;
+		}
+		
+		.nombre-etiquetas2{
+			
+			background: #e2e2e1;
+			border-radius: 10px;
+			padding: 1.5%;
+			color:#303082;
+			font-size: 14px;
+			text-align: center;
+		}
+		
+		
+		.proyecto-etiquetas{
+			
+			background: #e2e2e1;
+			padding: 1.5%;
+			color:#303082;
+			font-size: 14px;
+			text-align: center;
+		}
+		.subproyecto-etiquetas{
+			
+			background: #e2e2e1;
+			border-top-right-radius:10px;
+			border-bottom-right-radius: 10px;
+			padding: 1.5%;
+			color:#303082;
+			font-size: 14px;
+			text-align: center;
+		}
+		#etiquetas-agregadas{
+			height:auto;
+			overflow: auto;
+		}
+		
+		
+		
     </style>
-    <div class="row" style="margin-top: 5%">
-        <div class="col-md-12 col-sm-12 col-xs-6">
+    <div class="row titulo-pantalla">
+        <div class="col-md-12 col-sm-12 col-xs-6 center">
             <div class="about-item scrollpoint sp-effect2">
-
-                <p style="text-align:center;">
-                    Etiquetas
-                </p>
+			<span class="icon-icon_etiquetas icon-tam2"></span>
+                ETIQUETAS
             </div><! --/about-item -->
         </div><! --/col-md-3 -->
     </div>
@@ -33,7 +86,7 @@
 
     <div class="row" style="margin-top: 2%">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="row ">
                     <div class="title-row">
                         <span class="icon-icon_prederminadoagregar icon-tam"></span>
@@ -45,11 +98,11 @@
                 </div>
                 <div class="row">
                     <table class="table">
-                        <thead class="table-head">
-                            <th>
-                                <td colspan="3"> Nombre</td>
-                            </th>
-                        </thead>
+                        <div class="col-md-12 col-xs-12 nombre-etiquetas2">
+                	
+                	Nombre
+					
+					</div>
                         <tbody>
                             @foreach($dataLabel as $dat)
                                 <tr>
@@ -61,9 +114,8 @@
                                         </td>
                                     @elseif($dat->name == 'Transporte')
                                         <td class="icon-30">
-                                            <span class="icon-comida" data-id="{{ $dat->iden }}">
-                                                <span class="path1"></span><span class="path2"></span>
-                                            </span>
+                                           <span class="icon-transporte_publico" data-id="{{ $dat->iden }}"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></span>
+                                            
                                         </td>
                                     @elseif($dat->name == 'Hospedaje')
                                         <td class="icon-30">
@@ -119,6 +171,68 @@
                     </table>
                 </div>
             </div>
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-6 col-xs-12">
+              <div class="row ">
+                    <div class="title-row col-md-12 col-xs-12">
+                        <span class="icon-icon_corporativas icon-tam"></span>
+                        Corporativas
+                        <span class="icon-mas icon-tam">
+                            <span class="path1"></span><span class="path2"></span>
+                        </span>
+                    </div>
+                </div>
+              		<div class="row">
+                	<div class="col-md-4 col-xs-4 nombre-etiquetas">
+                	
+                	Nombre
+					
+					</div>
+					<div class="col-md-4  col-xs-4 proyecto-etiquetas">
+                	
+                	Proyecto
+					
+					</div>
+					<div class="col-md-4  col-xs-4 subproyecto-etiquetas">
+                	
+                	Subproyecto
+					
+					</div>
+					
+				</div>
+				<div class="row">
+					 <div id="etiquetas-agregadas">
+                        	ejemplo 1
+                        </div>
+                        </div>
+				 <div class="row ">
+                    <div class="title-row col-md-12 col-xs-12">
+                       <span class="icon-icon_dispositivousuario icon-tam"></span>
+                        Usuario
+                        <span class="icon-mas icon-tam">
+                            <span class="path1"></span><span class="path2"></span>
+                        </span>
+
+                    </div>
+                </div>
+              		<div class="row">
+                	<div class="col-md-4 col-xs-4 nombre-etiquetas">
+                	
+                	Nombre
+					
+					</div>
+					<div class="col-md-4  col-xs-4 proyecto-etiquetas">
+                	
+                	Proyecto
+					
+					</div>
+					<div class="col-md-4  col-xs-4 subproyecto-etiquetas">
+                	
+                	Subproyecto
+					
+					</div>
+				</div>
+		</div>
         </div>
     </div>
 

@@ -87,25 +87,43 @@
     float: left;
 }
 .title-row{
-    text-align: center;
+    text-align:left;
     color:#2E3082;
     font-weight: bold;
     font-size: 20px;
     float: left;
     padding-bottom: 10px;
+	margin-top: 15px;
+
 }
 .table-head{
     text-align: center;
-    background: #E2E2E1;
+    background-color:#e2e2e1;
     color: #2E3082;
-    border-radius: 10%;
+	border-radius: 12px;
     height: 10%;
 }
 .icon-30{
-    font-size: 35px;
+    font-size: 45px;
     text-align: center;
 }
 .text-tr{
     margin-top: 5px;
     color: #2E3082;
+	
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+	vertical-align: middle;
+}
+
+.center{
+	z-index: 0;
+	text-align: center;
+}
+
+.titulo-pantalla{
+    text-align: center;
+    color: #009577;
+	font-size: 30px;
 }

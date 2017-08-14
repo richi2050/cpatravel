@@ -50,9 +50,6 @@ Route::group(['middleware' => ['auth.session']], function () {
     Route::get('solicitude/ground/transportation','SolicitudeController@groundTransportation')->name('label_transporte_terrestre');
     Route::get('solicitude/conference','SolicitudeController@conference')->name('label_conference');
     Route::get('solicitude/airplane','SolicitudeController@airplane')->name('label_airplane');
-
-
-
     /* fin de solicitud de viaje*/
 
 });
