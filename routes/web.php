@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth.session']], function () {
     Route::get('search','ProjectExtendController@search')->name('search_project');
 
     /* Inicio de solicitud de viaje */
-    Route::get('solicitude/lodging','SolicitudeController@lodging')->name('label_hospedaje');
+    Route::get('solicitude/lodging/{iden}','SolicitudeController@lodging')->name('label_hospedaje');
     Route::get('solicitude/foot','SolicitudeController@foot')->name('label_foot');
     Route::get('solicitude/taxi','SolicitudeController@taxi')->name('label_taxi');
     Route::get('solicitude/mileage','SolicitudeController@mileage')->name('label_mileage');

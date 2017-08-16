@@ -1,3 +1,6 @@
+@extends('layouts.app_clear')
+
+@section('content')
 <style>
     .button{
         background:transparent;
@@ -33,13 +36,13 @@
         height: 10%;
     }
 </style>
-
 <div>
     @if(checkPermission('click_me_sol_gas_viaje'))
         <button class="botonItemMenu buttonsin"> Solicitud de gastos de viaje</button>
     @else
-        <button class="botonItemMenu button" onclick="window.top.location.href='{{ route('solicitud_travel') }}' "> Solicitud de gastos de viaje</button>
+        <button class="botonItemMenu button"  onclick="window.top.location.href='{{ route('solicitud_travel') }}'"> Solicitud de gastos de viaje</button>
     @endif
 
     <button class="botonItemMenu button"> Tranferencia de saldo </button>
 </div>
+@endsection

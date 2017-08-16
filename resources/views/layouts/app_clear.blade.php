@@ -37,7 +37,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!-- File CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.css') }}">
 
     <!-- Inicio jquery iu -->
@@ -49,28 +48,18 @@
     <!--Plugin Foggy-->
     <script type="text/javascript" src="{{ asset('js/jquery.foggy.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
-    <style>
-        body{
-            background: transparent;
-        }
-    </style>
+    <!-- tyhead auto complete-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 
 
 </head>
 <body>
-<div id="blur">
-
+ya no nav
     <div class="container">
         <div class="row">
             @yield('content')
         </div>
     </div>
-
-</div>
-
-    <div id="news" class="panel_foggy"></div>
-    <iframe width="80%" height="90%" id="launcher" src="" frameborder=0 ALLOWTRANSPARENCY="true"></iframe>
-    <div id="close_config" class="panel_foggy" onclick="blurStuff(0)">Cerrar</div>
-
+ya no foo
 </body>
 </html>

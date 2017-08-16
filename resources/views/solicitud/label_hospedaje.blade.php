@@ -1,22 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Bootstrap JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- Font Roboto -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <!-- File CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
-    <!--Plugin Foggy-->
-
-    <script type="text/javascript" src="{{ asset('js/jquery.foggy.min.js') }}"></script>
-
+@extends('layouts.app')
+@section('content')
     <style>
         .elemento-eti{
             font-size: 130px;
@@ -54,35 +37,33 @@
             margin-left: 20px;
         }
     </style>
-</head>
-<body>
-
 <div class="container">
     <br><br>
-
+    {{ Form::open(['id' => 'form']) }}
     <div class="row" style="margin-top: 10%">
+        <input type="text" name="label_id" id="label_id" value="{{ $label->iden }}">
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
             <table class="table">
                 <tr>
                     <td rowspan="2">
-                        <select name="" id="select-type" class="form-control select-na">
+                        <select name="type_nacional" id="select-type" class="form-control select-na" >
                             <option value="0">Nacional</option>
                             <option value="1">Extranjero</option>
                         </select>
                     </td>
                     <td>
-                        Nombre de Noches
+                        Numero de Noches
                     </td>
                     <td>
-                        <input type="text" class="txt-re-col form-control">
+                        <input type="text" name="numero_noches" class="txt-re-col form-control">
                     </td>
                     <td>
                         Costo unitario
                     </td>
                     <td>
-                        <input type="text" class="txt-re-col form-control" placeholder="$">
+                        <input type="text" name="costo_unitario" class="txt-re-col form-control" placeholder="$">
                     </td>
 
                 </tr>
@@ -91,13 +72,13 @@
                         Numero de Cuartos
                     </td>
                     <td>
-                        <input type="text" class="txt-re-col form-control">
+                        <input type="text" name="numero_cuartos" class="txt-re-col form-control">
                     </td>
                     <td>
                         Costo total
                     </td>
                     <td>
-                        <input type="text" class="txt-re-col form-control" placeholder="$">
+                        <input type="text" name="costo_total" class="txt-re-col form-control" placeholder="$">
                     </td>
                 </tr>
             </table>
@@ -144,6 +125,7 @@
                 <tr id="tr_nacional">
                     <td>
                         Nacional
+                        <input type="text" value="1" name="flag_txt_nacional" id="flag_txt_nacional">
                     </td>
                     <td>
                         <input type="text" placeholder="$" name="nacional_cheque" class="form-control txt-re">
@@ -166,6 +148,7 @@
                 </tr>
                 <tr class="hidden" id="tr_extranjero">
                     <td>
+                        <input type="text" value="0" name="flag_txt_extrajero" id="flag_txt_extrajero">
                         Extranjero
                     </td>
                     <td>
@@ -202,6 +185,7 @@
 
 
     </div>
+    {{ Form::close() }}
 </div>
 <script>
 
@@ -210,9 +194,12 @@
             $val = $(this).val();
             if($val == 1){
                 $('#tr_extranjero').removeClass('hidden');
+                $('#flag_txt_extrajero').val(1);
 
             }else if($val == 0){
                 $('#tr_nacional').removeClass('hidden');
+                $('#flag_txt_nacional').val(1);
+
             }
         });
         $('.btn-cancelar').unbind().bind('click',function(){
@@ -221,9 +208,14 @@
             $("#launcher").hide();
         });
 
+        $('.save').unbind().bind('click',function(){
+            $form = $('#form').serialize();
+            console.log($form);
+
+            window.parent.hospedaje($form);
+        });
+
 
     });
 </script>
-<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
-</body>
-</html>
+@endsection

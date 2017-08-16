@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Label;
 
 class SolicitudeController extends Controller
 {
-    public function lodging(){
-        return view('solicitud.label_hospedaje');
+    public function lodging($iden){
+        //dd($iden);
+        $label = Label::find($iden);
+        return view('solicitud.label_hospedaje',compact('label'));
     }
 
     public function foot(){
