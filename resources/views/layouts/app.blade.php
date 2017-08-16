@@ -58,7 +58,9 @@
         <div class="container-fluid container_head">
             <div class="row">
                 <div class="col-md-4 col-xs-4">
-                    <img src="{{ asset('images/logo_travel.png') }}" alt="CPA Travel" title="CPA Travel" class="img-responsive center-block">
+                    <a href="{{ route('beginin') }}">
+                        <img src="{{ asset('images/logo_travel.png') }}" alt="CPA Travel" title="CPA Travel" class="img-responsive center-block">
+                    </a>
                 </div>
                 <div class="col-md-6 col-xs-8 title_menu center-block no_padding">
                     <div class="box_nom_emp">

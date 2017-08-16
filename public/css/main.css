@@ -110,7 +110,9 @@
 .text-tr{
     margin-top: 5px;
     color: #2E3082;
-	
+	border-bottom: #ddd 1px solid;
+	padding:20px;
+    line-height: 1.42857143;
 }
 
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
@@ -126,4 +128,19 @@
     text-align: center;
     color: #009577;
 	font-size: 30px;
+}
+.titulo-pantalla-azul {
+    text-align: center;
+    color: #2B2D80;
+    font-size: 30px;
+}
+.btn-save{
+    background-color: #E97A70;
+    color: white;
+    margin-left: 20px;
+}
+.btn-cancelar{
+    background-color: gray;
+    color: white;
+    margin-left: 20px;
 }

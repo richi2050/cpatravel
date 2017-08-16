@@ -73,6 +73,8 @@
         .input-select{
             background: transparent;
         }
+
+
     </style>
     <div class="main">
         <div class="row titulo-pantalla-azul">
@@ -84,11 +86,9 @@
             </div><! --/col-md-3 -->
         </div>
         <div class="row">
-            <form action="">
-                <table class="table">
-                    <input type="text" name="" value="{{ $label->iden }}" id="">
+            <table class="table">
                 <tr>
-                    <td>Logo</td>
+                    <td>Log</td>
                     <td>
                         <input type="file" name="" id="" class="form-control input-file">
                     </td>
@@ -96,7 +96,7 @@
                         Nombre de Etiqueta
                     </td>
                     <td>
-                        <input type="text" name="" id="" value="{{ $label->name }}" class="form-control input-text">
+                        <input type="text" name="" id="" class="form-control input-text">
                     </td>
                 </tr>
                 <tr>
@@ -104,7 +104,7 @@
                         Descripción
                     </td>
                     <td colspan="2">
-                        <textarea name="" id="" cols="30" rows="10" class="form-control input-textarea"> {{ $label->description }}</textarea>
+                        <textarea name="" id="" cols="30" rows="10" class="form-control input-textarea"></textarea>
                     </td>
                     <td>
                         <select name="" id="" class="form-control input-select">
@@ -124,10 +124,10 @@
                 <tr>
                     <td>Monto máximo fiscal diarío</td>
                     <td colspan="2">
-                        <input type="text" name="" id="" class="form-control input-text" value="$ {{ $label->national_maximum_deductible_amount }}" placeholder="$">
+                        <input type="text" name="" id="" class="form-control input-text" placeholder="$">
                     </td>
                     <td >
-                        <input type="text" name="" id="" class="form-control input-text" value="$ {{ $label->foreign_maximum_deductible_amount }}" placeholder="$">
+                        <input type="text" name="" id="" class="form-control input-text" placeholder="$">
                     </td>
                 </tr>
                 <tr>
@@ -135,14 +135,13 @@
                         Monto máximo corporativo
                     </td>
                     <td colspan="2">
-                        <input type="text" name="" id="" class="form-control input-text" value="$ {{ $label->national_company_policies }}" placeholder="$">
+                        <input type="text" name="" id="" class="form-control input-text" placeholder="$">
                     </td>
                     <td >
-                        <input type="text" name="" id="" class="form-control input-text" value="$ {{ $label->foreign_company_policies }}" placeholder="$">
+                        <input type="text" name="" id="" class="form-control input-text" placeholder="$">
                     </td>
                 </tr>
             </table>
-            </form>
         </div>
         <div class="row">
             <div class="col-md-12">

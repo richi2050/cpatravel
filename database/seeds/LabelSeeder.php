@@ -2,6 +2,10 @@
 
 use Illuminate\Database\Seeder;
 use App\Label;
+use App\Travel;
+use App\Project;
+use App\SubProject;
+use Faker\Factory as Faker;
 
 class LabelSeeder extends Seeder
 {
@@ -107,5 +111,58 @@ class LabelSeeder extends Seeder
             'business_id'                           =>  1,
             'user_id'                               =>  "af342f96-9425-44c2-bdde-78b9d00b131e"
         ]);
+        $faker = Faker::create();
+        $counProject = count(Project::all());
+        $counSubProject = count(SubProject::all());
+        $counTravel = count(Travel::all());
+
+        for($i=1;$i <= ENV('NUM_FOR');$i++){
+            $labelCorpo="Label Corporativa ".$i;
+            Label::create([
+                'iden'                                  =>  sha1($labelCorpo),
+                'name'                                  =>  $labelCorpo,
+                'description'                           =>  'descripcion ',
+                'national_maximum_deductible_amount'    =>  100,
+                'foreign_maximum_deductible_amount'     =>  90.9,
+                'national_company_policies'             =>  89.9,
+                'foreign_company_policies'              =>  100,
+                'user_id'                               =>  "af342f96-9425-44c2-bdde-78b9d00b131e",
+                'business_id'                           =>  $faker->randomElement($array = [
+                                                            '4ea72fcf-f158-4fc5-aa1b-aebd04a2c9f1',
+                                                            '60054e5c-c8ce-421b-9b0c-fafc50ece671',
+                                                            '9209']),
+                'project_id'                            =>  $faker->numberBetween(1,$counProject),
+                'sub_project_id'                        =>  $faker->numberBetween(1,$counSubProject),
+                'travel_id'                             =>  $faker->numberBetween(1,$counTravel),
+                'type_label'                            =>  'corporativas'
+            ]);
+        }
+
+
+        for($i=1;$i <= ENV('NUM_FOR');$i++){
+            $labelCorpo="Label personalizadas ".$i;
+            Label::create([
+                'iden'                                  =>  sha1($labelCorpo),
+                'name'                                  =>  $labelCorpo,
+                'description'                           =>  'descripcion ',
+                'national_maximum_deductible_amount'    =>  100,
+                'foreign_maximum_deductible_amount'     =>  90.9,
+                'national_company_policies'             =>  89.9,
+                'foreign_company_policies'              =>  100,
+                'user_id'                               =>  "af342f96-9425-44c2-bdde-78b9d00b131e",
+                'business_id'                           =>  $faker->randomElement($array = [
+                    '4ea72fcf-f158-4fc5-aa1b-aebd04a2c9f1',
+                    '60054e5c-c8ce-421b-9b0c-fafc50ece671',
+                    '9209']),
+                'project_id'                            =>  $faker->numberBetween(1,$counProject),
+                'sub_project_id'                        =>  $faker->numberBetween(1,$counSubProject),
+                'travel_id'                             =>  $faker->numberBetween(1,$counTravel),
+                'type_label'                            =>  'personalizadas'
+            ]);
+        }
+
+        //type_label
+
+
     }
 }

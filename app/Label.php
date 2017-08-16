@@ -22,10 +22,30 @@ class Label extends Model
                 'active',
                 'user_id',
                 'business_id',
+                'project_id',
+                'sub_project_id',
+                'travel_id',
+                'type_label'
     ];
 
 
     protected $casts = [
         'iden' => 'string',
     ];
+
+    public function project()
+    {
+        return $this->belongsTo('App\Project');
+    }
+
+    public function subproject()
+    {
+        return $this->belongsTo('App\SubProject','sub_project_id','id');
+    }
+
+
+    public function travel()
+    {
+        return $this->belongsTo('App\Travel','travel_id','id');
+    }
 }

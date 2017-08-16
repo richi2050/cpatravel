@@ -21,7 +21,7 @@
 			padding: 1.5%;
 			color:#303082;
 			font-size: 14px;
-			text-align: center;
+			text-align: left;
 		}
 		
 		.nombre-etiquetas2{
@@ -35,15 +35,8 @@
 		}
 		
 		
-		.proyecto-etiquetas{
-			
-			background: #e2e2e1;
-			padding: 1.5%;
-			color:#303082;
-			font-size: 14px;
-			text-align: center;
-		}
-		.subproyecto-etiquetas{
+		
+		.viaje-etiquetas{
 			
 			background: #e2e2e1;
 			border-top-right-radius:10px;
@@ -51,7 +44,7 @@
 			padding: 1.5%;
 			color:#303082;
 			font-size: 14px;
-			text-align: center;
+			text-align: left;
 		}
 		#etiquetas-agregadas{
 			height:auto;
@@ -183,28 +176,39 @@
                     </div>
                 </div>
               		<div class="row">
-                	<div class="col-md-4 col-xs-4 nombre-etiquetas">
+                	<div class="col-md-5 col-xs-5 nombre-etiquetas">
                 	
                 	Nombre
 					
 					</div>
-					<div class="col-md-4  col-xs-4 proyecto-etiquetas">
+					<div class="col-md-7  col-xs-7 viaje-etiquetas">
                 	
-                	Proyecto
+                	Viaje
 					
 					</div>
-					<div class="col-md-4  col-xs-4 subproyecto-etiquetas">
-                	
-                	Subproyecto
 					
-					</div>
 					
 				</div>
-				<div class="row">
-					 <div id="etiquetas-agregadas">
-                        	ejemplo 1
-                        </div>
-                        </div>
+				<div class="row text-tr">
+					<table width="100%" class="table" border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                            @foreach($dataLabelCorporativas as $labelC)
+                                <tr>
+                                    <td>{{ $labelC->name }}</td>
+                                    <td>{{ $labelC->travel->name }}</td>
+                                    <td class="click_href" data-href="{{ route('label.show',['label' => $labelC->iden]) }}">
+                                        <span class="icon-icon_nota" data-type="1" data-id="{{ $labelC->iden }}" style="cursor: pointer; font-size: 20px;" ></span>
+                                    </td>
+                                    <td>
+                                      <span class="icon-icon_cancelar click_label" data-type="1" data-id="{{ $labelC->iden }}" style="cursor: pointer; font-size: 20px;">
+                                          <span class="path1"></span><span class="path2"></span><span class="path3"></span>
+                                      </span>
+                                    </td>
+                                </tr>
+                            @endforeach
+                          </tbody>
+                    </table>
+	            </div>
 				 <div class="row ">
                     <div class="title-row col-md-12 col-xs-12">
                        <span class="icon-icon_dispositivousuario icon-tam"></span>
@@ -216,22 +220,38 @@
                     </div>
                 </div>
               		<div class="row">
-                	<div class="col-md-4 col-xs-4 nombre-etiquetas">
+                	<div class="col-md-5 col-xs-5 nombre-etiquetas">
                 	
                 	Nombre
 					
 					</div>
-					<div class="col-md-4  col-xs-4 proyecto-etiquetas">
+					<div class="col-md-7  col-xs-7 viaje-etiquetas">
                 	
-                	Proyecto
+                	Viaje
 					
 					</div>
-					<div class="col-md-4  col-xs-4 subproyecto-etiquetas">
-                	
-                	Subproyecto
 					
-					</div>
 				</div>
+				<div class="row">
+					<table width="100%" class="table" border="0" cellspacing="0" cellpadding="0">
+                      <tbody>
+                          @foreach($dataLabelPersonalizadas as $labelP)
+                              <tr>
+                                  <td class="text-tr">{{ $labelP->name }}</td>
+                                  <td class="text-tr">{{ $labelP->travel->name }}</td>
+                                  <td class="click_href" data-href="{{ route('label.show',['label' => $labelP->iden]) }}">
+                                      <span class="icon-icon_nota" data-type="1" data-id="{{ $labelP->iden }}" style="cursor: pointer; font-size: 20px;" ></span>
+                                  </td>
+                                  <td>
+                                      <span class="icon-icon_cancelar click_label" data-type="1" data-id="{{ $labelP->iden }}" style="cursor: pointer; font-size: 20px;">
+                                          <span class="path1"></span><span class="path2"></span><span class="path3"></span>
+                                      </span>
+                                  </td>
+                              </tr>
+                          @endforeach
+                      </tbody>
+                    </table>
+	            </div>
 		</div>
         </div>
     </div>

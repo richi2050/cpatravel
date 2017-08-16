@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Label;
 use Illuminate\Http\Request;
+use Session;
 
 class LabelWebController extends Controller
 {
@@ -17,8 +18,10 @@ class LabelWebController extends Controller
         if(checkPermission('click_me_etiquetas')){
             dd('aborte');
         }
-        $dataLabel = Label::all();
-        return view('labels.index',compact('dataLabel'));
+        $dataLabel = Label::where('type_label', 'predeterminadas')->get();
+        $dataLabelCorporativas = Label::where('type_label','corporativas')->where('business_id',Session::get('business_id'))->get();
+        $dataLabelPersonalizadas = Label::where('type_label','personalizadas')->where('business_id',Session::get('business_id'))->get();
+        return view('labels.index',compact('dataLabel','dataLabelCorporativas','dataLabelPersonalizadas'));
     }
 
     /**

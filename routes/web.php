@@ -52,6 +52,8 @@ Route::group(['middleware' => ['auth.session']], function () {
     Route::get('solicitude/airplane','SolicitudeController@airplane')->name('label_airplane');
     /* fin de solicitud de viaje*/
 
+    Route::get('detail/label','LabelExtendController@detail')->name('label_detail');
+
 });
 
 Route::get('prueba/view','PruebaController@pruebaView');

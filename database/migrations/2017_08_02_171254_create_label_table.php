@@ -26,6 +26,9 @@ class CreateLabelTable extends Migration
             $table->boolean('active')->default(1);
             $table->string('user_id');
             $table->string('business_id');
+            $table->integer('project_id')->nullable();
+            $table->integer('sub_project_id')->nullable();
+            $table->integer('travel_id')->nullable();
             $table->enum('type_label', array('predeterminadas', 'corporativas','personalizadas'))->default('predeterminadas');
             $table->timestamps();
         });
