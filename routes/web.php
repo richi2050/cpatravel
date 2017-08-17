@@ -43,13 +43,13 @@ Route::group(['middleware' => ['auth.session']], function () {
 
     /* Inicio de solicitud de viaje */
     Route::get('solicitude/lodging/{iden}','SolicitudeController@lodging')->name('label_hospedaje');
-    Route::get('solicitude/foot','SolicitudeController@foot')->name('label_foot');
-    Route::get('solicitude/taxi','SolicitudeController@taxi')->name('label_taxi');
-    Route::get('solicitude/mileage','SolicitudeController@mileage')->name('label_mileage');
-    Route::get('solicitude/rent/car','SolicitudeController@rentCar')->name('label_rent_car');
-    Route::get('solicitude/ground/transportation','SolicitudeController@groundTransportation')->name('label_transporte_terrestre');
-    Route::get('solicitude/conference','SolicitudeController@conference')->name('label_conference');
-    Route::get('solicitude/airplane','SolicitudeController@airplane')->name('label_airplane');
+    Route::get('solicitude/foot/{iden}','SolicitudeController@foot')->name('label_foot');
+    Route::get('solicitude/taxi/{iden}','SolicitudeController@taxi')->name('label_taxi');
+    Route::get('solicitude/mileage/{iden}','SolicitudeController@mileage')->name('label_mileage');
+    Route::get('solicitude/rent/car/{iden}','SolicitudeController@rentCar')->name('label_rent_car');
+    Route::get('solicitude/ground/transportation/{iden}','SolicitudeController@groundTransportation')->name('label_transporte_terrestre');
+    Route::get('solicitude/conference/{iden}','SolicitudeController@conference')->name('label_conference');
+    Route::get('solicitude/airplane/{iden}','SolicitudeController@airplane')->name('label_airplane');
     /* fin de solicitud de viaje*/
 
     Route::get('detail/label','LabelExtendController@detail')->name('label_detail');

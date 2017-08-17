@@ -142,9 +142,6 @@
                     <td>
                         <input type="text" placeholder="$" name="nacional_amex" class="form-control txt-re">
                     </td>
-                    <td>
-                        <a href="#" class="cancelar" data-type="0">Cancelar</a>
-                    </td>
                 </tr>
                 <tr class="hidden" id="tr_extranjero">
                     <td>
@@ -165,9 +162,6 @@
                     </td>
                     <td>
                         <input type="text" placeholder="$" name="extranjero_amex" class="form-control txt-re">
-                    </td>
-                    <td>
-                        <a href="#" class="cancelar" data-type="1">Cancelar</a>
                     </td>
                 </tr>
             </table>
@@ -193,13 +187,16 @@
         $('#select-type').unbind().bind('click',function (e) {
             $val = $(this).val();
             if($val == 1){
+                $('#tr_nacional').addClass('hidden');
+                $('#flag_txt_nacional').val(0);
                 $('#tr_extranjero').removeClass('hidden');
                 $('#flag_txt_extrajero').val(1);
 
             }else if($val == 0){
+                $('#tr_extranjero').addClass('hidden');
+                $('#flag_txt_extrajero').val(1);
                 $('#tr_nacional').removeClass('hidden');
                 $('#flag_txt_nacional').val(1);
-
             }
         });
         $('.btn-cancelar').unbind().bind('click',function(){
@@ -209,13 +206,10 @@
         });
 
         $('.save').unbind().bind('click',function(){
-            $form = $('#form').serialize();
-            console.log($form);
-
-            window.parent.hospedaje($form);
+            $form = $('#form');
+            var data = getFormData($form);
+            window.parent.hospedaje(data);
         });
-
-
     });
 </script>
 @endsection

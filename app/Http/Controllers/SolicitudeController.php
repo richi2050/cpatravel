@@ -8,37 +8,43 @@ use App\Label;
 class SolicitudeController extends Controller
 {
     public function lodging($iden){
-        //dd($iden);
         $label = Label::find($iden);
         return view('solicitud.label_hospedaje',compact('label'));
     }
 
-    public function foot(){
-        return view('solicitud.label_comidas');
+    public function foot($iden){
+        $label = Label::find($iden);
+        return view('solicitud.label_comidas',compact('label'));
     }
 
-    public function taxi(){
-        return view('solicitud.label_taxi');
+    public function taxi($iden){
+        $label = Label::find($iden);
+        return view('solicitud.label_taxi',compact('label'));
     }
 
-    public function mileage(){
-        return view('solicitud.label_kilometraje');
+    public function mileage($iden){
+        $label = Label::find($iden);
+        return view('solicitud.label_kilometraje',compact('label'));
     }
 
-    public function rentCar(){
-        return view('solicitud.label_renta_carro');
+    public function rentCar($iden){
+        $label = Label::find($iden);
+        return view('solicitud.label_renta_carro',compact('label'));
     }
 
-    public function groundTransportation(){
-        return view('solicitud.label_transporte_terrestre');
+    public function groundTransportation($iden){
+        $label = Label::find($iden);
+        return view('solicitud.label_transporte_terrestre',compact('label'));
     }
 
-    public function conference(){
-        return view('solicitud.label_seminarios');
+    public function conference($iden){
+        $label = Label::find($iden);
+        return view('solicitud.label_seminarios',compact('label'));
     }
 
-    public function airplane(){
-        return view('solicitud.label_transporte_aereo');
+    public function airplane($iden){
+        $label = Label::find($iden);
+        return view('solicitud.label_transporte_aereo',compact('label'));
     }
 
 

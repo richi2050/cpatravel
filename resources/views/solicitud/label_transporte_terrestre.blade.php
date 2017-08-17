@@ -39,9 +39,9 @@
     </style>
 <div class="container">
     <br><br>
-
+    {{ Form::open(['id' => 'form']) }}
     <div class="row" style="margin-top: 10%">
-
+        <input type="text" name="label_id" id="label_id" value="{{ $label->iden }}">
         <div class="col-md-12">
             <table class="table">
                 <tr>
@@ -190,6 +190,7 @@
 
 
     </div>
+    {{ Form::close() }}
 </div>
 <script>
 
@@ -207,6 +208,11 @@
             alert('entra a este cancel ');
             $("#blur").foggy(false);
             $("#launcher").hide();
+        });
+        $('.save').unbind().bind('click',function(){
+            $form = $('#form');
+            var data = getFormData($form);
+            window.parent.transporteTerrestre(data);
         });
 
 

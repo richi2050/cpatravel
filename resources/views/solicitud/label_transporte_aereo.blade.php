@@ -40,9 +40,9 @@
 
 <div class="container">
     <br><br>
-
+    {{ Form::open(['id' => 'form']) }}
     <div class="row" style="margin-top: 10%">
-
+        <input type="text" name="label_id" id="label_id" value="{{ $label->iden }}">
         <div class="col-md-12">
             <table class="table">
                 <tr>
@@ -182,15 +182,12 @@
 
     </div><! --/row -->
     <div class="row">
-
-
             <div class="col-md-12">
                 <input type='button'  onclick="blurStuff(0)"  value='Cancelar' class='save btn btn-sm btn-cancelar pull-right'>
                 <input type='button'  value='Guardar' class='save btn btn-sm btn-save pull-right'>
             </div>
-
-
     </div>
+    {{ Form::close() }}
 </div>
 <script>
 
@@ -209,8 +206,11 @@
             $("#blur").foggy(false);
             $("#launcher").hide();
         });
-
-
+        $('.save').unbind().bind('click',function(){
+            $form = $('#form');
+            var data = getFormData($form);
+            window.parent.transporteAereo(data);
+        });
     });
 </script>
 @endsection
