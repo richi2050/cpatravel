@@ -43,7 +43,6 @@ class Label extends Model
         return $this->belongsTo('App\SubProject','sub_project_id','id');
     }
 
-
     public function travel()
     {
         return $this->belongsTo('App\Travel','travel_id','id');

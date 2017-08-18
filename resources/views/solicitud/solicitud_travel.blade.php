@@ -267,6 +267,9 @@
 
             <div class="col-xs-2 col-sm-2 col-md-2" >
                 <span id="dias">
+                    <span id="dias_num">
+
+                    </span>
 
                     <span class="label-dia">
                         dias
@@ -392,24 +395,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <span class="icon-hospedaje element-list">
-                                                <span class="path1"></span><span class="path2"></span>
-                                            </span>
-                                            Hospedaje
-                                        </td>
-                                        <td> $ </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span class="icon-comida element-list">
-                                                <span class="path1"></span><span class="path2"></span>
-                                            </span>
-                                            Comida
-                                        </td>
-                                        <td> $ </td>
-                                    </tr>
+                                    /*Aqui van  los datos de  */
                                 </tbody>
                             </table>
                         </div>
@@ -469,19 +455,29 @@
       Nacional
       </div>
       </td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
+      <td>
+          <input type="text" placeholder="$" id="nacional_cheques_soli" name="nacional_cheques_soli" class="form-search2">
+      </td>
+      <td>
+          <input type="text" placeholder="$" id="nacional_debito_soli" name="nacional_debito_soli" class="form-search2">
+      </td>
+      <td>
+          <input type="text" placeholder="$" id="nacional_credito_soli" name=="nacional_credito_soli" class="form-search2">
+      </td>
+      <td>
+          <input type="text" placeholder="$" id="nacional_efectivo_soli" name="nacional_efectivo_soli" class="form-search2">
+      </td>
+      <td>
+          <input type="text" placeholder="$" id="nacional_amex_soli" name="nacional_amex_soli" class="form-search2">
+      </td>
       <td>Monto solicitado</td>
     </tr>
     <tr>
-      <td><input type="text" placeholder="$" class="form-search2" ></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
+      <td><input type="text" placeholder="$" id="nacional_cheques_auto" name="nacional_cheques_auto" class="form-search2" ></td>
+      <td><input type="text" placeholder="$" id="nacional_debito_auto" name="nacional_debito_auto" class="form-search2"></td>
+      <td><input type="text" placeholder="$" id="nacional_credito_auto" name=="nacional_credito_auto" class="form-search2"></td>
+      <td><input type="text" placeholder="$" id="nacional_efectivo_auto" name="nacional_efectivo_auto" class="form-search2"></td>
+      <td><input type="text" placeholder="$" id="nacional_amex_auto" name="nacional_amex_auto" class="form-search2"></td>
       <td>Monto Autorizado</td>
     </tr>
     <tr>
@@ -529,19 +525,25 @@
 
             $("#datepicker_inicio").datepicker({
                 onSelect: function(selected,evnt) {
-                    $fecha_fin= $('#datepicker_fin').val();
-                    $fecha_inicio = $(this).val();
-                    if($fecha_inicio != '' && $fecha_inicio != ''){
-                        alert('pierde el foco inicio');
+                    $fecha_fin= $('#datepicker_fin').val().trim();
+                    $fecha_inicio = $(this).val().trim();
+                    if($fecha_inicio != '' && $fecha_fin != ''){
+                        $finSplit = $fecha_fin.split('/');
+                        $inicioSplit = $fecha_inicio.split('/');
+                        $dias =parseInt($finSplit[1]) - parseInt($inicioSplit[1]);
+                        $('#dias_num').text($dias);
                     }
                 }
             });
             $("#datepicker_fin").datepicker({
                 onSelect: function(selected,evnt) {
-                    $fecha_inicio = $('#datepicker_inicio').val();
-                    $fecha_fin = $(this).val();
-                    if($fecha_inicio != '' && $fecha_fin != ''){
-                        alert('pierde el foco fin');
+                    $fecha_inicio = $('#datepicker_inicio').val().trim();
+                    $fecha_fin = $(this).val().trim();
+                    if($fecha_inicio != '' && $fecha_fin != '') {
+                        $finSplit = $fecha_fin.split('/');
+                        $inicioSplit = $fecha_inicio.split('/');
+                        $dias = parseInt($finSplit[1]) - parseInt($inicioSplit[1]);
+                        $('#dias_num').text($dias);
                     }
                 }
             });
@@ -630,7 +632,31 @@
             $extranjero_efectivo = parseFloat($form.extranjero_efectivo);
             $extranjero_amex = parseFloat($form.extranjero_amex);
 
-            console.log($type_nacional);
+           
+
+            if($type_nacional == 0){
+                $mon_cheque_soli = $('#nacional_cheques_soli').val();
+                $mon_debito_soli = $('#nacional_debito_soli').val().trim();
+                $mon_credito_soli = $('#nacional_credito_soli').val().trim();
+                $mon_efectivo_soli = $('#nacional_efectivo_soli').val().trim();
+                $mon_amex_soli  = $('#nacional_amex_soli').val().trim();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + $nacional_cheque;
+                $mon_debito_soli = (!$mon_debito_soli ? 0 : $mon_debito_soli) + $nacional_debito;
+                $mon_credito_soli = (!$mon_credito_soli ? 0 : $mon_credito_soli)  + $nacional_credito;
+                $mon_efectivo_soli = (!$mon_efectivo_soli ? 0 : $mon_efectivo_soli)  + $nacional_efectivo;
+                $mon_amex_soli = (!$mon_amex_soli ? 0 : $mon_amex_soli)  + $nacional_amex;
+                console.log(parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)));
+                console.log($nacional_cheque);
+
+                $('#nacional_cheques_soli').val($mon_cheque_soli_to);
+                $('#nacional_debito_soli').val($mon_debito_soli);
+                $('#nacional_credito_soli').val($mon_credito_soli);
+                $('#nacional_efectivo_soli').val($mon_efectivo_soli);
+                $('#nacional_amex_soli').val($mon_amex_soli);
+            }else if($type_nacional == 1){
+                alert('entra a internacional');
+            }
             return false;
         }
 
@@ -638,10 +664,7 @@
             alert('alimentacion');
             console.log($form);
         }
-        function hospedaje($form){
-            alert('hospedaje');
-            console.log($form);
-        }
+
 
         function rentaAuto($form){
             alert('rentaAuto');

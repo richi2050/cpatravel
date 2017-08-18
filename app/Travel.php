@@ -20,6 +20,7 @@ class Travel extends Model
         'label',
         'user_id',
         'business_id'];
+
     protected $casts = [
         'business_id'   => 'string',
         'user_id'       => 'string'
@@ -31,6 +32,7 @@ class Travel extends Model
     }
     public function subproject()
     {
+        //return $this->belongsTo('App\SubProject','sub_project_id','id');
         return $this->belongsTo('App\SubProject','sub_project_id','id');
     }
 

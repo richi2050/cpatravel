@@ -195,7 +195,7 @@
                             @foreach($dataLabelCorporativas as $labelC)
                                 <tr>
                                     <td>{{ $labelC->name }}</td>
-                                    <td>{{ $labelC->travel->name }}</td>
+
                                     <td class="click_href" data-href="{{ route('label.show',['label' => $labelC->iden]) }}">
                                         <span class="icon-icon_nota" data-type="1" data-id="{{ $labelC->iden }}" style="cursor: pointer; font-size: 20px;" ></span>
                                     </td>
