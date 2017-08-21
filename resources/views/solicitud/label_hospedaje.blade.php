@@ -200,9 +200,7 @@
             }
         });
         $('.btn-cancelar').unbind().bind('click',function(){
-            alert('entra a este cancel ');
-            $("#blur").foggy(false);
-            $("#launcher").hide();
+                window.parent.blurStuff(0);
         });
 
 
@@ -242,8 +240,6 @@
 
         $('.save').unbind().bind('click',function(){
             $form = $('#form');
-
-
             $flag_txt_nacional = $('#flag_txt_nacional').val();
             $nacional_cheque = $('#nacional_cheque').val();
             $nacional_debito = $('#nacional_debito').val();
@@ -308,6 +304,7 @@
             if($submit == 0){
                 var data = getFormData($form);
                 window.parent.hospedaje(data);
+                window.parent.blurStuff(0);
             }else{
                 alert('De los coampos a solicitar solo debes de elejir uno !!!!!!');
             }

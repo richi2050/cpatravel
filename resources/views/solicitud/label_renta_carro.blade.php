@@ -48,7 +48,7 @@
             <table class="table">
                 <tr>
                     <td rowspan="2">
-                        <select name="" id="select-type" class="form-control select-na">
+                        <select name="type_nacional" id="select-type" class="form-control select-na">
                             <option value="0">Nacional</option>
                             <option value="1">Extranjero</option>
                         </select>
@@ -58,19 +58,19 @@
                         Numero de días
                     </td>
                     <td>
-                        <input type="text" class="txt-re-col form-control">
+                        <input type="text" name="numero_dias" id="numero_dias" class="txt-re-col form-control">
                     </td>
                     <td>
                         Presupuesto renta por dia
                     </td>
                     <td>
-                        <input type="text" class="txt-re-col form-control" placeholder="$">
+                        <input type="text" name="renta_por_dia" id="renta_por_dia" class="txt-re-col form-control" placeholder="$">
                     </td>
                     <td>
                         Presupuesto gasolina
                     </td>
                     <td>
-                        <input type="text" class="txt-re-col form-control" placeholder="$">
+                        <input type="text" name="presupuesto_gasolina" id="presupuesto_gasolina" class="txt-re-col form-control" placeholder="$">
                     </td>
 
                 </tr>
@@ -79,13 +79,13 @@
                         Tipo de auto
                     </td>
                     <td>
-                        <input type="text" class="txt-re-col form-control">
+                        <input type="text" name="tipo_auto" id="tipo_auto" class="txt-re-col form-control">
                     </td>
                     <td>
                         Total presupuesto renta
                     </td>
                     <td>
-                        <input type="text" class="txt-re-col form-control" placeholder="$">
+                        <input type="text" name="presupuesto_renta" id="presupuesto_renta" class="txt-re-col form-control" placeholder="$">
                     </td>
                     <td>
                         <a href="">icono de google</a>
@@ -135,47 +135,43 @@
                 <tr id="tr_nacional">
                     <td>
                         Nacional
+                        <input type="hidden" value="1" name="flag_txt_nacional" id="flag_txt_nacional">
                     </td>
                     <td>
-                        <input type="text" placeholder="$" name="nacional_cheque" class="form-control txt-re">
+                        <input type="text" placeholder="$" name="nacional_cheque" id="nacional_cheque" class="form-control txt-re">
                     </td>
                     <td>
-                        <input type="text" placeholder="$" name="nacional_debito" class="form-control txt-re">
+                        <input type="text" placeholder="$" name="nacional_debito" id="nacional_debito" class="form-control txt-re">
                     </td>
                     <td>
-                        <input type="text" placeholder="$" name="nacional_credito" class="form-control txt-re">
+                        <input type="text" placeholder="$" name="nacional_credito" id="nacional_credito" class="form-control txt-re">
                     </td>
                     <td>
-                        <input type="text" placeholder="$" name="nacional_efectivo" class="form-control txt-re">
+                        <input type="text" placeholder="$" name="nacional_efectivo" id="nacional_efectivo" class="form-control txt-re">
                     </td>
                     <td>
-                        <input type="text" placeholder="$" name="nacional_amex" class="form-control txt-re">
-                    </td>
-                    <td>
-                        <a href="#" class="cancelar" data-type="0">Cancelar</a>
+                        <input type="text" placeholder="$" name="nacional_amex" id="nacional_amex" class="form-control txt-re">
                     </td>
                 </tr>
                 <tr class="hidden" id="tr_extranjero">
                     <td>
                         Extranjero
+                        <input type="hidden" value="0" name="flag_txt_extrajero" id="flag_txt_extrajero">
                     </td>
                     <td>
-                        <input type="text" placeholder="$" name="extranjero_cheque" class="form-control txt-re">
+                        <input type="text" placeholder="$" name="extranjero_cheque" id="extranjero_cheque" class="form-control txt-re">
                     </td>
                     <td>
-                        <input type="text" placeholder="$" name="extranjero_debito" class="form-control txt-re">
+                        <input type="text" placeholder="$" name="extranjero_debito" id="extranjero_debito" class="form-control txt-re">
                     </td>
                     <td>
-                        <input type="text" placeholder="$" name="extranjero_credito" class="form-control txt-re">
+                        <input type="text" placeholder="$" name="extranjero_credito" id="extranjero_credito" class="form-control txt-re">
                     </td>
                     <td>
-                        <input type="text" placeholder="$" name="extranjero_efectivo" class="form-control txt-re">
+                        <input type="text" placeholder="$" name="extranjero_efectivo" id="extranjero_efectivo" class="form-control txt-re">
                     </td>
                     <td>
-                        <input type="text" placeholder="$" name="extranjero_amex" class="form-control txt-re">
-                    </td>
-                    <td>
-                        <a href="#" class="cancelar" data-type="1">Cancelar</a>
+                        <input type="text" placeholder="$" name="extranjero_amex" id="extranjero_amex" class="form-control txt-re">
                     </td>
                 </tr>
             </table>
@@ -201,21 +197,95 @@
         $('#select-type').unbind().bind('click',function (e) {
             $val = $(this).val();
             if($val == 1){
+                $('#tr_nacional').addClass('hidden');
+                $('#flag_txt_nacional').val(0);
                 $('#tr_extranjero').removeClass('hidden');
+                $('#flag_txt_extrajero').val(1);
 
             }else if($val == 0){
+                $('#tr_extranjero').addClass('hidden');
+                $('#flag_txt_extrajero').val(1);
                 $('#tr_nacional').removeClass('hidden');
+                $('#flag_txt_nacional').val(1);
             }
         });
+
         $('.btn-cancelar').unbind().bind('click',function(){
-            alert('entra a este cancel ');
-            $("#blur").foggy(false);
-            $("#launcher").hide();
+            window.parent.blurStuff(0);
         });
+
         $('.save').unbind().bind('click',function(){
             $form = $('#form');
-            var data = getFormData($form);
-            window.parent.rentaAuto(data);
+            $flag_txt_nacional = $('#flag_txt_nacional').val();
+            $nacional_cheque = $('#nacional_cheque').val();
+            $nacional_debito = $('#nacional_debito').val();
+            $nacional_credito = $('#nacional_credito').val();
+            $nacional_efectivo = $('#nacional_efectivo').val();
+            $nacional_amex = $('#nacional_amex').val();
+
+            $flag_txt_extrajero = $('#flag_txt_extrajero').val();
+            $extranjero_cheque = $('#extranjero_cheque').val();
+            $extranjero_debito = $('#extranjero_debito').val();
+            $extranjero_credito = $('#extranjero_credito').val();
+            $extranjero_efectivo = $('#extranjero_efectivo').val();
+            $extranjero_amex = $('#extranjero_amex').val();
+            $submit=0;
+            $flag=0;
+            if(parseInt($flag_txt_nacional) == 1 ){
+                if($nacional_cheque != ''){
+                    $flag = $flag + 1;
+                }
+                if($nacional_debito != ''){
+                    $flag = $flag + 1;
+                }
+                if($nacional_credito != ''){
+                    $flag = $flag + 1;
+                }
+                if($nacional_efectivo != ''){
+                    $flag = $flag + 1;
+                }
+                if($nacional_amex != ''){
+                    $flag = $flag + 1;
+                }
+                if(!$nacional_cheque){
+
+                }
+
+                if($flag > 1){
+                    $submit = 1;
+                }
+            }
+            else if(parseInt($flag_txt_extrajero) == 1){
+                if($extranjero_cheque != ''){
+                    $flag = $flag + 1;
+                }
+                if($extranjero_debito != ''){
+                    $flag = $flag + 1;
+                }
+                if($extranjero_credito != ''){
+                    $flag = $flag + 1;
+                }
+                if($extranjero_efectivo != ''){
+                    $flag = $flag + 1;
+                }
+                if($extranjero_amex != ''){
+                    $flag = $flag + 1;
+                }
+
+                if($flag > 1){
+                    $submit = 1;
+                }
+
+            }
+            if($submit == 0){
+                var data = getFormData($form);
+                window.parent.rentaAuto(data);
+                window.parent.blurStuff(0);
+            }else{
+                alert('De los coampos a solicitar solo debes de elejir uno !!!!!!');
+            }
+            return false;
+
         });
 
     });

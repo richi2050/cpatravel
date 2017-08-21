@@ -45,7 +45,7 @@
 			margin-top: 10px;
         }
         .label-dia{
-            margin-top: 80%;
+            margin-top: 10%;
             display: inline-block;
         }
         .element-viatico{
@@ -153,6 +153,16 @@
 			margin-top: 10px;
 			margin-bottom: 10px;
 }
+
+		.numero-dias{
+			font-size: 30px;
+			color:#303082;
+		}
+		
+		.dias-txt{
+			color:#303082;
+			font-size: 17px;
+		}
 		
 		th, td{
 			color:#303082;
@@ -266,15 +276,21 @@
             </div>
 
             <div class="col-xs-2 col-sm-2 col-md-2" >
-                <span id="dias">
-                    <span id="dias_num">
-
-                    </span>
+                
+				 <span id="dias">
 
                     <span class="label-dia">
-                        dias
+                      <div class="row numero-dias">
+                	
+
+             
+                </div>
+                      <div class="row dias-txt">
+                        días
+                        </div>
                     </span>
                 </span>
+                
             </div>
         </div>
 
@@ -531,7 +547,7 @@
                         $finSplit = $fecha_fin.split('/');
                         $inicioSplit = $fecha_inicio.split('/');
                         $dias =parseInt($finSplit[1]) - parseInt($inicioSplit[1]);
-                        $('#dias_num').text($dias);
+                        $('.numero-dias').text($dias);
                     }
                 }
             });
@@ -543,7 +559,7 @@
                         $finSplit = $fecha_fin.split('/');
                         $inicioSplit = $fecha_inicio.split('/');
                         $dias = parseInt($finSplit[1]) - parseInt($inicioSplit[1]);
-                        $('#dias_num').text($dias);
+                        $('.numero-dias').text($dias);
                     }
                 }
             });
@@ -636,59 +652,495 @@
 
             if($type_nacional == 0){
                 $mon_cheque_soli = $('#nacional_cheques_soli').val();
-                $mon_debito_soli = $('#nacional_debito_soli').val().trim();
-                $mon_credito_soli = $('#nacional_credito_soli').val().trim();
-                $mon_efectivo_soli = $('#nacional_efectivo_soli').val().trim();
-                $mon_amex_soli  = $('#nacional_amex_soli').val().trim();
+                $mon_debito_soli = $('#nacional_debito_soli').val();
+                $mon_credito_soli = $('#nacional_credito_soli').val();
+                $mon_efectivo_soli = $('#nacional_efectivo_soli').val();
+                $mon_amex_soli  = $('#nacional_amex_soli').val();
 
-                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + $nacional_cheque;
-                $mon_debito_soli = (!$mon_debito_soli ? 0 : $mon_debito_soli) + $nacional_debito;
-                $mon_credito_soli = (!$mon_credito_soli ? 0 : $mon_credito_soli)  + $nacional_credito;
-                $mon_efectivo_soli = (!$mon_efectivo_soli ? 0 : $mon_efectivo_soli)  + $nacional_efectivo;
-                $mon_amex_soli = (!$mon_amex_soli ? 0 : $mon_amex_soli)  + $nacional_amex;
-                console.log(parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)));
-                console.log($nacional_cheque);
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
 
                 $('#nacional_cheques_soli').val($mon_cheque_soli_to);
-                $('#nacional_debito_soli').val($mon_debito_soli);
-                $('#nacional_credito_soli').val($mon_credito_soli);
-                $('#nacional_efectivo_soli').val($mon_efectivo_soli);
-                $('#nacional_amex_soli').val($mon_amex_soli);
+                $('#nacional_debito_soli').val($mon_debito_soli_to);
+                $('#nacional_credito_soli').val($mon_credito_soli_to);
+                $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#nacional_amex_soli').val($mon_amex_soli_to);
             }else if($type_nacional == 1){
-                alert('entra a internacional');
+
+                $mon_cheque_soli = $('#extranjero_cheques_soli').val();
+                $mon_debito_soli = $('#extranjero_debito_soli').val();
+                $mon_credito_soli = $('#extranjero_credito_soli').val();
+                $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
+                $mon_amex_soli  = $('#extranjero_amex_soli').val();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+
+                $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
+                $('#extranjero_debito_soli').val($mon_debito_soli_to);
+                $('#extranjero_credito_soli').val($mon_credito_soli_to);
+                $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#extranjero_amex_soli').val($mon_amex_soli_to);
             }
             return false;
         }
 
         function alimentacion($form){
-            alert('alimentacion');
-            console.log($form);
+            $lable_id = $form.label_id;
+            $type_nacional= parseInt($form.type_nacional);
+            $numero_comidas = parseInt($form.numero_comidas);
+            $total_prespuesto = parseFloat($form.total_prespuesto);
+            $presupuesto_diario = parseInt($form.presupuesto_diario);
+            $presupuesto_por_comida = parseFloat($form.presupuesto_por_comida);
+
+            $flag_txt_nacional = parseFloat($form.flag_txt_nacional);
+            $nacional_cheque = parseFloat($form.nacional_cheque);
+            $nacional_debito = parseFloat($form.nacional_debito);
+            $nacional_credito = parseFloat($form.nacional_credito);
+            $nacional_efectivo = parseFloat($form.nacional_efectivo);
+            $nacional_amex = parseFloat($form.nacional_amex);
+
+            $flag_txt_extrajero = parseFloat($form.flag_txt_extrajero);
+            $extranjero_cheque = parseFloat($form.extranjero_cheque);
+            $extranjero_debito = parseFloat($form.extranjero_debito);
+            $extranjero_credito = parseFloat($form.extranjero_credito);
+            $extranjero_efectivo = parseFloat($form.extranjero_efectivo);
+            $extranjero_amex = parseFloat($form.extranjero_amex);
+
+            if($type_nacional == 0){
+                $mon_cheque_soli = $('#nacional_cheques_soli').val();
+                $mon_debito_soli = $('#nacional_debito_soli').val();
+                $mon_credito_soli = $('#nacional_credito_soli').val();
+                $mon_efectivo_soli = $('#nacional_efectivo_soli').val();
+                $mon_amex_soli  = $('#nacional_amex_soli').val();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+
+                $('#nacional_cheques_soli').val($mon_cheque_soli_to);
+                $('#nacional_debito_soli').val($mon_debito_soli_to);
+                $('#nacional_credito_soli').val($mon_credito_soli_to);
+                $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#nacional_amex_soli').val($mon_amex_soli_to);
+            }else
+                if($type_nacional == 1){
+
+                $mon_cheque_soli = $('#extranjero_cheques_soli').val();
+                $mon_debito_soli = $('#extranjero_debito_soli').val();
+                $mon_credito_soli = $('#extranjero_credito_soli').val();
+                $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
+                $mon_amex_soli  = $('#extranjero_amex_soli').val();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+
+                $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
+                $('#extranjero_debito_soli').val($mon_debito_soli_to);
+                $('#extranjero_credito_soli').val($mon_credito_soli_to);
+                $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#extranjero_amex_soli').val($mon_amex_soli_to);
+            }
+            return false;
+
+
         }
 
 
         function rentaAuto($form){
-            alert('rentaAuto');
-            console.log($form);
+            $lable_id = $form.label_id;
+            $type_nacional= parseInt($form.type_nacional);
+
+            $numero_dias = parseInt($form.numero_dias);
+            $presupuesto_gasolina =parseFloat($form.presupuesto_gasolina);
+            $presupuesto_renta = parseFloat($form.presupuesto_renta);
+            $renta_por_dia = parseFloat($form.renta_por_dia);
+            $tipo_auto = $form.tipo_auto;
+
+            $flag_txt_nacional = parseFloat($form.flag_txt_nacional);
+            $nacional_cheque = parseFloat($form.nacional_cheque);
+            $nacional_debito = parseFloat($form.nacional_debito);
+            $nacional_credito = parseFloat($form.nacional_credito);
+            $nacional_efectivo = parseFloat($form.nacional_efectivo);
+            $nacional_amex = parseFloat($form.nacional_amex);
+
+            $flag_txt_extrajero = parseFloat($form.flag_txt_extrajero);
+            $extranjero_cheque = parseFloat($form.extranjero_cheque);
+            $extranjero_debito = parseFloat($form.extranjero_debito);
+            $extranjero_credito = parseFloat($form.extranjero_credito);
+            $extranjero_efectivo = parseFloat($form.extranjero_efectivo);
+            $extranjero_amex = parseFloat($form.extranjero_amex);
+            if($type_nacional == 0){
+                $mon_cheque_soli = $('#nacional_cheques_soli').val();
+                $mon_debito_soli = $('#nacional_debito_soli').val();
+                $mon_credito_soli = $('#nacional_credito_soli').val();
+                $mon_efectivo_soli = $('#nacional_efectivo_soli').val();
+                $mon_amex_soli  = $('#nacional_amex_soli').val();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+
+                $('#nacional_cheques_soli').val($mon_cheque_soli_to);
+                $('#nacional_debito_soli').val($mon_debito_soli_to);
+                $('#nacional_credito_soli').val($mon_credito_soli_to);
+                $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#nacional_amex_soli').val($mon_amex_soli_to);
+            }else
+            if($type_nacional == 1){
+
+                $mon_cheque_soli = $('#extranjero_cheques_soli').val();
+                $mon_debito_soli = $('#extranjero_debito_soli').val();
+                $mon_credito_soli = $('#extranjero_credito_soli').val();
+                $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
+                $mon_amex_soli  = $('#extranjero_amex_soli').val();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+
+                $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
+                $('#extranjero_debito_soli').val($mon_debito_soli_to);
+                $('#extranjero_credito_soli').val($mon_credito_soli_to);
+                $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#extranjero_amex_soli').val($mon_amex_soli_to);
+            }
+            return false;
         }
-        function seminarios($form){
-            alert('seminarios');
-            console.log($form);
-        }
+
         function taxi($form){
-            alert('taxi');
-            console.log($form);
+            $lable_id = $form.label_id;
+            $type_nacional= parseInt($form.type_nacional);
+
+            $lugar_destino = $form.lugar_destino;
+            $lugar_origen = $form.lugar_origen;
+            $fecha = $form.fecha;
+            $presupuesto = parseFloat($form.presupuesto);
+            $flag_txt_nacional = parseFloat($form.flag_txt_nacional);
+            $nacional_cheque = parseFloat($form.nacional_cheque);
+            $nacional_debito = parseFloat($form.nacional_debito);
+            $nacional_credito = parseFloat($form.nacional_credito);
+            $nacional_efectivo = parseFloat($form.nacional_efectivo);
+            $nacional_amex = parseFloat($form.nacional_amex);
+
+            $flag_txt_extrajero = parseFloat($form.flag_txt_extrajero);
+            $extranjero_cheque = parseFloat($form.extranjero_cheque);
+            $extranjero_debito = parseFloat($form.extranjero_debito);
+            $extranjero_credito = parseFloat($form.extranjero_credito);
+            $extranjero_efectivo = parseFloat($form.extranjero_efectivo);
+            $extranjero_amex = parseFloat($form.extranjero_amex);
+            if($type_nacional == 0){
+                $mon_cheque_soli = $('#nacional_cheques_soli').val();
+                $mon_debito_soli = $('#nacional_debito_soli').val();
+                $mon_credito_soli = $('#nacional_credito_soli').val();
+                $mon_efectivo_soli = $('#nacional_efectivo_soli').val();
+                $mon_amex_soli  = $('#nacional_amex_soli').val();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+
+                $('#nacional_cheques_soli').val($mon_cheque_soli_to);
+                $('#nacional_debito_soli').val($mon_debito_soli_to);
+                $('#nacional_credito_soli').val($mon_credito_soli_to);
+                $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#nacional_amex_soli').val($mon_amex_soli_to);
+            }else
+            if($type_nacional == 1){
+
+                $mon_cheque_soli = $('#extranjero_cheques_soli').val();
+                $mon_debito_soli = $('#extranjero_debito_soli').val();
+                $mon_credito_soli = $('#extranjero_credito_soli').val();
+                $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
+                $mon_amex_soli  = $('#extranjero_amex_soli').val();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+
+                $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
+                $('#extranjero_debito_soli').val($mon_debito_soli_to);
+                $('#extranjero_credito_soli').val($mon_credito_soli_to);
+                $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#extranjero_amex_soli').val($mon_amex_soli_to);
+            }
+            return false;
         }
+
+        function seminarios($form){
+            $lable_id = $form.label_id;
+            $type_nacional= parseInt($form.type_nacional);
+            $nombre_evento = $form.nombre_evento;
+            $numero_de_eventos = parseInt($form.numero_de_eventos);
+            $total_costo= parseFloat($form.total_costo);
+            $costo_por_evento = parseFloat($form.costo_por_evento);
+
+
+            $flag_txt_nacional = parseFloat($form.flag_txt_nacional);
+            $nacional_cheque = parseFloat($form.nacional_cheque);
+            $nacional_debito = parseFloat($form.nacional_debito);
+            $nacional_credito = parseFloat($form.nacional_credito);
+            $nacional_efectivo = parseFloat($form.nacional_efectivo);
+            $nacional_amex = parseFloat($form.nacional_amex);
+
+            $flag_txt_extrajero = parseFloat($form.flag_txt_extrajero);
+            $extranjero_cheque = parseFloat($form.extranjero_cheque);
+            $extranjero_debito = parseFloat($form.extranjero_debito);
+            $extranjero_credito = parseFloat($form.extranjero_credito);
+            $extranjero_efectivo = parseFloat($form.extranjero_efectivo);
+            $extranjero_amex = parseFloat($form.extranjero_amex);
+            if($type_nacional == 0){
+                $mon_cheque_soli = $('#nacional_cheques_soli').val();
+                $mon_debito_soli = $('#nacional_debito_soli').val();
+                $mon_credito_soli = $('#nacional_credito_soli').val();
+                $mon_efectivo_soli = $('#nacional_efectivo_soli').val();
+                $mon_amex_soli  = $('#nacional_amex_soli').val();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+
+                $('#nacional_cheques_soli').val($mon_cheque_soli_to);
+                $('#nacional_debito_soli').val($mon_debito_soli_to);
+                $('#nacional_credito_soli').val($mon_credito_soli_to);
+                $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#nacional_amex_soli').val($mon_amex_soli_to);
+            }else
+            if($type_nacional == 1){
+
+                $mon_cheque_soli = $('#extranjero_cheques_soli').val();
+                $mon_debito_soli = $('#extranjero_debito_soli').val();
+                $mon_credito_soli = $('#extranjero_credito_soli').val();
+                $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
+                $mon_amex_soli  = $('#extranjero_amex_soli').val();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+
+                $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
+                $('#extranjero_debito_soli').val($mon_debito_soli_to);
+                $('#extranjero_credito_soli').val($mon_credito_soli_to);
+                $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#extranjero_amex_soli').val($mon_amex_soli_to);
+            }
+            return false;
+        }
+
         function transporteAereo($form){
-            alert('transporteAereo');
-            console.log($form);
+            $lable_id = $form.label_id;
+            $type_nacional= parseInt($form.type_nacional);
+            $ciudad_origen = $form.ciudad_origen;
+            $ciudad_destino = $form.ciudad_destino;
+            $fecha_salida = $form.ciudad_destino;
+            $fecha_llegada =$form.fecha_salida;
+            $presupuesto = parseFloat($form.presupuesto);
+
+            $flag_txt_nacional = parseFloat($form.flag_txt_nacional);
+            $nacional_cheque = parseFloat($form.nacional_cheque);
+            $nacional_debito = parseFloat($form.nacional_debito);
+            $nacional_credito = parseFloat($form.nacional_credito);
+            $nacional_efectivo = parseFloat($form.nacional_efectivo);
+            $nacional_amex = parseFloat($form.nacional_amex);
+
+            $flag_txt_extrajero = parseFloat($form.flag_txt_extrajero);
+            $extranjero_cheque = parseFloat($form.extranjero_cheque);
+            $extranjero_debito = parseFloat($form.extranjero_debito);
+            $extranjero_credito = parseFloat($form.extranjero_credito);
+            $extranjero_efectivo = parseFloat($form.extranjero_efectivo);
+            $extranjero_amex = parseFloat($form.extranjero_amex);
+            if($type_nacional == 0){
+                $mon_cheque_soli = $('#nacional_cheques_soli').val();
+                $mon_debito_soli = $('#nacional_debito_soli').val();
+                $mon_credito_soli = $('#nacional_credito_soli').val();
+                $mon_efectivo_soli = $('#nacional_efectivo_soli').val();
+                $mon_amex_soli  = $('#nacional_amex_soli').val();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+
+                $('#nacional_cheques_soli').val($mon_cheque_soli_to);
+                $('#nacional_debito_soli').val($mon_debito_soli_to);
+                $('#nacional_credito_soli').val($mon_credito_soli_to);
+                $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#nacional_amex_soli').val($mon_amex_soli_to);
+            }else
+            if($type_nacional == 1){
+
+                $mon_cheque_soli = $('#extranjero_cheques_soli').val();
+                $mon_debito_soli = $('#extranjero_debito_soli').val();
+                $mon_credito_soli = $('#extranjero_credito_soli').val();
+                $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
+                $mon_amex_soli  = $('#extranjero_amex_soli').val();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+
+                $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
+                $('#extranjero_debito_soli').val($mon_debito_soli_to);
+                $('#extranjero_credito_soli').val($mon_credito_soli_to);
+                $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#extranjero_amex_soli').val($mon_amex_soli_to);
+            }
+            return false;
         }
+
         function transporteTerrestre($form){
-            alert('transporteTerrestre');
-            console.log($form);
+            $lable_id = $form.label_id;
+            $type_nacional= parseInt($form.type_nacional);
+            $ciudad_origen = $form.ciudad_origen;
+            $ciudad_destino = $form.ciudad_destino;
+            $fecha_salida = $form.ciudad_destino;
+            $fecha_llegada =$form.fecha_salida;
+            $presupuesto = parseFloat($form.presupuesto);
+
+            $flag_txt_nacional = parseFloat($form.flag_txt_nacional);
+            $nacional_cheque = parseFloat($form.nacional_cheque);
+            $nacional_debito = parseFloat($form.nacional_debito);
+            $nacional_credito = parseFloat($form.nacional_credito);
+            $nacional_efectivo = parseFloat($form.nacional_efectivo);
+            $nacional_amex = parseFloat($form.nacional_amex);
+
+            $flag_txt_extrajero = parseFloat($form.flag_txt_extrajero);
+            $extranjero_cheque = parseFloat($form.extranjero_cheque);
+            $extranjero_debito = parseFloat($form.extranjero_debito);
+            $extranjero_credito = parseFloat($form.extranjero_credito);
+            $extranjero_efectivo = parseFloat($form.extranjero_efectivo);
+            $extranjero_amex = parseFloat($form.extranjero_amex);
+            if($type_nacional == 0){
+                $mon_cheque_soli = $('#nacional_cheques_soli').val();
+                $mon_debito_soli = $('#nacional_debito_soli').val();
+                $mon_credito_soli = $('#nacional_credito_soli').val();
+                $mon_efectivo_soli = $('#nacional_efectivo_soli').val();
+                $mon_amex_soli  = $('#nacional_amex_soli').val();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+
+                $('#nacional_cheques_soli').val($mon_cheque_soli_to);
+                $('#nacional_debito_soli').val($mon_debito_soli_to);
+                $('#nacional_credito_soli').val($mon_credito_soli_to);
+                $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#nacional_amex_soli').val($mon_amex_soli_to);
+            }else
+            if($type_nacional == 1){
+                $mon_cheque_soli = $('#extranjero_cheques_soli').val();
+                $mon_debito_soli = $('#extranjero_debito_soli').val();
+                $mon_credito_soli = $('#extranjero_credito_soli').val();
+                $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
+                $mon_amex_soli  = $('#extranjero_amex_soli').val();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+
+                $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
+                $('#extranjero_debito_soli').val($mon_debito_soli_to);
+                $('#extranjero_credito_soli').val($mon_credito_soli_to);
+                $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#extranjero_amex_soli').val($mon_amex_soli_to);
+            }
+            return false;
+
         }
+
         function kilometraje($form){
-            alert('kilometraje');
-            console.log($form);
+            $lable_id = $form.label_id;
+            $type_nacional= parseInt($form.type_nacional);
+
+            $numero_dias = parseInt($form.numero_dias);
+            $renta_por_dia = parseFloat($form.renta_por_dia);
+            $presupuesto_gasolina = parseFloat($form.presupuesto_gasolina);
+            $tipo_auto = $form.tipo_auto;
+            $presupuesto_renta =parseFloat($form.presupuesto_renta);
+
+            $flag_txt_nacional = parseFloat($form.flag_txt_nacional);
+            $nacional_cheque = parseFloat($form.nacional_cheque);
+            $nacional_debito = parseFloat($form.nacional_debito);
+            $nacional_credito = parseFloat($form.nacional_credito);
+            $nacional_efectivo = parseFloat($form.nacional_efectivo);
+            $nacional_amex = parseFloat($form.nacional_amex);
+
+            $flag_txt_extrajero = parseFloat($form.flag_txt_extrajero);
+            $extranjero_cheque = parseFloat($form.extranjero_cheque);
+            $extranjero_debito = parseFloat($form.extranjero_debito);
+            $extranjero_credito = parseFloat($form.extranjero_credito);
+            $extranjero_efectivo = parseFloat($form.extranjero_efectivo);
+            $extranjero_amex = parseFloat($form.extranjero_amex);
+            if($type_nacional == 0){
+                $mon_cheque_soli = $('#nacional_cheques_soli').val();
+                $mon_debito_soli = $('#nacional_debito_soli').val();
+                $mon_credito_soli = $('#nacional_credito_soli').val();
+                $mon_efectivo_soli = $('#nacional_efectivo_soli').val();
+                $mon_amex_soli  = $('#nacional_amex_soli').val();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+
+                $('#nacional_cheques_soli').val($mon_cheque_soli_to);
+                $('#nacional_debito_soli').val($mon_debito_soli_to);
+                $('#nacional_credito_soli').val($mon_credito_soli_to);
+                $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#nacional_amex_soli').val($mon_amex_soli_to);
+            }else
+            if($type_nacional == 1){
+
+                $mon_cheque_soli = $('#extranjero_cheques_soli').val();
+                $mon_debito_soli = $('#extranjero_debito_soli').val();
+                $mon_credito_soli = $('#extranjero_credito_soli').val();
+                $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
+                $mon_amex_soli  = $('#extranjero_amex_soli').val();
+
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+
+                $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
+                $('#extranjero_debito_soli').val($mon_debito_soli_to);
+                $('#extranjero_credito_soli').val($mon_credito_soli_to);
+                $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
+                $('#extranjero_amex_soli').val($mon_amex_soli_to);
+            }
+            return false;
         }
 
 
