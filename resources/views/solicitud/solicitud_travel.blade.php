@@ -236,7 +236,8 @@
                         </label>
                     </div>
                     <div class="col-md-2" style="text-align: left">
-                        <input type="text" class="form-fecha" >
+                        <select name="hora_salida" id="hora_salida" class="form-fecha">
+                        </select>
                     </div>
                     <div class="col-md-3" style="text-align:left">
                         <label class="label-fechas">
@@ -245,7 +246,8 @@
                         </label>
                     </div>
                     <div class="col-md-2">
-                        <input type="text" class="form-fecha" style="text-align: left">
+                        <select name="hora_final" id="hora_final" class="form-fecha">
+                        </select>
                     </div>
                 </div>
 
@@ -411,7 +413,80 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    /*Aqui van  los datos de  */
+                                    <tr id="tr_hospedaje" class="hidden">
+                                        <td>
+                                            <span class="icon-hospedaje element-list">
+                                                <span class="path1"></span><span class="path2"></span>
+                                            </span>
+                                            Hospedaje
+                                        </td>
+                                        <td> <span id="monto_hospedaje"></span> $ </td>
+                                    </tr>
+                                    <tr id="tr_alimentacion" class="hidden">
+                                        <td>
+                                            <span  class="icon-comida element-list">
+                                                <span class="path1"></span><span class="path2"></span>
+                                            </span>
+                                            Alimentación
+                                        </td>
+                                        <td> <span id="monto_alimentacion"></span> $ </td>
+                                    </tr>
+                                    <tr id="tr_taxi" class="hidden">
+                                        <td>
+                                            <span  class="icon-transporte_publico element-list">
+                                                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span>
+                                            </span>
+                                        </td>
+                                        <td> <span id="monto_taxi"></span> $ </td>
+                                    </tr>
+                                    <tr id="tr_renta_auto" class="hidden">
+                                        <td>
+                                            <span class="icon-renta_autos element-list">
+                                                <span class="path1"></span><span class="path2"></span>
+                                            </span>
+                                        </td>
+                                        <td> <span id="monto_renta_auto"></span> $ </td>
+                                    </tr>
+                                    <tr id="tr_seminario" class="hidden">
+                                        <td>
+                                            <span data-id="" class="icon-seminarios element-list">
+                                                <span class="path1"></span><span class="path2"></span>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span id="monto_seminario"></span> $
+                                        </td>
+                                    </tr>
+                                    <tr id="tr_aereo" class="hidden">
+                                        <td>
+                                            <span class="icon-transporte_aereo element-list">
+                                                <span class="path1"></span><span class="path2"></span>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span id="monto_aereo"></span> $
+                                        </td>
+                                    </tr>
+                                    <tr id="tr_terrestre" class="hidden">
+                                        <td>
+                                            <span class="icon-transporte_terrestre element-list">
+                                                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span id="monto_terrestre"></span> $
+                                        </td>
+                                    </tr>
+                                    <tr id="tr_kilometros" class="hidden">
+                                        <td>
+                                            <span class="icon-kilometraje element-list">
+                                                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span id="monto_kilometros"></span> $
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -423,103 +498,103 @@
                     <div class="col-md-6 col-xs-6">
 
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tbody>
-    <tr>
-      <td width="10%">&nbsp;</td>
-      <td width="15%">
-      <div id="tabla-cheques">
-      <span class="icon-cheques">
-      </span>
-      <span title-button><br>Cheques
-      </div>
-      </td>
-      <td width="15%">
-      <div id="tabla-debito">
-      <span class="icon-tarjeta">
-      </span>
-      <span title-button><br>
-      Débito
-      </div>
-      </td>
-      <td width="16%">
-      <div id="tabla-credito">
-      <span class="icon-tarjeta">
-      </span>
-	  <span title-button><br>
-      Crédito
-      </div></td>
-      <td width="15%">
-      <div id="tabla-efectivo">
-      <span class="icon-efectivo" ><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span></span>
-      <span title-button><br>
-      Efectivo
-      </div>
-      </td>
-      <td width="16%">
-      <div id="tabla-amex">
-      <span class="icon-tarjeta">
-      </span>
-      <br>
-      AMEX
-      </div>
-      </td>
-      <td width="13%">&nbsp;</td>
-    </tr>
-    <tr>
-      <td rowspan="2">
-      <div id="nacional">
-      Nacional
-      </div>
-      </td>
-      <td>
-          <input type="text" placeholder="$" id="nacional_cheques_soli" name="nacional_cheques_soli" class="form-search2">
-      </td>
-      <td>
-          <input type="text" placeholder="$" id="nacional_debito_soli" name="nacional_debito_soli" class="form-search2">
-      </td>
-      <td>
-          <input type="text" placeholder="$" id="nacional_credito_soli" name=="nacional_credito_soli" class="form-search2">
-      </td>
-      <td>
-          <input type="text" placeholder="$" id="nacional_efectivo_soli" name="nacional_efectivo_soli" class="form-search2">
-      </td>
-      <td>
-          <input type="text" placeholder="$" id="nacional_amex_soli" name="nacional_amex_soli" class="form-search2">
-      </td>
-      <td>Monto solicitado</td>
-    </tr>
-    <tr>
-      <td><input type="text" placeholder="$" id="nacional_cheques_auto" name="nacional_cheques_auto" class="form-search2" ></td>
-      <td><input type="text" placeholder="$" id="nacional_debito_auto" name="nacional_debito_auto" class="form-search2"></td>
-      <td><input type="text" placeholder="$" id="nacional_credito_auto" name=="nacional_credito_auto" class="form-search2"></td>
-      <td><input type="text" placeholder="$" id="nacional_efectivo_auto" name="nacional_efectivo_auto" class="form-search2"></td>
-      <td><input type="text" placeholder="$" id="nacional_amex_auto" name="nacional_amex_auto" class="form-search2"></td>
-      <td>Monto Autorizado</td>
-    </tr>
-    <tr>
-      <td colspan="7">
-	<hr>	
-     </td>
-      </tr>
-    <tr>
-      <td rowspan="2"><div id="extranjero"> Extranjero </div></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td>Monto solicitado</td>
-    </tr>
-    <tr>
-      <td><input type="text" placeholder="$" class="form-search2" ></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td><input type="text" placeholder="$" class="form-search2"></td>
-      <td>Monto Autorizado</td>
-    </tr>
-  </tbody>
-</table>
+                      <tbody>
+                        <tr>
+                          <td width="10%">&nbsp;</td>
+                          <td width="15%">
+                          <div id="tabla-cheques">
+                          <span class="icon-cheques">
+                              </span>
+                              <span title-button><br>Cheques
+                          </div>
+                          </td>
+                          <td width="15%">
+                              <div id="tabla-debito">
+                                  <span class="icon-tarjeta">
+                                  </span>
+                                  <span title-button><br>
+                                  Débito
+                              </div>
+                          </td>
+                          <td width="16%">
+                          <div id="tabla-credito">
+                          <span class="icon-tarjeta">
+                          </span>
+                          <span title-button><br>
+                          Crédito
+                          </div></td>
+                          <td width="15%">
+                          <div id="tabla-efectivo">
+                          <span class="icon-efectivo" ><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span></span>
+                          <span title-button><br>
+                          Efectivo
+                          </div>
+                          </td>
+                          <td width="16%">
+                          <div id="tabla-amex">
+                          <span class="icon-tarjeta">
+                          </span>
+                          <br>
+                          AMEX
+                          </div>
+                          </td>
+                          <td width="13%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td rowspan="2">
+                          <div id="nacional">
+                          Nacional
+                          </div>
+                          </td>
+                          <td>
+                              <input type="text" placeholder="$" id="nacional_cheques_soli" name="nacional_cheques_soli" class="form-search2">
+                          </td>
+                          <td>
+                              <input type="text" placeholder="$" id="nacional_debito_soli" name="nacional_debito_soli" class="form-search2">
+                          </td>
+                          <td>
+                              <input type="text" placeholder="$" id="nacional_credito_soli" name=="nacional_credito_soli" class="form-search2">
+                          </td>
+                          <td>
+                              <input type="text" placeholder="$" id="nacional_efectivo_soli" name="nacional_efectivo_soli" class="form-search2">
+                          </td>
+                          <td>
+                              <input type="text" placeholder="$" id="nacional_amex_soli" name="nacional_amex_soli" class="form-search2">
+                          </td>
+                          <td>Monto solicitado</td>
+                        </tr>
+                        <tr>
+                          <td><input type="text" placeholder="$" id="nacional_cheques_auto" name="nacional_cheques_auto" class="form-search2" ></td>
+                          <td><input type="text" placeholder="$" id="nacional_debito_auto" name="nacional_debito_auto" class="form-search2"></td>
+                          <td><input type="text" placeholder="$" id="nacional_credito_auto" name=="nacional_credito_auto" class="form-search2"></td>
+                          <td><input type="text" placeholder="$" id="nacional_efectivo_auto" name="nacional_efectivo_auto" class="form-search2"></td>
+                          <td><input type="text" placeholder="$" id="nacional_amex_auto" name="nacional_amex_auto" class="form-search2"></td>
+                          <td>Monto Autorizado</td>
+                        </tr>
+                        <tr>
+                          <td colspan="7">
+                        <hr>
+                         </td>
+                          </tr>
+                        <tr>
+                          <td rowspan="2"><div id="extranjero"> Extranjero </div></td>
+                          <td><input type="text" placeholder="$" id="extranjero_cheques_soli" name="extranjero_cheques_soli" class="form-search2"></td>
+                          <td><input type="text" placeholder="$" id="extranjero_debito_soli" name="extranjero_debito_soli" class="form-search2"></td>
+                          <td><input type="text" placeholder="$" id="extranjero_credito_soli" name="extranjero_credito_soli" class="form-search2"></td>
+                          <td><input type="text" placeholder="$" id="extranjero_efectivo_soli" name="extranjero_efectivo_soli" class="form-search2"></td>
+                          <td><input type="text" placeholder="$" id="extranjero_amex_soli" name="extranjero_amex_soli" class="form-search2"></td>
+                          <td>Monto solicitado</td>
+                        </tr>
+                        <tr>
+                          <td><input type="text" placeholder="$" id="extranjero_cheques_auto" name="extranjero_cheques_auto" class="form-search2" ></td>
+                          <td><input type="text" placeholder="$" id="extranjero_debito_auto" name="extranjero_debito_auto" class="form-search2"></td>
+                          <td><input type="text" placeholder="$" id="extranjero_credito_auto" name="extranjero_credito_auto" class="form-search2"></td>
+                          <td><input type="text" placeholder="$" id="extranjero_efectivo_auto" name="extranjero_efectivo_auto" class="form-search2"></td>
+                          <td><input type="text" placeholder="$" id="extranjero_amex_auto" name="extranjero_amex_auto" class="form-search2"></td>
+                          <td>Monto Autorizado</td>
+                        </tr>
+                      </tbody>
+                    </table>
 	
 					</div>
         			</div>
@@ -532,11 +607,112 @@
     </div>
     <script>
         $(document).ready( function(){
+            $dataHorario = {
+                '00:00':'00:00',
+                '00:15':'00:15',
+                '00:30':'00:30',
+                '00:45':'00:45',
+                '01:00':'01:00',
+                '01:15':'01:15',
+                '01:30':'01:30',
+                '01:45':'01:45',
+                '02:00':'02:00',
+                '02:15':'02:15',
+                '02:30':'02:30',
+                '02:45':'02:45',
+                '03:00':'03:00',
+                '03:15':'03:15',
+                '03:30':'03:30',
+                '03:45':'03:45',
+                '04:00':'04:00',
+                '04:15':'04:15',
+                '04:30':'04:30',
+                '04:45':'04:45',
+                '05:00':'05:00',
+                '05:15':'05:15',
+                '05:30':'05:30',
+                '05:45':'05:45',
+                '06:00':'06:00',
+                '06:15':'06:15',
+                '06:30':'06:30',
+                '06:45':'06:45',
+                '07:00':'07:00',
+                '07:15':'07:15',
+                '07:30':'07:30',
+                '07:45':'07:45',
+                '08:00':'08:00',
+                '08:15':'08:15',
+                '08:30':'08:30',
+                '08:45':'08:45',
+                '09:00':'09:00',
+                '09:15':'09:15',
+                '09:30':'09:30',
+                '09:45':'09:45',
+                '10:00':'10:00',
+                '10:15':'10:15',
+                '10:30':'10:30',
+                '10:45':'10:45',
+                '11:00':'11:00',
+                '11:15':'11:15',
+                '11:30':'11:30',
+                '11:45':'11:45',
+                '12:00':'12:00',
+                '12:15':'12:15',
+                '12:30':'12:30',
+                '12:45':'12:45',
+                '13:00':'13:00',
+                '13:15':'13:15',
+                '13:30':'13:30',
+                '13:45':'13:45',
+                '14:00':'14:00',
+                '14:15':'14:15',
+                '14:30':'14:30',
+                '14:45':'14:45',
+                '15:00':'15:00',
+                '15:15':'15:15',
+                '15:30':'15:30',
+                '15:45':'15:45',
+                '16:00':'16:00',
+                '16:15':'16:15',
+                '16:30':'16:30',
+                '16:45':'16:45',
+                '17:00':'17:00',
+                '17:15':'17:15',
+                '17:30':'17:30',
+                '17:45':'17:45',
+                '18:00':'18:00',
+                '18:15':'18:15',
+                '18:30':'18:30',
+                '18:45':'18:45',
+                '19:00':'19:00',
+                '19:15':'19:15',
+                '19:30':'19:30',
+                '19:45':'19:45',
+                '20:00':'20:00',
+                '20:15':'20:15',
+                '20:30':'20:30',
+                '20:45':'20:45',
+                '21:00':'21:00',
+                '21:15':'21:15',
+                '21:30':'21:30',
+                '21:45':'21:45',
+                '22:00':'22:00',
+                '22:15':'22:15',
+                '22:30':'22:30',
+                '22:45':'22:45',
+                '23:00':'23:00',
+                '23:15':'23:15',
+                '23:30':'23:30',
+                '23:45':'23:45'
+            };
+            $html ="";
+            $.each($dataHorario,function(key,val){
+                $html +="<option value="+ key +">"+ val +"<option>";
+            });
+            $('#hora_salida').html($html);
+            $('#hora_final').html($html);
             $('.element-viatico').unbind().bind('click',function(e){
                 $dataId = $(this).attr('data-id');
-
-                //alert('Este es el ID = '. $dataId);
-
             });
 
             $("#datepicker_inicio").datepicker({
@@ -603,28 +779,6 @@
                     return selection.name;
                 }
             });
-            /*
-            $('#datepicker_fin').unbind().bind('blur',function(){
-                $fecha_inicio = $('#datepicker_inicio').val();
-                $fecha_fin = $(this).val();
-                if($fecha_inicio != '' && $fecha_fin != ''){
-                    alert('pierde el foco fin');
-                }else{
-                    alert('no pierde el foco fin');
-                }
-            });
-
-            $('#datepicker_inicio').unbind().bind('blur',function(){
-                $fecha_fin= $('#datepicker_fin').val();
-                $fecha_inicio = $(this).val();
-                if($fecha_inicio != '' && $fecha_inicio != ''){
-                    alert('pierde el foco inicio');
-                }else{
-                    alert('no pierde el foco inicio');
-                }
-            });
-            */
-
         });
         function  hospedaje($form) {
             $lable_id = $form.label_id;
@@ -648,8 +802,6 @@
             $extranjero_efectivo = parseFloat($form.extranjero_efectivo);
             $extranjero_amex = parseFloat($form.extranjero_amex);
 
-           
-
             if($type_nacional == 0){
                 $mon_cheque_soli = $('#nacional_cheques_soli').val();
                 $mon_debito_soli = $('#nacional_debito_soli').val();
@@ -668,26 +820,31 @@
                 $('#nacional_credito_soli').val($mon_credito_soli_to);
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
-            }else if($type_nacional == 1){
 
+                $total_hospedaje = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
+            }else if($type_nacional == 1){
+                alert("Este es el hospedaje extranjero !!!!!!!!!");
                 $mon_cheque_soli = $('#extranjero_cheques_soli').val();
                 $mon_debito_soli = $('#extranjero_debito_soli').val();
                 $mon_credito_soli = $('#extranjero_credito_soli').val();
                 $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
                 $mon_amex_soli  = $('#extranjero_amex_soli').val();
 
-                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
-                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
-                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
-                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
-                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
 
                 $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
                 $('#extranjero_debito_soli').val($mon_debito_soli_to);
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $total_hospedaje = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
+            $('#monto_hospedaje').html($total_hospedaje);
+            $('#tr_hospedaje').removeClass('hidden');
             return false;
         }
 
@@ -731,6 +888,7 @@
                 $('#nacional_credito_soli').val($mon_credito_soli_to);
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
+                $total_alimenacion = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }else
                 if($type_nacional == 1){
 
@@ -740,18 +898,21 @@
                 $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
                 $mon_amex_soli  = $('#extranjero_amex_soli').val();
 
-                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
-                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
-                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
-                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
-                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
 
                 $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
                 $('#extranjero_debito_soli').val($mon_debito_soli_to);
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $total_alimenacion = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
+            $('#tr_alimentacion').removeClass('hidden');
+            $('#monto_alimentacion').html($total_alimenacion);
             return false;
 
 
@@ -799,6 +960,7 @@
                 $('#nacional_credito_soli').val($mon_credito_soli_to);
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
+                $total_renta_auto = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }else
             if($type_nacional == 1){
 
@@ -808,18 +970,21 @@
                 $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
                 $mon_amex_soli  = $('#extranjero_amex_soli').val();
 
-                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
-                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
-                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
-                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
-                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
 
                 $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
                 $('#extranjero_debito_soli').val($mon_debito_soli_to);
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $total_renta_auto = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
+            $('#tr_renta_auto').removeClass('hidden');
+            $('#monto_renta_auto').html($total_renta_auto);
             return false;
         }
 
@@ -862,27 +1027,30 @@
                 $('#nacional_credito_soli').val($mon_credito_soli_to);
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
+                $total_taxi = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }else
             if($type_nacional == 1){
-
                 $mon_cheque_soli = $('#extranjero_cheques_soli').val();
                 $mon_debito_soli = $('#extranjero_debito_soli').val();
                 $mon_credito_soli = $('#extranjero_credito_soli').val();
                 $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
                 $mon_amex_soli  = $('#extranjero_amex_soli').val();
 
-                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
-                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
-                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
-                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
-                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
 
                 $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
                 $('#extranjero_debito_soli').val($mon_debito_soli_to);
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $total_taxi = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
+            $('#tr_taxi').removeClass('hidden');
+            $('#monto_taxi').html($total_taxi);
             return false;
         }
 
@@ -926,6 +1094,7 @@
                 $('#nacional_credito_soli').val($mon_credito_soli_to);
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
+                $total_seminario = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }else
             if($type_nacional == 1){
 
@@ -935,18 +1104,21 @@
                 $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
                 $mon_amex_soli  = $('#extranjero_amex_soli').val();
 
-                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
-                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
-                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
-                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
-                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
 
                 $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
                 $('#extranjero_debito_soli').val($mon_debito_soli_to);
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $total_seminario = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
+            $('#tr_seminario').removeClass('hidden');
+            $('#monto_seminario').html($total_seminario);
             return false;
         }
 
@@ -990,6 +1162,7 @@
                 $('#nacional_credito_soli').val($mon_credito_soli_to);
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
+                $total_aereo = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }else
             if($type_nacional == 1){
 
@@ -999,18 +1172,21 @@
                 $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
                 $mon_amex_soli  = $('#extranjero_amex_soli').val();
 
-                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
-                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
-                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
-                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
-                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
 
                 $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
                 $('#extranjero_debito_soli').val($mon_debito_soli_to);
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $total_aereo = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
+            $('#tr_aereo').removeClass('hidden');
+            $('#monto_aereo').html($total_aereo);
             return false;
         }
 
@@ -1054,6 +1230,7 @@
                 $('#nacional_credito_soli').val($mon_credito_soli_to);
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
+                $total_terrestre = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }else
             if($type_nacional == 1){
                 $mon_cheque_soli = $('#extranjero_cheques_soli').val();
@@ -1062,18 +1239,21 @@
                 $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
                 $mon_amex_soli  = $('#extranjero_amex_soli').val();
 
-                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
-                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
-                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
-                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
-                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
 
                 $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
                 $('#extranjero_debito_soli').val($mon_debito_soli_to);
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $total_terrestre = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
+            $('#tr_terrestre').removeClass('hidden');
+            $('#monto_terrestre').html($total_terrestre);
             return false;
 
         }
@@ -1119,6 +1299,7 @@
                 $('#nacional_credito_soli').val($mon_credito_soli_to);
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
+                $total_kilometros= parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }else
             if($type_nacional == 1){
 
@@ -1128,18 +1309,21 @@
                 $mon_efectivo_soli = $('#extranjero_efectivo_soli').val();
                 $mon_amex_soli  = $('#extranjero_amex_soli').val();
 
-                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$nacional_cheque ? 0 : $nacional_cheque));
-                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito));
-                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$nacional_credito ? 0 : $nacional_credito));
-                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo));
-                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
+                $mon_cheque_soli_to = parseFloat((!$mon_cheque_soli ? 0 : $mon_cheque_soli)) + parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque));
+                $mon_debito_soli_to = parseFloat((!$mon_debito_soli ? 0 : $mon_debito_soli)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito));
+                $mon_credito_soli_to = parseFloat((!$mon_credito_soli ? 0 : $mon_credito_soli))  + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito));
+                $mon_efectivo_soli_to = parseFloat((!$mon_efectivo_soli ? 0 : $mon_efectivo_soli))  + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo));
+                $mon_amex_soli_to = parseFloat((!$mon_amex_soli ? 0 : $mon_amex_soli))  + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
 
                 $('#extranjero_cheques_soli').val($mon_cheque_soli_to);
                 $('#extranjero_debito_soli').val($mon_debito_soli_to);
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $total_kilometros = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
+            $('#tr_kilometros').removeClass('hidden');
+            $('#monto_kilometros').html($total_terrestre);
             return false;
         }
 

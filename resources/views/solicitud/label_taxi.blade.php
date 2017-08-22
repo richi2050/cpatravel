@@ -42,7 +42,7 @@
     <br><br>
     {{ Form::open(['id' => 'form']) }}
     <div class="row" style="margin-top: 10%">
-        <input type="text" name="label_id" id="label_id" value="{{ $label->iden }}">
+        <input type="hidden" name="label_id" id="label_id" value="{{ $label->iden }}">
         <div class="col-md-2">
         </div>
         <div class="col-md-8">

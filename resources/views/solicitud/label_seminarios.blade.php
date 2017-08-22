@@ -44,14 +44,14 @@
     <br><br>
     {{ Form::open(['id' => 'form']) }}
     <div class="row" style="margin-top: 10%">
-        <input type="text" name="label_id" id="label_id" value="{{ $label->iden }}">
+        <input type="hidden" name="label_id" id="label_id" value="{{ $label->iden }}">
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
             <table class="table">
                 <tr>
                     <td rowspan="2">
-                        <select name="select-type" id="select-type" class="form-control select-na">
+                        <select name="type_nacional" id="select-type" class="form-control select-na">
                             <option value="0">Nacional</option>
                             <option value="1">Extranjero</option>
                         </select>
