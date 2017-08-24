@@ -350,48 +350,56 @@
                             <span  data-id="{{ $dat->iden }}" class="icon-hospedaje element-viatico">
                                 <span class="path1"></span><span class="path2"></span>
                             </span>
+                            <input class="form-search2" type="hidden" name="hospedaje_monto_hidden" id="hospedaje_monto_hidden">
                         </div>
                         @elseif($dat->name == 'Alimentación')
                         <div class="col-md-5 col-sm-5 element-div" onclick='openIframe("{{ route("label_foot",['iden' => $dat->iden ]) }}")'>
                             <span data-id="{{ $dat->iden }}" class="icon-comida element-viatico">
                                 <span class="path1"></span><span class="path2"></span>
                             </span>
+                            <input class="form-search2" type="hidden" name="alimento_monto_hidden" id="alimento_monto_hidden">
                         </div>
                         @elseif($dat->name == 'Transporte')
                         <div class="col-md-5 col-sm-5 element-div" onclick='openIframe("{{ route("label_taxi",['iden' => $dat->iden ]) }}")'>
                             <span data-id="{{ $dat->iden }}" class="icon-transporte_publico element-viatico">
                                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span>
                             </span>
+                            <input class="form-search2" type="hidden" name="transporte_monto_hidden" id="transporte_monto_hidden">
                         </div>
                         @elseif($dat->name == 'Pago por kilometraje')
                         <div class="col-md-5 col-sm-5 element-div" onclick='openIframe("{{ route("label_mileage",['iden' => $dat->iden ]) }}")'>
                             <span data-id="{{ $dat->iden }}" class="icon-kilometraje element-viatico">
                                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
                             </span>
+                            <input class="form-search2" type="hidden" name="kilometraje_monto_hidden" id="kilometraje_monto_hidden">
                         </div>
                         @elseif($dat->name == 'Renta de Transporte terrestre')
                         <div class="col-md-5 col-sm-5 element-div" onclick='openIframe("{{ route("label_transporte_terrestre",['iden' => $dat->iden ]) }}")'>
                             <span data-id="{{ $dat->iden }}" class="icon-transporte_terrestre element-viatico">
                                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span>
                             </span>
+                            <input class="form-search2" type="hidden" name="transporte_terrestre_monto_hidden" id="transporte_terrestre_monto_hidden">
                         </div>
                         @elseif($dat->name == 'Renta de Autos')
                         <div class="col-md-5 col-sm-5 element-div" onclick='openIframe("{{ route("label_rent_car",['iden' => $dat->iden ]) }}")'>
                             <span data-id="{{ $dat->iden }}" class="icon-renta_autos element-viatico">
                                 <span class="path1"></span><span class="path2"></span>
                             </span>
+                            <input class="form-search2" type="hidden" name="renta_autos_monto_hidden" id="renta_autos_monto_hidden">
                         </div>
                         @elseif($dat->name == 'Seminarios o Convenciones')
                         <div class="col-md-5 col-sm-5 element-div" onclick='openIframe("{{ route("label_conference",['iden' => $dat->iden ]) }}")'>
                             <span data-id="{{ $dat->iden }}" class="icon-seminarios element-viatico">
                                 <span class="path1"></span><span class="path2"></span>
                             </span>
+                            <input class="form-search2" type="hidden" name="seminarios_monto_hidden" id="seminarios_monto_hidden">
                         </div>
                         @elseif($dat->name == 'Renta de Transporte aéreo')
                         <div class="col-md-5 col-sm-5 element-div" onclick='openIframe("{{ route("label_airplane",['iden' => $dat->iden ]) }}")'>
                             <span data-id="{{ $dat->iden }}" class="icon-transporte_aereo element-viatico">
                                 <span class="path1"></span><span class="path2"></span>
                             </span>
+                            <input class="form-search2" type="hidden" name="transporte_aereo_monto_hidden" id="transporte_aereo_monto_hidden">
                         </div>
                         @endif
                 @endforeach
@@ -436,22 +444,31 @@
                                             <span  class="icon-transporte_publico element-list">
                                                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span>
                                             </span>
+                                            Taxi
                                         </td>
-                                        <td> <span id="monto_taxi"></span> $ </td>
+                                        <td>
+                                            <span id="monto_taxi"></span>
+                                            $
+                                        </td>
                                     </tr>
                                     <tr id="tr_renta_auto" class="hidden">
                                         <td>
                                             <span class="icon-renta_autos element-list">
                                                 <span class="path1"></span><span class="path2"></span>
                                             </span>
+                                            Renta de autos
                                         </td>
-                                        <td> <span id="monto_renta_auto"></span> $ </td>
+                                        <td>
+                                            <span id="monto_renta_auto"></span>
+                                            $
+                                        </td>
                                     </tr>
                                     <tr id="tr_seminario" class="hidden">
                                         <td>
                                             <span data-id="" class="icon-seminarios element-list">
                                                 <span class="path1"></span><span class="path2"></span>
                                             </span>
+                                            Seminarios y convenciones
                                         </td>
                                         <td>
                                             <span id="monto_seminario"></span> $
@@ -462,6 +479,7 @@
                                             <span class="icon-transporte_aereo element-list">
                                                 <span class="path1"></span><span class="path2"></span>
                                             </span>
+                                            Transporte Aéreo
                                         </td>
                                         <td>
                                             <span id="monto_aereo"></span> $
@@ -472,6 +490,7 @@
                                             <span class="icon-transporte_terrestre element-list">
                                                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span>
                                             </span>
+                                            Autobus
                                         </td>
                                         <td>
                                             <span id="monto_terrestre"></span> $
@@ -482,6 +501,7 @@
                                             <span class="icon-kilometraje element-list">
                                                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
                                             </span>
+                                            Kilometraje
                                         </td>
                                         <td>
                                             <span id="monto_kilometros"></span> $
@@ -502,11 +522,11 @@
                         <tr>
                           <td width="10%">&nbsp;</td>
                           <td width="15%">
-                          <div id="tabla-cheques">
-                          <span class="icon-cheques">
-                              </span>
-                              <span title-button><br>Cheques
-                          </div>
+                              <div id="tabla-cheques">
+                              <span class="icon-cheques">
+                                  </span>
+                                  <span title-button><br>Cheques </span>
+                              </div>
                           </td>
                           <td width="15%">
                               <div id="tabla-debito">
@@ -514,84 +534,74 @@
                                   </span>
                                   <span title-button><br>
                                   Débito
+                                  </span>
                               </div>
                           </td>
                           <td width="16%">
-                          <div id="tabla-credito">
-                          <span class="icon-tarjeta">
-                          </span>
-                          <span title-button><br>
-                          Crédito
-                          </div></td>
+                              <div id="tabla-credito">
+                                  <span class="icon-tarjeta">
+                                  </span>
+                                  <span title-button><br>
+                                  Crédito
+                                  </span>
+                              </div>
+                          </td>
                           <td width="15%">
-                          <div id="tabla-efectivo">
-                          <span class="icon-efectivo" ><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span></span>
-                          <span title-button><br>
-                          Efectivo
-                          </div>
+                              <div id="tabla-efectivo">
+                                  <span class="icon-efectivo" ><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span></span>
+                                  <span title-button><br>
+                                  Efectivo
+                                  </span>
+                              </div>
                           </td>
                           <td width="16%">
-                          <div id="tabla-amex">
-                          <span class="icon-tarjeta">
-                          </span>
-                          <br>
-                          AMEX
-                          </div>
+                              <div id="tabla-amex">
+                                  <span class="icon-tarjeta">
+                                  </span>
+                                  <br>
+                                  AMEX
+                              </div>
                           </td>
                           <td width="13%">&nbsp;</td>
                         </tr>
-                        <tr>
-                          <td rowspan="2">
-                          <div id="nacional">
-                          Nacional
-                          </div>
-                          </td>
-                          <td>
-                              <input type="text" placeholder="$" id="nacional_cheques_soli" name="nacional_cheques_soli" class="form-search2">
-                          </td>
-                          <td>
-                              <input type="text" placeholder="$" id="nacional_debito_soli" name="nacional_debito_soli" class="form-search2">
-                          </td>
-                          <td>
-                              <input type="text" placeholder="$" id="nacional_credito_soli" name=="nacional_credito_soli" class="form-search2">
-                          </td>
-                          <td>
-                              <input type="text" placeholder="$" id="nacional_efectivo_soli" name="nacional_efectivo_soli" class="form-search2">
-                          </td>
-                          <td>
-                              <input type="text" placeholder="$" id="nacional_amex_soli" name="nacional_amex_soli" class="form-search2">
-                          </td>
-                          <td>Monto solicitado</td>
+                        <tr class="tr_solicitados_monto_nacional">
+                            <td rowspan="2"><div id="nacional">Nacional</div></td>
+                            <td><input type="text" placeholder="$" id="nacional_cheques_soli" name="nacional_cheques_soli" class="form-search2"></td>
+                            <td><input type="text" placeholder="$" id="nacional_debito_soli" name="nacional_debito_soli" class="form-search2"></td>
+                            <td><input type="text" placeholder="$" id="nacional_credito_soli" name=="nacional_credito_soli" class="form-search2"></td>
+                            <td><input type="text" placeholder="$" id="nacional_efectivo_soli" name="nacional_efectivo_soli" class="form-search2"></td>
+                            <td><input type="text" placeholder="$" id="nacional_amex_soli" name="nacional_amex_soli" class="form-search2"></td>
+                            <td>Monto solicitado</td>
+                        </tr>
+                        <tr class="tr_solicitados_monto_nacional">
+                            <td><input type="text" placeholder="$" id="nacional_cheques_auto" name="nacional_cheques_auto" class="form-search2" ></td>
+                            <td><input type="text" placeholder="$" id="nacional_debito_auto" name="nacional_debito_auto" class="form-search2"></td>
+                            <td><input type="text" placeholder="$" id="nacional_credito_auto" name=="nacional_credito_auto" class="form-search2"></td>
+                            <td><input type="text" placeholder="$" id="nacional_efectivo_auto" name="nacional_efectivo_auto" class="form-search2"></td>
+                            <td><input type="text" placeholder="$" id="nacional_amex_auto" name="nacional_amex_auto" class="form-search2"></td>
+                            <td>Monto Autorizado</td>
                         </tr>
                         <tr>
-                          <td><input type="text" placeholder="$" id="nacional_cheques_auto" name="nacional_cheques_auto" class="form-search2" ></td>
-                          <td><input type="text" placeholder="$" id="nacional_debito_auto" name="nacional_debito_auto" class="form-search2"></td>
-                          <td><input type="text" placeholder="$" id="nacional_credito_auto" name=="nacional_credito_auto" class="form-search2"></td>
-                          <td><input type="text" placeholder="$" id="nacional_efectivo_auto" name="nacional_efectivo_auto" class="form-search2"></td>
-                          <td><input type="text" placeholder="$" id="nacional_amex_auto" name="nacional_amex_auto" class="form-search2"></td>
-                          <td>Monto Autorizado</td>
+                            <td colspan="7">
+                              <hr>
+                            </td>
                         </tr>
-                        <tr>
-                          <td colspan="7">
-                        <hr>
-                         </td>
-                          </tr>
-                        <tr>
-                          <td rowspan="2"><div id="extranjero"> Extranjero </div></td>
-                          <td><input type="text" placeholder="$" id="extranjero_cheques_soli" name="extranjero_cheques_soli" class="form-search2"></td>
-                          <td><input type="text" placeholder="$" id="extranjero_debito_soli" name="extranjero_debito_soli" class="form-search2"></td>
-                          <td><input type="text" placeholder="$" id="extranjero_credito_soli" name="extranjero_credito_soli" class="form-search2"></td>
-                          <td><input type="text" placeholder="$" id="extranjero_efectivo_soli" name="extranjero_efectivo_soli" class="form-search2"></td>
-                          <td><input type="text" placeholder="$" id="extranjero_amex_soli" name="extranjero_amex_soli" class="form-search2"></td>
-                          <td>Monto solicitado</td>
+                        <tr class="tr_solicitados_monto_extranjero hidden">
+                            <td rowspan="2"><div id="extranjero"> Extranjero </div></td>
+                            <td><input type="text" placeholder="$" id="extranjero_cheques_soli" name="extranjero_cheques_soli" class="form-search2"></td>
+                            <td><input type="text" placeholder="$" id="extranjero_debito_soli" name="extranjero_debito_soli" class="form-search2"></td>
+                            <td><input type="text" placeholder="$" id="extranjero_credito_soli" name="extranjero_credito_soli" class="form-search2"></td>
+                            <td><input type="text" placeholder="$" id="extranjero_efectivo_soli" name="extranjero_efectivo_soli" class="form-search2"></td>
+                            <td><input type="text" placeholder="$" id="extranjero_amex_soli" name="extranjero_amex_soli" class="form-search2"></td>
+                            <td>Monto solicitado</td>
                         </tr>
-                        <tr>
-                          <td><input type="text" placeholder="$" id="extranjero_cheques_auto" name="extranjero_cheques_auto" class="form-search2" ></td>
-                          <td><input type="text" placeholder="$" id="extranjero_debito_auto" name="extranjero_debito_auto" class="form-search2"></td>
-                          <td><input type="text" placeholder="$" id="extranjero_credito_auto" name="extranjero_credito_auto" class="form-search2"></td>
-                          <td><input type="text" placeholder="$" id="extranjero_efectivo_auto" name="extranjero_efectivo_auto" class="form-search2"></td>
-                          <td><input type="text" placeholder="$" id="extranjero_amex_auto" name="extranjero_amex_auto" class="form-search2"></td>
-                          <td>Monto Autorizado</td>
+                        <tr class="tr_solicitados_monto_extranjero hidden">
+                            <td><input type="text" placeholder="$" id="extranjero_cheques_auto" name="extranjero_cheques_auto" class="form-search2" ></td>
+                            <td><input type="text" placeholder="$" id="extranjero_debito_auto" name="extranjero_debito_auto" class="form-search2"></td>
+                            <td><input type="text" placeholder="$" id="extranjero_credito_auto" name="extranjero_credito_auto" class="form-search2"></td>
+                            <td><input type="text" placeholder="$" id="extranjero_efectivo_auto" name="extranjero_efectivo_auto" class="form-search2"></td>
+                            <td><input type="text" placeholder="$" id="extranjero_amex_auto" name="extranjero_amex_auto" class="form-search2"></td>
+                            <td>Monto Autorizado</td>
                         </tr>
                       </tbody>
                     </table>
@@ -803,6 +813,7 @@
             $extranjero_amex = parseFloat($form.extranjero_amex);
 
             if($type_nacional == 0){
+                $('.tr_solicitados_monto_nacional').removeClass('hidden');
                 $mon_cheque_soli = $('#nacional_cheques_soli').val();
                 $mon_debito_soli = $('#nacional_debito_soli').val();
                 $mon_credito_soli = $('#nacional_credito_soli').val();
@@ -820,10 +831,10 @@
                 $('#nacional_credito_soli').val($mon_credito_soli_to);
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
-
+                $monto_total_solicitado_nacional  = parseFloat((!$nacional_cheque ? 0 : $nacional_cheque)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito)) + parseFloat((!$nacional_credito ? 0 : $nacional_credito)) + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo)) + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
                 $total_hospedaje = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }else if($type_nacional == 1){
-                alert("Este es el hospedaje extranjero !!!!!!!!!");
+                $('.tr_solicitados_monto_extranjero').removeClass('hidden');
                 $mon_cheque_soli = $('#extranjero_cheques_soli').val();
                 $mon_debito_soli = $('#extranjero_debito_soli').val();
                 $mon_credito_soli = $('#extranjero_credito_soli').val();
@@ -841,9 +852,11 @@
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $monto_total_solicitado_nacional  = parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito)) + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito)) + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo)) + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
                 $total_hospedaje = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
-            $('#monto_hospedaje').html($total_hospedaje);
+            $val_hopedaje = $('#hospedaje_monto_hidden').val($monto_total_solicitado_nacional);
+            $('#monto_hospedaje').html($monto_total_solicitado_nacional);
             $('#tr_hospedaje').removeClass('hidden');
             return false;
         }
@@ -871,6 +884,7 @@
             $extranjero_amex = parseFloat($form.extranjero_amex);
 
             if($type_nacional == 0){
+                $('.tr_solicitados_monto_nacional').removeClass('hidden');
                 $mon_cheque_soli = $('#nacional_cheques_soli').val();
                 $mon_debito_soli = $('#nacional_debito_soli').val();
                 $mon_credito_soli = $('#nacional_credito_soli').val();
@@ -889,9 +903,10 @@
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
                 $total_alimenacion = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
+                $monto_total_solicitado_nacional  = parseFloat((!$nacional_cheque ? 0 : $nacional_cheque)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito)) + parseFloat((!$nacional_credito ? 0 : $nacional_credito)) + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo)) + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
             }else
                 if($type_nacional == 1){
-
+                $('.tr_solicitados_monto_extranjero').removeClass('hidden');
                 $mon_cheque_soli = $('#extranjero_cheques_soli').val();
                 $mon_debito_soli = $('#extranjero_debito_soli').val();
                 $mon_credito_soli = $('#extranjero_credito_soli').val();
@@ -909,10 +924,12 @@
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $monto_total_solicitado_nacional  = parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito)) + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito)) + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo)) + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
                 $total_alimenacion = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
+            $val_alimentacion = $('#alimento_monto_hidden').val($monto_total_solicitado_nacional);
+            $('#monto_alimentacion').html($monto_total_solicitado_nacional);
             $('#tr_alimentacion').removeClass('hidden');
-            $('#monto_alimentacion').html($total_alimenacion);
             return false;
 
 
@@ -943,6 +960,7 @@
             $extranjero_efectivo = parseFloat($form.extranjero_efectivo);
             $extranjero_amex = parseFloat($form.extranjero_amex);
             if($type_nacional == 0){
+                $('.tr_solicitados_monto_nacional').removeClass('hidden');
                 $mon_cheque_soli = $('#nacional_cheques_soli').val();
                 $mon_debito_soli = $('#nacional_debito_soli').val();
                 $mon_credito_soli = $('#nacional_credito_soli').val();
@@ -960,10 +978,11 @@
                 $('#nacional_credito_soli').val($mon_credito_soli_to);
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
+                $monto_total_solicitado_nacional  = parseFloat((!$nacional_cheque ? 0 : $nacional_cheque)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito)) + parseFloat((!$nacional_credito ? 0 : $nacional_credito)) + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo)) + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
                 $total_renta_auto = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }else
             if($type_nacional == 1){
-
+                $('.tr_solicitados_monto_extranjero').removeClass('hidden');
                 $mon_cheque_soli = $('#extranjero_cheques_soli').val();
                 $mon_debito_soli = $('#extranjero_debito_soli').val();
                 $mon_credito_soli = $('#extranjero_credito_soli').val();
@@ -981,10 +1000,12 @@
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $monto_total_solicitado_nacional  = parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito)) + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito)) + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo)) + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
                 $total_renta_auto = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
             $('#tr_renta_auto').removeClass('hidden');
-            $('#monto_renta_auto').html($total_renta_auto);
+            $val_renta_auto = $('#renta_autos_monto_hidden').val($monto_total_solicitado_nacional);
+            $('#monto_renta_auto').html($monto_total_solicitado_nacional);
             return false;
         }
 
@@ -1010,6 +1031,7 @@
             $extranjero_efectivo = parseFloat($form.extranjero_efectivo);
             $extranjero_amex = parseFloat($form.extranjero_amex);
             if($type_nacional == 0){
+                $('.tr_solicitados_monto_nacional').removeClass('hidden');
                 $mon_cheque_soli = $('#nacional_cheques_soli').val();
                 $mon_debito_soli = $('#nacional_debito_soli').val();
                 $mon_credito_soli = $('#nacional_credito_soli').val();
@@ -1027,9 +1049,11 @@
                 $('#nacional_credito_soli').val($mon_credito_soli_to);
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
+                $monto_total_solicitado_nacional  = parseFloat((!$nacional_cheque ? 0 : $nacional_cheque)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito)) + parseFloat((!$nacional_credito ? 0 : $nacional_credito)) + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo)) + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
                 $total_taxi = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }else
             if($type_nacional == 1){
+                $('.tr_solicitados_monto_extranjero').removeClass('hidden');
                 $mon_cheque_soli = $('#extranjero_cheques_soli').val();
                 $mon_debito_soli = $('#extranjero_debito_soli').val();
                 $mon_credito_soli = $('#extranjero_credito_soli').val();
@@ -1047,10 +1071,12 @@
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $monto_total_solicitado_nacional  = parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito)) + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito)) + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo)) + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
                 $total_taxi = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
             $('#tr_taxi').removeClass('hidden');
-            $('#monto_taxi').html($total_taxi);
+            $val_taxi = $('#transporte_monto_hidden').val($monto_total_solicitado_nacional);
+            $('#monto_taxi').html($monto_total_solicitado_nacional);
             return false;
         }
 
@@ -1061,7 +1087,6 @@
             $numero_de_eventos = parseInt($form.numero_de_eventos);
             $total_costo= parseFloat($form.total_costo);
             $costo_por_evento = parseFloat($form.costo_por_evento);
-
 
             $flag_txt_nacional = parseFloat($form.flag_txt_nacional);
             $nacional_cheque = parseFloat($form.nacional_cheque);
@@ -1094,10 +1119,11 @@
                 $('#nacional_credito_soli').val($mon_credito_soli_to);
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
+                $monto_total_solicitado_nacional  = parseFloat((!$nacional_cheque ? 0 : $nacional_cheque)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito)) + parseFloat((!$nacional_credito ? 0 : $nacional_credito)) + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo)) + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
                 $total_seminario = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }else
             if($type_nacional == 1){
-
+                $('.tr_solicitados_monto_extranjero').removeClass('hidden');
                 $mon_cheque_soli = $('#extranjero_cheques_soli').val();
                 $mon_debito_soli = $('#extranjero_debito_soli').val();
                 $mon_credito_soli = $('#extranjero_credito_soli').val();
@@ -1115,10 +1141,12 @@
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $monto_total_solicitado_nacional  = parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito)) + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito)) + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo)) + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
                 $total_seminario = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
             $('#tr_seminario').removeClass('hidden');
-            $('#monto_seminario').html($total_seminario);
+            $val_seminarios =$('#seminarios_monto_hidden').val($monto_total_solicitado_nacional);
+            $('#monto_seminario').html($monto_total_solicitado_nacional);
             return false;
         }
 
@@ -1162,10 +1190,11 @@
                 $('#nacional_credito_soli').val($mon_credito_soli_to);
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
+                $monto_total_solicitado_nacional  = parseFloat((!$nacional_cheque ? 0 : $nacional_cheque)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito)) + parseFloat((!$nacional_credito ? 0 : $nacional_credito)) + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo)) + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
                 $total_aereo = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }else
             if($type_nacional == 1){
-
+                $('.tr_solicitados_monto_extranjero').removeClass('hidden');
                 $mon_cheque_soli = $('#extranjero_cheques_soli').val();
                 $mon_debito_soli = $('#extranjero_debito_soli').val();
                 $mon_credito_soli = $('#extranjero_credito_soli').val();
@@ -1183,10 +1212,12 @@
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $monto_total_solicitado_nacional  = parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito)) + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito)) + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo)) + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
                 $total_aereo = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
             $('#tr_aereo').removeClass('hidden');
-            $('#monto_aereo').html($total_aereo);
+            $val_transporte_aereo = $('#transporte_aereo_monto_hidden').val($monto_total_solicitado_nacional);
+            $('#monto_aereo').html($monto_total_solicitado_nacional);
             return false;
         }
 
@@ -1212,6 +1243,7 @@
             $extranjero_credito = parseFloat($form.extranjero_credito);
             $extranjero_efectivo = parseFloat($form.extranjero_efectivo);
             $extranjero_amex = parseFloat($form.extranjero_amex);
+
             if($type_nacional == 0){
                 $mon_cheque_soli = $('#nacional_cheques_soli').val();
                 $mon_debito_soli = $('#nacional_debito_soli').val();
@@ -1230,9 +1262,11 @@
                 $('#nacional_credito_soli').val($mon_credito_soli_to);
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
+                $monto_total_solicitado_nacional  = parseFloat((!$nacional_cheque ? 0 : $nacional_cheque)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito)) + parseFloat((!$nacional_credito ? 0 : $nacional_credito)) + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo)) + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
                 $total_terrestre = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }else
             if($type_nacional == 1){
+                $('.tr_solicitados_monto_extranjero').removeClass('hidden');
                 $mon_cheque_soli = $('#extranjero_cheques_soli').val();
                 $mon_debito_soli = $('#extranjero_debito_soli').val();
                 $mon_credito_soli = $('#extranjero_credito_soli').val();
@@ -1250,10 +1284,12 @@
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $monto_total_solicitado_nacional  = parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito)) + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito)) + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo)) + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
                 $total_terrestre = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
             $('#tr_terrestre').removeClass('hidden');
-            $('#monto_terrestre').html($total_terrestre);
+            $val_transporte_terrestre = $('#transporte_terrestre_monto_hidden').val($monto_total_solicitado_nacional);
+            $('#monto_terrestre').html($monto_total_solicitado_nacional);
             return false;
 
         }
@@ -1299,10 +1335,11 @@
                 $('#nacional_credito_soli').val($mon_credito_soli_to);
                 $('#nacional_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
+                $monto_total_solicitado_nacional  = parseFloat((!$nacional_cheque ? 0 : $nacional_cheque)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito)) + parseFloat((!$nacional_credito ? 0 : $nacional_credito)) + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo)) + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
                 $total_kilometros= parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }else
             if($type_nacional == 1){
-
+                $('.tr_solicitados_monto_extranjero').removeClass('hidden');
                 $mon_cheque_soli = $('#extranjero_cheques_soli').val();
                 $mon_debito_soli = $('#extranjero_debito_soli').val();
                 $mon_credito_soli = $('#extranjero_credito_soli').val();
@@ -1320,10 +1357,12 @@
                 $('#extranjero_credito_soli').val($mon_credito_soli_to);
                 $('#extranjero_efectivo_soli').val($mon_efectivo_soli_to);
                 $('#extranjero_amex_soli').val($mon_amex_soli_to);
+                $monto_total_solicitado_nacional  = parseFloat((!$extranjero_cheque ? 0 : $extranjero_cheque)) + parseFloat((!$extranjero_debito ? 0 : $extranjero_debito)) + parseFloat((!$extranjero_credito ? 0 : $extranjero_credito)) + parseFloat((!$extranjero_efectivo ? 0 : $extranjero_efectivo)) + parseFloat((!$extranjero_amex ? 0 : $extranjero_amex));
                 $total_kilometros = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
             }
             $('#tr_kilometros').removeClass('hidden');
-            $('#monto_kilometros').html($total_terrestre);
+            $val_kilometraje = $('#kilometraje_monto_hidden').val($monto_total_solicitado_nacional);
+            $('#monto_kilometros').html($monto_total_solicitado_nacional);
             return false;
         }
 

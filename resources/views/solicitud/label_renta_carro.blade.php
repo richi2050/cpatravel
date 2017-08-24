@@ -44,6 +44,7 @@
     {{ Form::open(['id' => 'form']) }}
     <div class="row" style="margin-top: 10%">
         <input type="hidden" name="label_id" id="label_id" value="{{ $label->iden }}">
+        <input type="text" name="monto_company_policies_id" id="monto_company_policies_id" value="{{ $label->foreign_company_policies }}">
         <div class="col-md-12">
             <table class="table">
                 <tr>
@@ -231,26 +232,28 @@
             $extranjero_amex = $('#extranjero_amex').val();
             $submit=0;
             $flag=0;
+            $valor = 0;
             if(parseInt($flag_txt_nacional) == 1 ){
                 if($nacional_cheque != ''){
                     $flag = $flag + 1;
+                    $valor = $nacional_cheque;
                 }
                 if($nacional_debito != ''){
                     $flag = $flag + 1;
+                    $valor = $nacional_debito;
                 }
                 if($nacional_credito != ''){
                     $flag = $flag + 1;
+                    $valor = $nacional_credito;
                 }
                 if($nacional_efectivo != ''){
                     $flag = $flag + 1;
+                    $valor = $nacional_efectivo;
                 }
                 if($nacional_amex != ''){
                     $flag = $flag + 1;
+                    $valor = $nacional_amex;
                 }
-                if(!$nacional_cheque){
-
-                }
-
                 if($flag > 1){
                     $submit = 1;
                 }
@@ -258,29 +261,38 @@
             else if(parseInt($flag_txt_extrajero) == 1){
                 if($extranjero_cheque != ''){
                     $flag = $flag + 1;
+                    $valor = $extranjero_cheque;
                 }
                 if($extranjero_debito != ''){
                     $flag = $flag + 1;
+                    $valor = $extranjero_debito;
                 }
                 if($extranjero_credito != ''){
                     $flag = $flag + 1;
+                    $valor = $extranjero_credito;
                 }
                 if($extranjero_efectivo != ''){
                     $flag = $flag + 1;
+                    $valor = $extranjero_efectivo;
                 }
                 if($extranjero_amex != ''){
                     $flag = $flag + 1;
+                    $valor = $extranjero_amex;
                 }
 
                 if($flag > 1){
                     $submit = 1;
                 }
-
             }
+
             if($submit == 0){
-                var data = getFormData($form);
-                window.parent.rentaAuto(data);
-                window.parent.blurStuff(0);
+                if(parseFloat($valor) > parseFloat($('#monto_company_policies_id').val())){
+                    alert('El monto solicitada supera al autorizado por la empresa');
+                }else{
+                    var data = getFormData($form);
+                    window.parent.alimentacion(data);
+                    window.parent.blurStuff(0);
+                }
             }else{
                 alert('De los coampos a solicitar solo debes de elejir uno !!!!!!');
             }
