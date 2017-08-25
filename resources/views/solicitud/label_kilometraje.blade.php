@@ -37,7 +37,6 @@
             margin-left: 20px;
         }
     </style>
-
 <div class="container">
     <br><br>
     {{ Form::open(['id' => 'form']) }}
@@ -101,7 +100,6 @@
                 <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
            </span>
        </div>
-
         <div class="col-md-8">
             <table class="table">
                 <tr>
@@ -176,24 +174,17 @@
                     </td>
                 </tr>
             </table>
-
         </div>
-
     </div><! --/row -->
     <div class="row">
-
-
             <div class="col-md-12">
                 <input type='button'  onclick="blurStuff(0)"  value='Cancelar' class='save btn btn-sm btn-cancelar pull-right'>
                 <input type='button'  value='Guardar' class='save btn btn-sm btn-save pull-right'>
             </div>
-
-
     </div>
     {{ Form::close() }}
 </div>
 <script>
-
     $(document).ready(function(){
         $('#select-type').unbind().bind('click',function (e) {
             $val = $(this).val();
@@ -210,11 +201,9 @@
                 $('#flag_txt_nacional').val(1);
             }
         });
-
         $('.btn-cancelar').unbind().bind('click',function(){
             window.parent.blurStuff(0);
         });
-
         $('.save').unbind().bind('click',function(){
             $form = $('#form');
             $flag_txt_nacional = $('#flag_txt_nacional').val();
@@ -299,10 +288,7 @@
                 alert('De los coampos a solicitar solo debes de elejir uno !!!!!!');
             }
             return false;
-
         });
-
-
     });
 </script>
 @endsection

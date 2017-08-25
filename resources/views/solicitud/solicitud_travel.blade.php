@@ -605,11 +605,8 @@
                         </tr>
                       </tbody>
                     </table>
-	
 					</div>
         			</div>
-                    
-
          </div>  
         </div>
         </div>
@@ -717,7 +714,8 @@
             };
             $html ="";
             $.each($dataHorario,function(key,val){
-                $html +="<option value="+ key +">"+ val +"<option>";
+                console.log('----- ' + val + ' ------- ');
+                $html +="<option value="+ key +">"+ val +"</option>";
             });
             $('#hora_salida').html($html);
             $('#hora_final').html($html);

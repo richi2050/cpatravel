@@ -99,7 +99,6 @@
                <span class="path1"></span><span class="path2"></span>
            </span>
        </div>
-
         <div class="col-md-8">
             <table class="table">
                 <tr>
@@ -174,9 +173,7 @@
                     </td>
                 </tr>
             </table>
-
         </div>
-
     </div><! --/row -->
     <div class="row">
             <div class="col-md-12">
@@ -203,11 +200,9 @@
                 $('#flag_txt_nacional').val(1);
             }
         });
-
         $('.btn-cancelar').unbind().bind('click',function(){
             window.parent.blurStuff(0);
         });
-
         $('.save').unbind().bind('click',function(){
             $form = $('#form');
             $flag_txt_nacional = $('#flag_txt_nacional').val();
@@ -291,7 +286,6 @@
             }
             return false;
         });
-
     });
 </script>
 @endsection
