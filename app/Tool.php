@@ -21,7 +21,10 @@ class Tool extends Model
                     ];
         $onlyconsonants = str_replace($letras, "", $cadena);
         return $onlyconsonants;
-        dd($onlyconsonants);
+    }
 
+    public static function dateFormat($date){
+        $explodedate = explode('/',$date);
+        return $dateFormat = $explodedate[2].'-'.$explodedate[0].'-'.$explodedate[1];
     }
 }

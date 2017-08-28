@@ -184,7 +184,10 @@
 
             </div>
         </div>
+        {{ Form::open(['id' => 'form_request']) }}
         <div class="row">
+            <input type="text" name="dias" id="numero-dias" class="numero-dias-txt">
+            <input type="text" name="request_id" id="request_id">
             <div class="col-xs-12 col-sm-4 col-md-4 ">
                 <div class="col-md-2">
                     <div class="conten-img">
@@ -200,7 +203,6 @@
 
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
-
                 <div class="row" style="margin-top: 5px;">
                     <div class="col-md-3">
                         <label class="label-fechas">Fecha de Viaje</label>
@@ -212,7 +214,7 @@
                         </label>
                     </div>
                     <div class="col-md-2" style="text-align: left">
-                        <input type="text" class="form-fecha" id="datepicker_inicio">
+                        <input type="text" name="fecha_inicio" class="form-fecha" id="datepicker_inicio">
                     </div>
                     <div class="col-md-3" style="text-align: left">
                         <label class="label-fechas">
@@ -221,7 +223,7 @@
                         </label>
                     </div>
                     <div class="col-md-2" style="text-align: left">
-                        <input type="text" class="form-fecha" id="datepicker_fin">
+                        <input type="text" name="fecha_fin" class="form-fecha" id="datepicker_fin">
                     </div>
                 </div>
 
@@ -262,7 +264,7 @@
                         </label>
                     </div>
                     <div class="col-md-2">
-                        <input type="text" class="form-fecha" >
+                        <input type="text" class="form-fecha" name="destino_inicial">
                     </div>
                     <div class="col-md-3">
                         <label class="label-fechas">
@@ -271,7 +273,7 @@
                         </label>
                     </div>
                     <div class="col-md-2">
-                        <input type="text" class="form-fecha" >
+                        <input type="text" class="form-fecha" name="destino_final">
                     </div>
                 </div>
 
@@ -286,16 +288,16 @@
                 	
 
              
-                </div>
+                      </div>
                       <div class="row dias-txt">
                         días
-                        </div>
+                      </div>
+
                     </span>
                 </span>
                 
             </div>
         </div>
-
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 " >
                 <div class="pull-left">
@@ -337,6 +339,7 @@
                 </div>
             </div>
         </div>
+        {{ Form::close() }}
         <div class="row" style="margin-top: 20px;">
             <div class="col-md-12 col-xs-12">
                 <div class="row">
@@ -614,6 +617,7 @@
     </div>
     <script>
         $(document).ready( function(){
+
             $dataHorario = {
                 '00:00':'00:00',
                 '00:15':'00:15',
@@ -702,9 +706,9 @@
                 '21:00':'21:00',
                 '21:15':'21:15',
                 '21:30':'21:30',
-                '21:45':'21:45',
+
+                '22:15':'22:15',        '21:45':'21:45',
                 '22:00':'22:00',
-                '22:15':'22:15',
                 '22:30':'22:30',
                 '22:45':'22:45',
                 '23:00':'23:00',
@@ -732,6 +736,7 @@
                         $inicioSplit = $fecha_inicio.split('/');
                         $dias =parseInt($finSplit[1]) - parseInt($inicioSplit[1]);
                         $('.numero-dias').text($dias);
+                        $('.numero-dias-txt').val($dias);
                     }
                 }
             });
@@ -744,6 +749,7 @@
                         $inicioSplit = $fecha_inicio.split('/');
                         $dias = parseInt($finSplit[1]) - parseInt($inicioSplit[1]);
                         $('.numero-dias').text($dias);
+                        $('.numero-dias-txt').val($dias);
                     }
                 }
             });
@@ -856,6 +862,19 @@
             $val_hopedaje = $('#hospedaje_monto_hidden').val($monto_total_solicitado_nacional);
             $('#monto_hospedaje').html($monto_total_solicitado_nacional);
             $('#tr_hospedaje').removeClass('hidden');
+            $.ajax({
+                url:'{{ route('lodging_create') }}',
+                data: {
+                    form :$form,
+                    request_id : $('#request_id').val()
+                },
+                type:'GET',
+                success:function(data){
+                    console.log(data);
+                },error:function(data){
+                    alert('Algo ocurrio intente mas tarde');
+                }
+            });
             return false;
         }
 
@@ -932,7 +951,6 @@
 
 
         }
-
 
         function rentaAuto($form){
             $lable_id = $form.label_id;
@@ -1363,6 +1381,26 @@
             $('#monto_kilometros').html($monto_total_solicitado_nacional);
             return false;
         }
+
+        function saveRequest() {
+            $reques_id = $('#request_id').val();
+            if($reques_id == ''){
+                $.ajax({
+                    url : '{{ route('request_create') }}',
+                    data : $('#form_request').serialize(),
+                    type: 'GET',
+                    dataType:'json',
+                    success:function(data){
+                        console.log(data);
+                        $('#request_id').val(data.data.iden);
+                    },
+                    error:function(data){
+                        alert('Lo sentimos ocurrio un error intenta mas tarde');
+                    }
+                });
+            }
+        }
+
 
 
     </script>

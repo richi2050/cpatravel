@@ -274,6 +274,7 @@
                 }else{
                     var data = getFormData($form);
                     window.parent.alimentacion(data);
+                    window.parent.saveRequest();
                     window.parent.blurStuff(0);
                 }
             }else{

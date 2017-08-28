@@ -278,7 +278,8 @@
                     alert('El monto solicitada supera al autorizado por la empresa');
                 }else{
                     var data = getFormData($form);
-                    window.parent.alimentacion(data);
+                    window.parent.rentaAuto(data);
+                    window.parent.saveRequest();
                     window.parent.blurStuff(0);
                 }
             }else{

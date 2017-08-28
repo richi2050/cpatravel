@@ -42,7 +42,7 @@
     {{ Form::open(['id' => 'form']) }}
     <div class="row" style="margin-top: 10%">
         <input type="hidden" name="label_id" id="label_id" value="{{ $label->iden }}">
-        <input type="text" name="monto_company_policies_id" id="monto_company_policies_id" value="{{ $label->foreign_company_policies }}">
+        <input type="hidden" name="monto_company_policies_id" id="monto_company_policies_id" value="{{ $label->foreign_company_policies }}">
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
@@ -289,20 +289,18 @@
                     $flag = $flag + 1;
                     $valor = $extranjero_amex;
                 }
-
                 if($flag > 1){
                     $submit = 1;
                 }
             }
-
-
 
             if($submit == 0){
                 if(parseFloat($valor) > parseFloat($('#monto_company_policies_id').val())){
                     alert('El monto solicitada supera al autorizado por la empresa');
                 }else{
                     var data = getFormData($form);
-                    window.parent.alimentacion(data);
+                    window.parent.saveRequest();
+                    window.parent.hospedaje(data);
                     window.parent.blurStuff(0);
                 }
             }else{
