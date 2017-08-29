@@ -56,6 +56,7 @@ Route::group(['middleware' => ['auth.session']], function () {
 
     Route::get('request','RequestController@create')->name('request_create');
     Route::get('lodging/create','LodgingTagController@create')->name('lodging_create');
+    Route::get('food/create','FoodTagController@create')->name('food_create');
 });
 
 Route::get('prueba/view','PruebaController@pruebaView');

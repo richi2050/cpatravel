@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Request as Solicitude;
 use App\Tool;
 use Session;
+use Log;
 
 
 use Illuminate\Http\Request;
@@ -28,6 +29,7 @@ class RequestController extends Controller
                         'user_id'               =>  Session::get('user_id')
                     ]);
         $dataId = Solicitude::where('id',$dataRequest->iden)->first();
+        $request->session()->flash('request_id', $dataId->iden);
         return ['success' => true, 'data' => $dataId];
     }
 }

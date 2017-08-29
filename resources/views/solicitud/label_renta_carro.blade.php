@@ -60,32 +60,20 @@
                         <input type="text" name="numero_dias" id="numero_dias" class="txt-re-col form-control">
                     </td>
                     <td>
-                        Presupuesto renta por dia
-                    </td>
-                    <td>
-                        <input type="text" name="renta_por_dia" id="renta_por_dia" class="txt-re-col form-control" placeholder="$">
-                    </td>
-                    <td>
-                        Presupuesto gasolina
-                    </td>
-                    <td>
-                        <input type="text" name="presupuesto_gasolina" id="presupuesto_gasolina" class="txt-re-col form-control" placeholder="$">
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-                        Tipo de auto
-                    </td>
-                    <td>
-                        <input type="text" name="tipo_auto" id="tipo_auto" class="txt-re-col form-control">
-                    </td>
-                    <td>
                         Total presupuesto renta
                     </td>
                     <td>
                         <input type="text" name="presupuesto_renta" id="presupuesto_renta" class="txt-re-col form-control" placeholder="$">
                     </td>
+                </tr>
+                <tr>
+                    <td>
+                        Monto renta por dia
+                    </td>
+                    <td>
+                        <input type="text" name="renta_por_dia" id="renta_por_dia" class="txt-re-col form-control" placeholder="$">
+                    </td>
+
                     <td>
                         <a href="">icono de google</a>
                     </td>

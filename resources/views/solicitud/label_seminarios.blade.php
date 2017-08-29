@@ -62,10 +62,10 @@
                         <input type="text" name="nombre_evento" id="nombre_evento" class="txt-re-col form-control">
                     </td>
                     <td>
-                        Costo por evento
+                        Costo por evento autorizado
                     </td>
                     <td>
-                        <input type="text" name="costo_por_evento" id="costo_por_evento" class="txt-re-col form-control" placeholder="$">
+                        <input type="text" name="costo_por_evento" id="costo_por_evento" value="{{ $label->foreign_company_policies }}" class="txt-re-col form-control" placeholder="$">
                     </td>
 
                 </tr>

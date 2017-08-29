@@ -718,7 +718,6 @@
             };
             $html ="";
             $.each($dataHorario,function(key,val){
-                console.log('----- ' + val + ' ------- ');
                 $html +="<option value="+ key +">"+ val +"</option>";
             });
             $('#hora_salida').html($html);
@@ -795,6 +794,7 @@
             });
         });
         function  hospedaje($form) {
+            alert('entra a hospedaje');
             $lable_id = $form.label_id;
             $type_nacional= parseInt($form.type_nacional);
             $numero_noches = parseInt($form.numero_noches);
@@ -947,6 +947,19 @@
             $val_alimentacion = $('#alimento_monto_hidden').val($monto_total_solicitado_nacional);
             $('#monto_alimentacion').html($monto_total_solicitado_nacional);
             $('#tr_alimentacion').removeClass('hidden');
+            $.ajax({
+                url:'{{ route('food_create') }}',
+                data: {
+                    form :$form,
+                    request_id : $('#request_id').val()
+                },
+                type:'GET',
+                success:function(data){
+                    console.log(data);
+                },error:function(data){
+                    alert('Algo ocurrio intente mas tarde');
+                }
+            });
             return false;
 
 
@@ -1067,8 +1080,7 @@
                 $('#nacional_amex_soli').val($mon_amex_soli_to);
                 $monto_total_solicitado_nacional  = parseFloat((!$nacional_cheque ? 0 : $nacional_cheque)) + parseFloat((!$nacional_debito ? 0 : $nacional_debito)) + parseFloat((!$nacional_credito ? 0 : $nacional_credito)) + parseFloat((!$nacional_efectivo ? 0 : $nacional_efectivo)) + parseFloat((!$nacional_amex ? 0 : $nacional_amex));
                 $total_taxi = parseFloat($mon_cheque_soli_to) + parseFloat($mon_debito_soli_to) + parseFloat($mon_credito_soli_to) + parseFloat($mon_efectivo_soli_to) + parseFloat($mon_amex_soli_to);
-            }else
-            if($type_nacional == 1){
+            }else if($type_nacional == 1){
                 $('.tr_solicitados_monto_extranjero').removeClass('hidden');
                 $mon_cheque_soli = $('#extranjero_cheques_soli').val();
                 $mon_debito_soli = $('#extranjero_debito_soli').val();
@@ -1383,6 +1395,7 @@
         }
 
         function saveRequest() {
+            alert('entra rimero a solicitud');
             $reques_id = $('#request_id').val();
             if($reques_id == ''){
                 $.ajax({

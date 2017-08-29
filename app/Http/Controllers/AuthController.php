@@ -123,6 +123,7 @@ class AuthController extends Controller
         Session::forget('name');
         Session::forget('img');
         Session::forget('lastName');
+        Session::forget('request_id');
         return redirect('/');
     }
 

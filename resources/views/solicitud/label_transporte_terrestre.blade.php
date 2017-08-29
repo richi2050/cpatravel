@@ -184,6 +184,10 @@
 </div>
 <script>
     $(document).ready(function(){
+        $fechaInicio = window.parent.$('#datepicker_inicio').val();
+        $('#fecha_salida').val($fechaInicio);
+        $fechaFin = window.parent.$('#datepicker_fin').val();
+        $('#fecha_llegada').val($fechaFin);
         $('#select-type').unbind().bind('click',function (e) {
             $val = $(this).val();
             if($val == 1){

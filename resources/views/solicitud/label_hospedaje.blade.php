@@ -300,8 +300,8 @@
                 }else{
                     var data = getFormData($form);
                     window.parent.saveRequest();
-                    window.parent.hospedaje(data);
                     window.parent.blurStuff(0);
+                    window.parent.hospedaje(data);
                 }
             }else{
                 alert('De los coampos a solicitar solo debes de elejir uno !!!!!!');

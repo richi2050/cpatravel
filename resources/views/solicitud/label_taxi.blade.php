@@ -61,10 +61,10 @@
                         <input type="text" name="lugar_origen" id="lugar_origen" class="txt-re-col form-control">
                     </td>
                     <td>
-                        Fecha
+                        Presupuesto
                     </td>
                     <td>
-                        <input type="text" name="fecha" id="fecha" class="txt-re-col form-control" placeholder="$">
+                        <input type="text" name="presupuesto" id="presupuesto" class="txt-re-col form-control" placeholder="$" value="{{ $label->foreign_company_policies }}">
                     </td>
 
                 </tr>
@@ -75,12 +75,7 @@
                     <td>
                         <input type="text" name="lugar_destino" id="lugar_destino" class="txt-re-col form-control">
                     </td>
-                    <td>
-                        Presupuesto
-                    </td>
-                    <td>
-                        <input type="text" name="presupuesto" id="presupuesto" class="txt-re-col form-control" placeholder="$">
-                    </td>
+
                     <td>
                         Icono de google
                     </td>

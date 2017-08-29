@@ -59,7 +59,7 @@
                         Numero de comidas
                     </td>
                     <td>
-                        <input type="text" name="numero_comidas" id="numero_comidas" class="txt-re-col form-control">
+                        <input type="text" name="numero_comidas" id="numero_comidas"  class="txt-re-col form-control">
                     </td>
                     <td>
                         Total presupuesto
@@ -74,13 +74,7 @@
                         Presupuesto diario
                     </td>
                     <td>
-                        <input type="text" name="presupuesto_diario" id="presupuesto_diario" class="txt-re-col form-control">
-                    </td>
-                    <td>
-                        Presupuesto por comida
-                    </td>
-                    <td>
-                        <input type="text" name="presupuesto_por_comida" id="presupuesto_por_comida" class="txt-re-col form-control" placeholder="$">
+                        <input type="text" name="presupuesto_diario" id="presupuesto_diario" value="{{ $label->foreign_company_policies }}" class="txt-re-col form-control">
                     </td>
                 </tr>
             </table>
@@ -178,6 +172,11 @@
 </div>
 <script>
     $(document).ready(function(){
+        $numerocomidas = parseInt(window.parent.$('#numero-dias').val()) * parseInt(3);
+        $('#numero_comidas').val($numerocomidas);
+        $multi = $numerocomidas * parseFloat({{ $label->foreign_company_policies }});
+        $('#total_prespuesto').val($multi.toFixed(2));
+
         $('#select-type').unbind().bind('click',function (e) {
             $val = $(this).val();
             if($val == 1){
@@ -269,7 +268,7 @@
 
 
             if($submit == 0){
-                if(parseFloat($valor) > parseFloat($('#monto_company_policies_id').val())){
+                if(parseFloat($valor) > parseFloat($('#total_prespuesto').val())){
                     alert('El monto solicitada supera al autorizado por la empresa');
                 }else{
                     var data = getFormData($form);
