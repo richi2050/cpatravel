@@ -57,6 +57,13 @@ Route::group(['middleware' => ['auth.session']], function () {
     Route::get('request','RequestController@create')->name('request_create');
     Route::get('lodging/create','LodgingTagController@create')->name('lodging_create');
     Route::get('food/create','FoodTagController@create')->name('food_create');
+    Route::get('mileage/create','MileageTagController@create')->name('mileage_create');
+    Route::get('air/create','AirTagController@create')->name('air_create');
+    Route::get('land/create','LandTagController@create')->name('land_create');
+    Route::get('rentcar/create','RentCarTagController@create')->name('rent_cart_create');
+    Route::get('seminar/create','SeminarTagController@create')->name('seminar_create');
+    Route::get('taxi/create','TaxiTagController@create')->name('taxi_create');
+    Route::get('pending','RequestController@pending')->name('pending');
 });
 
 Route::get('prueba/view','PruebaController@pruebaView');

@@ -62,7 +62,7 @@
                         <input type="text" name="nombre_evento" id="nombre_evento" class="txt-re-col form-control">
                     </td>
                     <td>
-                        Costo por evento autorizado
+                        Monto autorizado
                     </td>
                     <td>
                         <input type="text" name="costo_por_evento" id="costo_por_evento" value="{{ $label->foreign_company_policies }}" class="txt-re-col form-control" placeholder="$">
@@ -170,7 +170,7 @@
     </div><! --/row -->
     <div class="row">
             <div class="col-md-12">
-                <input type='button'  onclick="blurStuff(0)"  value='Cancelar' class='save btn btn-sm btn-cancelar pull-right'>
+                <input type='button'  onclick="blurStuff(0)"  value='Cancelar' class='btn btn-sm btn-cancelar pull-right'>
                 <input type='button'  value='Guardar' class='save btn btn-sm btn-save pull-right'>
             </div>
     </div>
@@ -178,6 +178,24 @@
 </div>
 <script>
     $(document).ready(function(){
+        $('#numero_de_eventos').unbind().bind('blur',function(){
+            $num_eventos = $(this).val();
+            $monto = $('#costo_por_evento').val();
+            if($monto != ''){
+                $total = parseInt($num_eventos) * parseFloat($('#costo_por_evento').val())
+                $('#total_costo').val($total);
+            }
+        });
+
+        $('#costo_por_evento').unbind().bind('blur',function(){
+            $num_eventos = $('#numero_de_eventos').val();
+            $monto = $(this).val();
+            if($monto != ''){
+                $total = parseInt($num_eventos) * parseFloat($('#costo_por_evento').val())
+                $('#total_costo').val($total);
+            }
+        });
+
         $('#select-type').unbind().bind('click',function (e) {
             $val = $(this).val();
             if($val == 1){
@@ -273,8 +291,8 @@
                     alert('El monto solicitada supera al autorizado por la empresa');
                 }else{
                     var data = getFormData($form);
-                    window.parent.seminarios(data);
                     window.parent.saveRequest();
+                    window.parent.seminarios(data);
                     window.parent.blurStuff(0);
                 }
             }else{
@@ -282,6 +300,15 @@
             }
             return false;
         });
+        total();
     });
+    function total (){
+        $num_eventos = $('#numero_de_eventos').val();
+        $monto = $('#costo_por_evento').val();
+        if($num_eventos != ''){
+            $total = parseInt($num_eventos) * parseFloat($('#costo_por_evento').val())
+            $('#total_costo').val($total);
+        }
+    }
 </script>
 @endsection

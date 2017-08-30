@@ -42,7 +42,7 @@
     {{ Form::open(['id' => 'form']) }}
     <div class="row" style="margin-top: 10%">
         <input type="hidden" name="label_id" id="label_id" value="{{ $label->iden }}">
-        <input type="text" name="monto_company_policies_id" id="monto_company_policies_id" value="{{ $label->foreign_company_policies }}">
+        <input type="hidden" name="monto_company_policies_id" id="monto_company_policies_id" value="{{ $label->foreign_company_policies }}">
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
@@ -61,32 +61,20 @@
                         <input type="text" name="numero_dias" id="numero_dias" class="txt-re-col form-control">
                     </td>
                     <td>
-                        Presupuesto renta por día
-                    </td>
-                    <td>
-                        <input type="text" name="renta_por_dia" id="renta_por_dia" class="txt-re-col form-control" placeholder="$">
-                    </td>
-                    <td>
-                        presupuesto gasolina
-                    </td>
-                    <td>
-                        <input type="text" name="presupuesto_gasolina" id="presupuesto_gasolina" class="txt-re-col form-control" placeholder="$">
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-                        Tipo de auto
-                    </td>
-                    <td>
-                        <input type="text" name="tipo_auto" id="tipo_auto" class="txt-re-col form-control">
-                    </td>
-                    <td>
                         Total presupuesto renta
                     </td>
                     <td>
                         <input type="text" name="presupuesto_renta" id="presupuesto_renta" class="txt-re-col form-control" placeholder="$">
                     </td>
+                </tr>
+                <tr>
+                    <td>
+                        Monto autorizado por día
+                    </td>
+                    <td>
+                        <input type="text" name="renta_por_dia" id="renta_por_dia" class="txt-re-col form-control" placeholder="$" value="{{ $label->foreign_company_policies }}">
+                    </td>
+
                     <td>
                         Icono de google
                     </td>
@@ -178,7 +166,7 @@
     </div><! --/row -->
     <div class="row">
             <div class="col-md-12">
-                <input type='button'  onclick="blurStuff(0)"  value='Cancelar' class='save btn btn-sm btn-cancelar pull-right'>
+                <input type='button'  onclick="blurStuff(0)"  value='Cancelar' class=' btn btn-sm btn-cancelar pull-right'>
                 <input type='button'  value='Guardar' class='save btn btn-sm btn-save pull-right'>
             </div>
     </div>
@@ -186,6 +174,26 @@
 </div>
 <script>
     $(document).ready(function(){
+        $('#numero_dias').val(parseInt(window.parent.$('#numero-dias').val()));
+        $('#numero_dias').unbind().bind('blur',function(){
+            $valor_dias = $(this).val();
+            $montoautorizado = $('#renta_por_dia').val();
+            if($montoautorizado != ''){
+                $total = parseInt($valor_dias) * parseFloat($montoautorizado);
+                $('#presupuesto_renta').val($total);
+            }
+        });
+
+        $('#renta_por_dia').unbind().bind('blur',function(){
+            $valor_dias = $('#numero_dias').val();
+            $montoautorizado = $(this).val();
+            if($valor_dias != ''){
+                $total = parseInt($valor_dias) * parseFloat($montoautorizado);
+                $('#presupuesto_renta').val($total);
+            }
+
+        });
+
         $('#select-type').unbind().bind('click',function (e) {
             $val = $(this).val();
             if($val == 1){
@@ -281,8 +289,8 @@
                     alert('El monto solicitada supera al autorizado por la empresa');
                 }else{
                     var data = getFormData($form);
-                    window.parent.kilometraje(data);
                     window.parent.saveRequest();
+                    window.parent.kilometraje(data);
                     window.parent.blurStuff(0);
                 }
             }else{
@@ -290,6 +298,16 @@
             }
             return false;
         });
+        total();
     });
+
+    function total(){
+        $valor_dias = $('#numero_dias').val();
+        $montoautorizado = $('#renta_por_dia').val();
+        if($montoautorizado != ''){
+            $total = parseInt($valor_dias) * parseFloat($montoautorizado);
+            $('#presupuesto_renta').val($total);
+        }
+    }
 </script>
 @endsection

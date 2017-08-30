@@ -10,6 +10,7 @@ use Log;
 class LodgingTagController extends Controller
 {
     public function create(Request $request){
+        
         if(is_null($request->request_id)){
             $RequestId = Session::get('request_id');
         }else{
@@ -18,7 +19,7 @@ class LodgingTagController extends Controller
         $idenCom= sha1($RequestId.' '.date('h:i:s'));
         if($request->form['type_nacional'] == 0){
             LodgingTag::create([
-                'request_id'        => Session::get('request_id'),
+                'request_id'        => $RequestId,
                 'iden'              => $idenCom,
                 'type_nationality'  => $request->form['type_nacional'],
                 'number_nights'     => $request->form['numero_noches'],
@@ -34,7 +35,7 @@ class LodgingTagController extends Controller
 
         }else if($request->form['type_nacional'] == 1){
             LodgingTag::create([
-                'request_id'        => Session::get('request_id'),
+                'request_id'        => $RequestId,
                 'iden'              => $idenCom,
                 'type_nationality'  => $request->form['type_nacional'],
                 'number_nights'     => $request->form['numero_noches'],

@@ -186,8 +186,8 @@
         </div>
         {{ Form::open(['id' => 'form_request']) }}
         <div class="row">
-            <input type="text" name="dias" id="numero-dias" class="numero-dias-txt">
-            <input type="text" name="request_id" id="request_id">
+            <input type="hidden" name="dias" id="numero-dias" class="numero-dias-txt">
+            <input type="hidden" name="request_id" id="request_id">
             <div class="col-xs-12 col-sm-4 col-md-4 ">
                 <div class="col-md-2">
                     <div class="conten-img">
@@ -793,15 +793,14 @@
                 }
             });
         });
-        function  hospedaje($form) {
-            alert('entra a hospedaje');
+
+        function  hospedaje($form,$id) {
             $lable_id = $form.label_id;
             $type_nacional= parseInt($form.type_nacional);
             $numero_noches = parseInt($form.numero_noches);
             $costo_unitario = parseFloat($form.costo_unitario);
             $numero_cuartos = parseInt($form.numero_cuartos);
             $costo_total = parseFloat($form.costo_total);
-
             $flag_txt_nacional = parseFloat($form.flag_txt_nacional);
             $nacional_cheque = parseFloat($form.nacional_cheque);
             $nacional_debito = parseFloat($form.nacional_debito);
@@ -866,7 +865,7 @@
                 url:'{{ route('lodging_create') }}',
                 data: {
                     form :$form,
-                    request_id : $('#request_id').val()
+                    request_id : $id
                 },
                 type:'GET',
                 success:function(data){
@@ -879,6 +878,7 @@
         }
 
         function alimentacion($form){
+
             $lable_id = $form.label_id;
             $type_nacional= parseInt($form.type_nacional);
             $numero_comidas = parseInt($form.numero_comidas);
@@ -1035,6 +1035,19 @@
             $('#tr_renta_auto').removeClass('hidden');
             $val_renta_auto = $('#renta_autos_monto_hidden').val($monto_total_solicitado_nacional);
             $('#monto_renta_auto').html($monto_total_solicitado_nacional);
+            $.ajax({
+                url:'{{ route('rent_cart_create') }}',
+                data: {
+                    form :$form,
+                    request_id : $('#request_id').val()
+                },
+                type:'GET',
+                success:function(data){
+                    console.log(data);
+                },error:function(data){
+                    alert('Algo ocurrio intente mas tarde');
+                }
+            });
             return false;
         }
 
@@ -1105,6 +1118,19 @@
             $('#tr_taxi').removeClass('hidden');
             $val_taxi = $('#transporte_monto_hidden').val($monto_total_solicitado_nacional);
             $('#monto_taxi').html($monto_total_solicitado_nacional);
+            $.ajax({
+                url:'{{ route('taxi_create') }}',
+                data: {
+                    form :$form,
+                    request_id : $('#request_id').val()
+                },
+                type:'GET',
+                success:function(data){
+                    console.log(data);
+                },error:function(data){
+                    alert('Algo ocurrio intente mas tarde');
+                }
+            });
             return false;
         }
 
@@ -1175,6 +1201,19 @@
             $('#tr_seminario').removeClass('hidden');
             $val_seminarios =$('#seminarios_monto_hidden').val($monto_total_solicitado_nacional);
             $('#monto_seminario').html($monto_total_solicitado_nacional);
+            $.ajax({
+                url:'{{ route('seminar_create') }}',
+                data: {
+                    form :$form,
+                    request_id : $('#request_id').val()
+                },
+                type:'GET',
+                success:function(data){
+                    console.log(data);
+                },error:function(data){
+                    alert('Algo ocurrio intente mas tarde');
+                }
+            });
             return false;
         }
 
@@ -1246,6 +1285,19 @@
             $('#tr_aereo').removeClass('hidden');
             $val_transporte_aereo = $('#transporte_aereo_monto_hidden').val($monto_total_solicitado_nacional);
             $('#monto_aereo').html($monto_total_solicitado_nacional);
+            $.ajax({
+                url:'{{ route('air_create') }}',
+                data: {
+                    form :$form,
+                    request_id : $('#request_id').val()
+                },
+                type:'GET',
+                success:function(data){
+                    console.log(data);
+                },error:function(data){
+                    alert('Algo ocurrio intente mas tarde');
+                }
+            });
             return false;
         }
 
@@ -1318,6 +1370,19 @@
             $('#tr_terrestre').removeClass('hidden');
             $val_transporte_terrestre = $('#transporte_terrestre_monto_hidden').val($monto_total_solicitado_nacional);
             $('#monto_terrestre').html($monto_total_solicitado_nacional);
+            $.ajax({
+                url:'{{ route('land_create') }}',
+                data: {
+                    form :$form,
+                    request_id : $('#request_id').val()
+                },
+                type:'GET',
+                success:function(data){
+                    console.log(data);
+                },error:function(data){
+                    alert('Algo ocurrio intente mas tarde');
+                }
+            });
             return false;
 
         }
@@ -1391,11 +1456,23 @@
             $('#tr_kilometros').removeClass('hidden');
             $val_kilometraje = $('#kilometraje_monto_hidden').val($monto_total_solicitado_nacional);
             $('#monto_kilometros').html($monto_total_solicitado_nacional);
+            $.ajax({
+                url:'{{ route('mileage_create') }}',
+                data: {
+                    form :$form,
+                    request_id : $('#request_id').val()
+                },
+                type:'GET',
+                success:function(data){
+                    console.log(data);
+                },error:function(data){
+                    alert('Algo ocurrio intente mas tarde');
+                }
+            });
             return false;
         }
 
         function saveRequest() {
-            alert('entra rimero a solicitud');
             $reques_id = $('#request_id').val();
             if($reques_id == ''){
                 $.ajax({
@@ -1404,8 +1481,8 @@
                     type: 'GET',
                     dataType:'json',
                     success:function(data){
-                        console.log(data);
                         $('#request_id').val(data.data.iden);
+                        return data;
                     },
                     error:function(data){
                         alert('Lo sentimos ocurrio un error intenta mas tarde');

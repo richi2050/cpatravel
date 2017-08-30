@@ -50,7 +50,9 @@
             <div class="about-item scrollpoint sp-effect1">
 
                 <p>
-                    <img src="{{ asset('images/menu/autorizacion_pendientes.png') }}" alt="">
+                    <a href="{{ route('pending') }}">
+                        <img src="{{ asset('images/menu/autorizacion_pendientes.png') }}" alt="">
+                    </a>
                 </p>
                 <h3 class="font_menu">Autorizaciones pendientes</h3>
             </div><! --/about-item -->

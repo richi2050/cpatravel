@@ -169,7 +169,7 @@
     </div><! --/row -->
     <div class="row">
             <div class="col-md-12">
-                <input type='button'  onclick="blurStuff(0)"  value='Cancelar' class='save btn btn-sm btn-cancelar pull-right'>
+                <input type='button'  onclick="blurStuff(0)"  value='Cancelar' class=' btn btn-sm btn-cancelar pull-right'>
                 <input type='button'  value='Guardar' class='save btn btn-sm btn-save pull-right'>
             </div>
     </div>
@@ -298,10 +298,28 @@
                 if(parseFloat($valor) > parseFloat($('#monto_company_policies_id').val())){
                     alert('El monto solicitada supera al autorizado por la empresa');
                 }else{
-                    var data = getFormData($form);
-                    window.parent.saveRequest();
-                    window.parent.blurStuff(0);
-                    window.parent.hospedaje(data);
+                    var datas = getFormData($form);
+                    $reques_id = window.parent.$('#request_id').val();
+                    if($reques_id == ''){
+                        $.ajax({
+                            url : '{{ route('request_create') }}',
+                            data : window.parent.$('#form_request').serialize(),
+                            type: 'GET',
+                            dataType:'json',
+                            success:function(data){
+                                $('#request_id').val(data.data.iden);
+                                window.parent.hospedaje(datas,data.data.iden);
+                                window.parent.blurStuff(0);
+                                return data;
+                            },
+                            error:function(data){
+                                alert('Lo sentimos ocurrio un error intenta mas tarde');
+                            }
+                        });
+                    }
+                    //console.log(window.parent.saveRequest());
+
+
                 }
             }else{
                 alert('De los coampos a solicitar solo debes de elejir uno !!!!!!');

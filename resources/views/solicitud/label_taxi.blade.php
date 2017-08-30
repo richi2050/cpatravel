@@ -61,7 +61,7 @@
                         <input type="text" name="lugar_origen" id="lugar_origen" class="txt-re-col form-control">
                     </td>
                     <td>
-                        Presupuesto
+                        Monto autorizado
                     </td>
                     <td>
                         <input type="text" name="presupuesto" id="presupuesto" class="txt-re-col form-control" placeholder="$" value="{{ $label->foreign_company_policies }}">
@@ -167,7 +167,7 @@
     </div><! --/row -->
     <div class="row">
             <div class="col-md-12">
-                <input type='button'  onclick="blurStuff(0)"  value='Cancelar' class='save btn btn-sm btn-cancelar pull-right'>
+                <input type='button'  onclick="blurStuff(0)"  value='Cancelar' class='btn btn-sm btn-cancelar pull-right'>
                 <input type='button'  value='Guardar' class='save btn btn-sm btn-save pull-right'>
             </div>
     </div>
@@ -268,8 +268,8 @@
                     alert('El monto solicitada supera al autorizado por la empresa');
                 }else{
                     var data = getFormData($form);
-                    window.parent.taxi(data);
                     window.parent.saveRequest();
+                    window.parent.taxi(data);
                     window.parent.blurStuff(0);
                 }
             }else{

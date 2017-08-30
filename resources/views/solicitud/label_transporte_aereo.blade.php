@@ -43,7 +43,7 @@
     {{ Form::open(['id' => 'form']) }}
     <div class="row" style="margin-top: 10%">
         <input type="hidden" name="label_id" id="label_id" value="{{ $label->iden }}">
-        <input type="text" name="monto_company_policies_id" id="monto_company_policies_id" value="{{ $label->foreign_company_policies }}">
+        <input type="hidden" name="monto_company_policies_id" id="monto_company_policies_id" value="{{ $label->foreign_company_policies }}">
         <div class="col-md-12">
             <table class="table">
                 <tr>
@@ -66,10 +66,10 @@
                         <input type="text" name="fecha_salida" id="fecha_salida" class="txt-re-col form-control" placeholder="$">
                     </td>
                     <td>
-                        Presupuesto
+                        Monto autorizado
                     </td>
                     <td>
-                        <input type="text" name="presupuesto" id="presupuesto" class="txt-re-col form-control" placeholder="$">
+                        <input type="text" name="presupuesto" id="presupuesto" class="txt-re-col form-control" placeholder="$"  value="{{ $label->foreign_company_policies }}">
                     </td>
 
                 </tr>
@@ -177,7 +177,7 @@
     </div><! --/row -->
     <div class="row">
             <div class="col-md-12">
-                <input type='button'  onclick="blurStuff(0)"  value='Cancelar' class='save btn btn-sm btn-cancelar pull-right'>
+                <input type='button'  onclick="blurStuff(0)"  value='Cancelar' class='btn btn-sm btn-cancelar pull-right'>
                 <input type='button'  value='Guardar' class='save btn btn-sm btn-save pull-right'>
             </div>
     </div>
@@ -282,8 +282,8 @@
                     alert('El monto solicitada supera al autorizado por la empresa');
                 }else{
                     var data = getFormData($form);
-                    window.parent.transporteAereo(data);
                     window.parent.saveRequest();
+                    window.parent.transporteAereo(data);
                     window.parent.blurStuff(0);
                 }
             }else{

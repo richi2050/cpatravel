@@ -32,4 +32,8 @@ class RequestController extends Controller
         $request->session()->flash('request_id', $dataId->iden);
         return ['success' => true, 'data' => $dataId];
     }
+
+    public function pending(){
+        return view('authorizations.pending');
+    }
 }

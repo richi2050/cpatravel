@@ -42,7 +42,7 @@
     {{ Form::open(['id' => 'form']) }}
     <div class="row" style="margin-top: 10%">
         <input type="hidden" name="label_id" id="label_id" value="{{ $label->iden }}">
-        <input type="text" name="monto_company_policies_id" id="monto_company_policies_id" value="{{ $label->foreign_company_policies }}">
+        <input type="hidden" name="monto_company_policies_id" id="monto_company_policies_id" value="{{ $label->foreign_company_policies }}">
         <div class="col-md-12">
             <table class="table">
                 <tr>
@@ -68,10 +68,10 @@
                 </tr>
                 <tr>
                     <td>
-                        Monto renta por dia
+                        Monto autorizado por dia
                     </td>
                     <td>
-                        <input type="text" name="renta_por_dia" id="renta_por_dia" class="txt-re-col form-control" placeholder="$">
+                        <input type="text" name="renta_por_dia" id="renta_por_dia" class="txt-re-col form-control" placeholder="$" value="{{ $label->foreign_company_policies }}">
                     </td>
 
                     <td>
@@ -165,7 +165,7 @@
     </div><! --/row -->
     <div class="row">
             <div class="col-md-12">
-                <input type='button'  onclick="blurStuff(0)"  value='Cancelar' class='save btn btn-sm btn-cancelar pull-right'>
+                <input type='button'  onclick="blurStuff(0)"  value='Cancelar' class='btn btn-sm btn-cancelar pull-right'>
                 <input type='button'  value='Guardar' class='save btn btn-sm btn-save pull-right'>
             </div>
     </div>
@@ -173,6 +173,26 @@
 </div>
 <script>
     $(document).ready(function(){
+        $numero_dias = parseInt(window.parent.$('#numero-dias').val());
+        $('#numero_dias').val($numero_dias);
+        $('#numero_dias').unbind().bind('click',function(){
+            $numero_dias = $(this).val();
+            $monto = $('#renta_por_dia').val();
+            if($monto != ''){
+                $total = parseInt($numero_dias) * parseFloat($monto);
+                $('#presupuesto_renta').val($total);
+            }
+        });
+
+        $('#renta_por_dia').unbind().bind('blur',function(){
+            $numero_dias = $('#numero_dias').val();
+            $monto = $(this).val();
+            if($monto != ''){
+                $total = parseInt($numero_dias) * parseFloat($monto);
+                $('#presupuesto_renta').val($total);
+            }
+        });
+
         $('#select-type').unbind().bind('click',function (e) {
             $val = $(this).val();
             if($val == 1){
@@ -266,8 +286,8 @@
                     alert('El monto solicitada supera al autorizado por la empresa');
                 }else{
                     var data = getFormData($form);
-                    window.parent.rentaAuto(data);
                     window.parent.saveRequest();
+                    window.parent.rentaAuto(data);
                     window.parent.blurStuff(0);
                 }
             }else{
@@ -275,6 +295,13 @@
             }
             return false;
         });
+        total();
     });
+    function total(){
+        $numero_dias = $('#numero_dias').val();
+        $monto = $('#renta_por_dia').val();
+            $total = parseInt($numero_dias) * parseFloat($monto);
+            $('#presupuesto_renta').val($total);
+    }
 </script>
 @endsection

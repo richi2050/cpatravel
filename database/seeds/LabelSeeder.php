@@ -20,10 +20,10 @@ class LabelSeeder extends Seeder
             'iden'                                  => sha1('Alimentación'),
             'name'                                  => 'Alimentación',
             'description'                           => 'Etiqueta descripcion Alimentación',
-            'national_maximum_deductible_amount'    =>  100.00,
-            'foreign_maximum_deductible_amount'     =>  100.00,
-            'national_company_policies'             =>  90.00,
-            'foreign_company_policies'              =>  90.99,
+            'national_maximum_deductible_amount'    =>  750.00,
+            'foreign_maximum_deductible_amount'     =>  1500.00,
+            'national_company_policies'             =>  500.00,
+            'foreign_company_policies'              =>  500.99,
             'business_id'                           =>  1,
             'user_id'                               =>  "af342f96-9425-44c2-bdde-78b9d00b131e"
         ]);
@@ -32,10 +32,10 @@ class LabelSeeder extends Seeder
             'iden'                                  => sha1('Hospedaje'),
             'name'                                  => 'Hospedaje',
             'description'                           => 'Etiqueta descripcion Hospedaje',
-            'national_maximum_deductible_amount'    =>  19.00,
-            'foreign_maximum_deductible_amount'     =>  10.00,
-            'national_company_policies'             =>  9.00,
-            'foreign_company_policies'              =>  9.99,
+            'national_maximum_deductible_amount'    =>  00.00,
+            'foreign_maximum_deductible_amount'     =>  3850.00,
+            'national_company_policies'             =>  500.00,
+            'foreign_company_policies'              =>  500.99,
             'business_id'                           =>  1,
             'user_id'                               =>  "af342f96-9425-44c2-bdde-78b9d00b131e"
         ]);
@@ -44,10 +44,10 @@ class LabelSeeder extends Seeder
             'iden'                                  => sha1('Transporte'),
             'name'                                  => 'Transporte',
             'description'                           => 'Etiqueta descripcion Transporte',
-            'national_maximum_deductible_amount'    =>  100.00,
-            'foreign_maximum_deductible_amount'     =>  100.00,
-            'national_company_policies'             =>  90.00,
-            'foreign_company_policies'              =>  90.99,
+            'national_maximum_deductible_amount'    =>  00.00,
+            'foreign_maximum_deductible_amount'     =>  00.00,
+            'national_company_policies'             =>  500.00,
+            'foreign_company_policies'              =>  500.99,
             'business_id'                           =>  1,
             'user_id'                               =>  "af342f96-9425-44c2-bdde-78b9d00b131e"
         ]);
@@ -56,10 +56,10 @@ class LabelSeeder extends Seeder
             'iden'                                  => sha1('Renta de Autos'),
             'name'                                  => 'Renta de Autos',
             'description'                           => 'Etiqueta descripcion Renta de Autos',
-            'national_maximum_deductible_amount'    =>  100.00,
-            'foreign_maximum_deductible_amount'     =>  100.00,
-            'national_company_policies'             =>  90.00,
-            'foreign_company_policies'              =>  90.99,
+            'national_maximum_deductible_amount'    =>  850.00,
+            'foreign_maximum_deductible_amount'     =>  850.00,
+            'national_company_policies'             =>  500.00,
+            'foreign_company_policies'              =>  500.99,
             'business_id'                           =>  1,
             'user_id'                               =>  "af342f96-9425-44c2-bdde-78b9d00b131e"
         ]);
@@ -68,10 +68,10 @@ class LabelSeeder extends Seeder
             'iden'                                  => sha1('Seminarios o Convenciones'),
             'name'                                  => 'Seminarios o Convenciones',
             'description'                           => 'Etiqueta descripcion Seminarios o Convenciones',
-            'national_maximum_deductible_amount'    =>  300.00,
-            'foreign_maximum_deductible_amount'     =>  19.00,
-            'national_company_policies'             =>  67.00,
-            'foreign_company_policies'              =>  90.99,
+            'national_maximum_deductible_amount'    =>  750.00,
+            'foreign_maximum_deductible_amount'     =>  1500.00,
+            'national_company_policies'             =>  500.00,
+            'foreign_company_policies'              =>  600.99,
             'business_id'                           =>  1,
             'user_id'                               =>  "af342f96-9425-44c2-bdde-78b9d00b131e"
         ]);
@@ -80,10 +80,10 @@ class LabelSeeder extends Seeder
             'iden'                                  => sha1('Pago por kilometraje'),
             'name'                                  => 'Pago por kilometraje',
             'description'                           => 'Etiqueta descripcion Pago por kilometraje',
-            'national_maximum_deductible_amount'    =>  100.00,
-            'foreign_maximum_deductible_amount'     =>  13.00,
-            'national_company_policies'             =>  78.00,
-            'foreign_company_policies'              =>  90.99,
+            'national_maximum_deductible_amount'    =>  00.00,
+            'foreign_maximum_deductible_amount'     =>  00.00,
+            'national_company_policies'             =>  00.00,
+            'foreign_company_policies'              =>  00.99,
             'business_id'                           =>  1,
             'user_id'                               =>  "af342f96-9425-44c2-bdde-78b9d00b131e"
         ]);
