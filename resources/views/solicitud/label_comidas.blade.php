@@ -271,10 +271,25 @@
                 if(parseFloat($valor) > parseFloat($('#total_prespuesto').val())){
                     alert('El monto solicitada supera al autorizado por la empresa');
                 }else{
-                    var data = getFormData($form);
-                    window.parent.saveRequest();
-                    window.parent.alimentacion(data);
-                    window.parent.blurStuff(0);
+                    var datas = getFormData($form);
+                    $reques_id = window.parent.$('#request_id').val();
+                    if($reques_id == ''){
+                        $.ajax({
+                            url : '{{ route('request_create') }}',
+                            data : window.parent.$('#form_request').serialize(),
+                            type: 'GET',
+                            dataType:'json',
+                            success:function(data){
+                                $('#request_id').val(data.data.iden);
+                                window.parent.alimentacion(datas,data.data.iden);
+                                window.parent.blurStuff(0);
+                                return data;
+                            },
+                            error:function(data){
+                                alert('Lo sentimos ocurrio un error intenta mas tarde');
+                            }
+                        });
+                    }
                 }
             }else{
                 alert('De los coampos a solicitar solo debes de elejir uno !!!!!!');

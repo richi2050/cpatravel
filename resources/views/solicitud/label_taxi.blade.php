@@ -267,10 +267,21 @@
                 if(parseFloat($valor) > parseFloat($('#monto_company_policies_id').val())){
                     alert('El monto solicitada supera al autorizado por la empresa');
                 }else{
-                    var data = getFormData($form);
-                    window.parent.saveRequest();
-                    window.parent.taxi(data);
-                    window.parent.blurStuff(0);
+                    $.ajax({
+                        url : '{{ route('request_create') }}',
+                        data : window.parent.$('#form_request').serialize(),
+                        type: 'GET',
+                        dataType:'json',
+                        success:function(data){
+                            $('#request_id').val(data.data.iden);
+                            window.parent.taxi(datas,data.data.iden);
+                            window.parent.blurStuff(0);
+                            return data;
+                        },
+                        error:function(data){
+                            alert('Lo sentimos ocurrio un error intenta mas tarde');
+                        }
+                    });
                 }
             }else{
                 alert('De los coampos a solicitar solo debes de elejir uno !!!!!!');

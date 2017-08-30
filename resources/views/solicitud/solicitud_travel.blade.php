@@ -877,7 +877,7 @@
             return false;
         }
 
-        function alimentacion($form){
+        function alimentacion($form,$id){
 
             $lable_id = $form.label_id;
             $type_nacional= parseInt($form.type_nacional);
@@ -951,7 +951,7 @@
                 url:'{{ route('food_create') }}',
                 data: {
                     form :$form,
-                    request_id : $('#request_id').val()
+                    request_id : $id
                 },
                 type:'GET',
                 success:function(data){
@@ -965,7 +965,7 @@
 
         }
 
-        function rentaAuto($form){
+        function rentaAuto($form,$id){
             $lable_id = $form.label_id;
             $type_nacional= parseInt($form.type_nacional);
 
@@ -1039,7 +1039,7 @@
                 url:'{{ route('rent_cart_create') }}',
                 data: {
                     form :$form,
-                    request_id : $('#request_id').val()
+                    request_id : $id
                 },
                 type:'GET',
                 success:function(data){
@@ -1051,7 +1051,7 @@
             return false;
         }
 
-        function taxi($form){
+        function taxi($form,$id){
             $lable_id = $form.label_id;
             $type_nacional= parseInt($form.type_nacional);
 
@@ -1122,7 +1122,7 @@
                 url:'{{ route('taxi_create') }}',
                 data: {
                     form :$form,
-                    request_id : $('#request_id').val()
+                    request_id : $id
                 },
                 type:'GET',
                 success:function(data){
@@ -1134,7 +1134,7 @@
             return false;
         }
 
-        function seminarios($form){
+        function seminarios($form,$id){
             $lable_id = $form.label_id;
             $type_nacional= parseInt($form.type_nacional);
             $nombre_evento = $form.nombre_evento;
@@ -1205,7 +1205,7 @@
                 url:'{{ route('seminar_create') }}',
                 data: {
                     form :$form,
-                    request_id : $('#request_id').val()
+                    request_id : $id
                 },
                 type:'GET',
                 success:function(data){
@@ -1217,7 +1217,7 @@
             return false;
         }
 
-        function transporteAereo($form){
+        function transporteAereo($form,$id){
             $lable_id = $form.label_id;
             $type_nacional= parseInt($form.type_nacional);
             $ciudad_origen = $form.ciudad_origen;
@@ -1289,7 +1289,7 @@
                 url:'{{ route('air_create') }}',
                 data: {
                     form :$form,
-                    request_id : $('#request_id').val()
+                    request_id : $id
                 },
                 type:'GET',
                 success:function(data){
@@ -1301,7 +1301,7 @@
             return false;
         }
 
-        function transporteTerrestre($form){
+        function transporteTerrestre($form,$id){
             $lable_id = $form.label_id;
             $type_nacional= parseInt($form.type_nacional);
             $ciudad_origen = $form.ciudad_origen;
@@ -1374,7 +1374,7 @@
                 url:'{{ route('land_create') }}',
                 data: {
                     form :$form,
-                    request_id : $('#request_id').val()
+                    request_id : $id
                 },
                 type:'GET',
                 success:function(data){
@@ -1387,7 +1387,7 @@
 
         }
 
-        function kilometraje($form){
+        function kilometraje($form,$id){
             $lable_id = $form.label_id;
             $type_nacional= parseInt($form.type_nacional);
 
@@ -1460,7 +1460,7 @@
                 url:'{{ route('mileage_create') }}',
                 data: {
                     form :$form,
-                    request_id : $('#request_id').val()
+                    request_id : $id
                 },
                 type:'GET',
                 success:function(data){
